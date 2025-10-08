@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/pat/anaconda3/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+!pip install ipynbname -q
+import ipynbname
+
+try:
+    # Call the notebook_name() function directly from the library
+    notebook_name = ipynbname.name()
+    print(f"The name of this notebook is: {notebook_name}")
+except Exception as e:
+    print(f"Could not get the notebook name. Error: {e}")
+loc=notebook_name.find('_')-1
+notebook_name[loc:]
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_24241/3475516374.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      8[0m [0;32mexcept[0m [0mException[0m [0;32mas[0m [0me[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m     [0mprint[0m[0;34m([0m[0;34mf"Could not get the notebook name. Error: {e}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 10[0;31m [0mloc[0m[0;34m=[0m[0mnotebook_name[0m[0;34m.[0m[0mfind[0m[0;34m([0m[0;34m'_'[0m[0;34m)[0m[0;34m-[0m[0;36m1[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     11[0m [0mnotebook_name[0m[0;34m[[0m[0mloc[0m[0;34m:[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'notebook_name' is not defined
+NameError: name 'notebook_name' is not defined
+
