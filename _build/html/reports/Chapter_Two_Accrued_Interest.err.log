@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/pat/anaconda3/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/pat/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Create rows_to_columns DataFrame
+rows_to_columns=pd.DataFrame({'Rates':[0.03,0.05,0.07],
+                              'Future Values':[1.030455,1.05171,1.072508],
+                              'Present Value':[0.970446,0.951229,0.93294]})
+display(rows_to_columns)
+# Access the value of rows
+rows_to_columns['Discrete']=rows_to_column= rows_to_columns.apply(
+    lambda row: np.log(1+row['Rates']),
+    axis=1)
+display(rows_to_columns)
+# Access the values of column
+rows_to_columns['Log Future Values']=rows_to_columns['Future Values'].apply(
+    lambda value: np.log(value))
+display(rows_to_columns)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_14636/3480620111.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0mdisplay[0m[0;34m([0m[0mrows_to_columns[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;31m# Access the value of rows[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m rows_to_columns['Discrete']=rows_to_column= rows_to_columns.apply(
+[0m[1;32m      8[0m     [0;32mlambda[0m [0mrow[0m[0;34m:[0m [0mnp[0m[0;34m.[0m[0mlog[0m[0;34m([0m[0;36m1[0m[0;34m+[0m[0mrow[0m[0;34m[[0m[0;34m'Rates'[0m[0;34m][0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m     axis=1)
+
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py[0m in [0;36mapply[0;34m(self, func, axis, raw, result_type, args, **kwargs)[0m
+[1;32m   8738[0m             [0mkwargs[0m[0;34m=[0m[0mkwargs[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   8739[0m         )
+[0;32m-> 8740[0;31m         [0;32mreturn[0m [0mop[0m[0;34m.[0m[0mapply[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   8741[0m [0;34m[0m[0m
+[1;32m   8742[0m     def applymap(
+
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py[0m in [0;36mapply[0;34m(self)[0m
+[1;32m    686[0m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mapply_raw[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    687[0m [0;34m[0m[0m
+[0;32m--> 688[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mapply_standard[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    689[0m [0;34m[0m[0m
+[1;32m    690[0m     [0;32mdef[0m [0magg[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py[0m in [0;36mapply_standard[0;34m(self)[0m
+[1;32m    810[0m [0;34m[0m[0m
+[1;32m    811[0m     [0;32mdef[0m [0mapply_standard[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 812[0;31m         [0mresults[0m[0;34m,[0m [0mres_index[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mapply_series_generator[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    813[0m [0;34m[0m[0m
+[1;32m    814[0m         [0;31m# wrap results[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py[0m in [0;36mapply_series_generator[0;34m(self)[0m
+[1;32m    826[0m             [0;32mfor[0m [0mi[0m[0;34m,[0m [0mv[0m [0;32min[0m [0menumerate[0m[0;34m([0m[0mseries_gen[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    827[0m                 [0;31m# ignore SettingWithCopy here in case the user mutates[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 828[0;31m                 [0mresults[0m[0;34m[[0m[0mi[0m[0;34m][0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mf[0m[0;34m([0m[0mv[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    829[0m                 [0;32mif[0m [0misinstance[0m[0;34m([0m[0mresults[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m,[0m [0mABCSeries[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    830[0m                     [0;31m# If we have a view on v, we need to make a copy because[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/tmp/ipykernel_14636/3480620111.py[0m in [0;36m<lambda>[0;34m(row)[0m
+[1;32m      6[0m [0;31m# Access the value of rows[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m rows_to_columns['Discrete']=rows_to_column= rows_to_columns.apply(
+[0;32m----> 8[0;31m     [0;32mlambda[0m [0mrow[0m[0;34m:[0m [0mnp[0m[0;34m.[0m[0mlog[0m[0;34m([0m[0;36m1[0m[0;34m+[0m[0mrow[0m[0;34m[[0m[0;34m'Rates'[0m[0;34m][0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      9[0m     axis=1)
+[1;32m     10[0m [0mdisplay[0m[0;34m([0m[0mrows_to_columns[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'np' is not defined
+NameError: name 'np' is not defined
+
