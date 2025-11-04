@@ -2,7 +2,7 @@
 
 ## Basic Concepts of Fixed Income
 
-### This Jupyter Book Includes Chapters Twp And Three
+### This Jupyter Book Includes Chapters Two And Three
 
 * Chapter Two: *Accrued Interest*
 * Chapter Three: *Bond Payment Data*
