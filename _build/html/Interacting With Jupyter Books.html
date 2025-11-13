@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Accrued Interest &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+    <title>Working With Jupyter Books &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,13 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter_Two_Highlights';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Interacting With Jupyter Books';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Mechanics Of Bond Pricing" href="Machanics_Of_Bond_Pricces.html" />
-    <link rel="prev" title="Working With Jupyter Books" href="Interacting%20With%20Jupyter%20Books.html" />
+    <link rel="next" title="Accrued Interest" href="Chapter_Two_Highlights.html" />
+    <link rel="prev" title="Financial Python" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,12 +180,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Accrued Interest</a><ul>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Working With Jupyter Books</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
-</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
 
@@ -232,7 +231,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2FChapter_Two_Highlights.html&body=Your%20issue%20content%20here." target="_blank"
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2FInteracting With Jupyter Books.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button"
    title="Open an issue"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -258,7 +257,7 @@
       
       
       
-      <li><a href="_sources/Chapter_Two_Highlights.md" target="_blank"
+      <li><a href="_sources/Interacting With Jupyter Books.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,9 +328,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -342,19 +339,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accrued Interest</h1>
+    <h1>Working With Jupyter Books</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -364,56 +353,60 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="accrued-interest">
-<h1>Accrued Interest<a class="headerlink" href="#accrued-interest" title="Link to this heading">#</a></h1>
-<p><strong>Chapter Two of the Volume <em>Basic Concepts of Fixed Income</em></strong>.</p>
-<p><strong>Highlights of the Chapter are:</strong></p>
-<ul class="simple">
-<li><p><em><strong>Financial Concepts</strong></em></p>
-<ul>
-<li><p><em>Quoted verss transaction prices pf bpmds</em></p></li>
-<li><p><em>The clean price of a bond</em></p></li>
-<li><p><em>The dirty price of a bond</em></p></li>
-<li><p><em>Accrued interest</em></p></li>
-</ul>
-</li>
-<li><p><em><strong>Python Concepts</strong></em></p>
-<ul>
-<li><p><em>NumPy arrays</em></p></li>
-<li><p><em>Python DataFrames</em></p></li>
-<li><p><em>Accesing data with a URL address</em></p></li>
-<li><p><em>Custom modules</em></p></li>
-<li><p><em>The Pandas apply method</em></p></li>
-<li><p><em>Saving DataFrames as spreadsheets</em></p></li>
-</ul>
-</li>
-</ul>
-<section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<div style="font-family: 'Garamond', serif;
-    font-size: 16px;
-    text-indent: 0.25in;
-    line-height: 1.5;">
-<p>This chapter uses the Python libraries Pandas and NumPy. The basic usage of these libraries is detailed in three Notebooks: “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html">A Quick Introduction to Pandas</a>” reviews some basic concepts of Pandas, “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to NumPy</a>” and “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>”  do the same for NumPy and the datetime module. These Notebooks are part of the introductory volume <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html">Background Material: An Introduction to Python for Financial Python</a>. Portions of the volume will be cited throughout this chapter. Feel free to consult these materials as needed for greater discussion of Python concepts.</p>
-</div>
-</br>
-<p><strong>The Chapter includes Four sections.</strong></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-jupyter-books">
+<h1>Working With Jupyter Books<a class="headerlink" href="#working-with-jupyter-books" title="Link to this heading">#</a></h1>
+<p>This and other chapters of <em>Basic Concepts Of Fixed Income</em>, contain two types of documents:</p>
 <ol class="arabic simple">
-<li><p><em>Introduction To The Mechanics Of Bond Pricing</em>.</p></li>
-<li><p>The Jupyter notebook <em>Dealing With Dates</em>.</p></li>
-<li><p>The  Jupyter notebook <em>Accrued Interest</em> that:</p></li>
-<li><p><em>Summary</em> summarizes the financial concepts and results.</p></li>
-<li><p><em>Functions Imported By Accrued Interest</em> describes the functions imported from DropBox. (<em>module_basic_concepts_fixed_income</em>)..</p></li>
-</ol>
-<p><strong>Any code cell in a notebook or code block in a text cell can be copied to the clipboard by moving your cursor to upper-right corner of the code cell or code block.</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
+<li><p><strong>Markdown Documents- what you are currently reading (<em>.md</em>):</strong></p>
+<ul class="simple">
+<li><p>Contain no executable code.</p></li>
+<li><p>Can be downloaded as a Markdown file (<em>.md</em>) or a PDF file (<em>.pdf</em>).</p></li>
 </ul>
+</li>
+<li><p><strong>Notebook Documents (<em>.ipynb</em>):</strong></p>
+<ul class="simple">
+<li><p>HTML representatins of Jupyter notebooks</p></li>
+<li><p>Can be downloaded as a notebook (<em>.ipynb</em>) or a PDF file (<em>.pdf</em>).</p></li>
+<li><p>Have interactive capabilities.</p></li>
+<li><p>In a chapter like <em>Calculating And Graphing The Term Structure Of Interest Rates</em>, icons are available in the upper-right corner for launching and downloading the notebook.</p></li>
+</ul>
+</li>
+</ol>
+<p>Notebook Launch Options</p>
+<p>The launch icon provides three interactive options for notebook documents:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Interactive Features</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Binder</strong></p></td>
+<td><p>Launches in a new browser tab (typically within a minute) and runs remotely. Supports up to 100 simultaneous users.</p></td>
+<td><p>Execute existing cells, add or modify cells, and download the notebook.</p></td>
+<td><p>The notebook will not be saved or available if saved in this mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Colab</strong></p></td>
+<td><p>Offers the quickest and easiest access, not requiring Binder. A Google Drive is unnecessary for launching.</p></td>
+<td><p>Execute cells or make a copy.</p></td>
+<td><p>You must sign in to a Google account to execute cells or make a copy. You can download the notebook without signing into a Google account.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Live Code</strong></p></td>
+<td><p>Requires a Binder launch and is ideal for demonstrations.</p></td>
+<td><p>Run code in existing cells, and alter code in existing cells.</p></td>
+<td><p>You cannot add cells or save results in this mode.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</section>
+<p>Additional Interactive Features</p>
+<ul class="simple">
+<li><p><strong>Copying Code:</strong> Any code cell or code block can be copied to the clipboard by moving the cursor to its upper-right corner.</p></li>
+</ul>
+<p>Summary</p>
+<p>Jupyter books effectively combine markdown and notebooks to highlight financial concepts with real-world applications.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -447,20 +440,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Interacting%20With%20Jupyter%20Books.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Working With Jupyter Books</p>
+        <p class="prev-next-title">Financial Python</p>
       </div>
     </a>
     <a class="right-next"
-       href="Machanics_Of_Bond_Pricces.html"
+       href="Chapter_Two_Highlights.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Mechanics Of Bond Pricing</p>
+        <p class="prev-next-title">Accrued Interest</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -470,21 +463,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

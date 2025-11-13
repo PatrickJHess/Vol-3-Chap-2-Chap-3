@@ -17,30 +17,71 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-save_config=dict(volume='Basic Concepts Of Fixed Income',
-                 chapter='Accrued Interest',
-                 file_name='Accrued Interest.xlsx')
-create_workbook('Basic Bond Data',bond_data,save_config)
+settlement=datetime(2025,1,21)
+# Use DataFrame.apply() to create the new column
+# 'axis=1' tells pandas to apply the function to each row.
+# A lambda function is used to pass the correct columns from each row to accrued_interest.
+bond_data['Accrued'] = bond_data.apply(
+    lambda row: accrued_interest(
+        maturity=row.name,      # The row's index label (maturity date) is accessed via .name
+        coupon=row['Coupon'],   # Access the 'Coupon' value from the row
+        settlement=settlement   # Use the globally defined settlement date
+    ), axis=1)
+
+bond_data
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
-[0;32m/tmp/ipykernel_20574/4099785922.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m                  [0mchapter[0m[0;34m=[0m[0;34m'Accrued Interest'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m                  file_name='Accrued Interest.xlsx')
-[0;32m----> 4[0;31m [0mcreate_workbook[0m[0;34m([0m[0;34m'Basic Bond Data'[0m[0;34m,[0m[0mbond_data[0m[0;34m,[0m[0msave_config[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;32m<string>[0m in [0;36mcreate_workbook[0;34m(sheet_name, df, save_config)[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_9653/2931914549.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      3[0m [0;31m# 'axis=1' tells pandas to apply the function to each row.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;31m# A lambda function is used to pass the correct columns from each row to accrued_interest.[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m bond_data['Accrued'] = bond_data.apply(
+[0m[1;32m      6[0m     lambda row: accrued_interest(
+[1;32m      7[0m         [0mmaturity[0m[0;34m=[0m[0mrow[0m[0;34m.[0m[0mname[0m[0;34m,[0m      [0;31m# The row's index label (maturity date) is accessed via .name[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m<string>[0m in [0;36msave_results[0;34m(save_config)[0m
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py[0m in [0;36mapply[0;34m(self, func, axis, raw, result_type, args, **kwargs)[0m
+[1;32m   8738[0m             [0mkwargs[0m[0;34m=[0m[0mkwargs[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   8739[0m         )
+[0;32m-> 8740[0;31m         [0;32mreturn[0m [0mop[0m[0;34m.[0m[0mapply[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   8741[0m [0;34m[0m[0m
+[1;32m   8742[0m     def applymap(
 
-[0;32m~/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
-[1;32m   1272[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1273[0m             [0mmsg[0m [0;34m=[0m [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1274[0;31m             [0;32mraise[0m [0mStdinNotImplementedError[0m[0;34m([0m[0mmsg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1275[0m         return self._input_request(
-[1;32m   1276[0m             [0mstr[0m[0;34m([0m[0mprompt[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py[0m in [0;36mapply[0;34m(self)[0m
+[1;32m    686[0m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mapply_raw[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    687[0m [0;34m[0m[0m
+[0;32m--> 688[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mapply_standard[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    689[0m [0;34m[0m[0m
+[1;32m    690[0m     [0;32mdef[0m [0magg[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
-StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py[0m in [0;36mapply_standard[0;34m(self)[0m
+[1;32m    810[0m [0;34m[0m[0m
+[1;32m    811[0m     [0;32mdef[0m [0mapply_standard[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 812[0;31m         [0mresults[0m[0;34m,[0m [0mres_index[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mapply_series_generator[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    813[0m [0;34m[0m[0m
+[1;32m    814[0m         [0;31m# wrap results[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py[0m in [0;36mapply_series_generator[0;34m(self)[0m
+[1;32m    826[0m             [0;32mfor[0m [0mi[0m[0;34m,[0m [0mv[0m [0;32min[0m [0menumerate[0m[0;34m([0m[0mseries_gen[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    827[0m                 [0;31m# ignore SettingWithCopy here in case the user mutates[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 828[0;31m                 [0mresults[0m[0;34m[[0m[0mi[0m[0;34m][0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mf[0m[0;34m([0m[0mv[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    829[0m                 [0;32mif[0m [0misinstance[0m[0;34m([0m[0mresults[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m,[0m [0mABCSeries[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    830[0m                     [0;31m# If we have a view on v, we need to make a copy because[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/tmp/ipykernel_9653/2931914549.py[0m in [0;36m<lambda>[0;34m(row)[0m
+[1;32m      4[0m [0;31m# A lambda function is used to pass the correct columns from each row to accrued_interest.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m bond_data['Accrued'] = bond_data.apply(
+[0;32m----> 6[0;31m     lambda row: accrued_interest(
+[0m[1;32m      7[0m         [0mmaturity[0m[0;34m=[0m[0mrow[0m[0;34m.[0m[0mname[0m[0;34m,[0m      [0;31m# The row's index label (maturity date) is accessed via .name[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m         [0mcoupon[0m[0;34m=[0m[0mrow[0m[0;34m[[0m[0;34m'Coupon'[0m[0;34m][0m[0;34m,[0m   [0;31m# Access the 'Coupon' value from the row[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/tmp/ipykernel_9653/905131098.py[0m in [0;36maccrued_interest[0;34m(maturity, coupon, day_type, settlement, freq)[0m
+[1;32m     53[0m   [0;32mif[0m [0mday_type[0m [0;34m==[0m [0;34m'Actual/Actual'[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     54[0m       [0;31m# Actual/Actual convention[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 55[0;31m       [0mdays_since_last[0m [0;34m=[0m [0;34m([0m[0msettlement_less_one[0m [0;34m-[0m [0mlast_date[0m[0;34m)[0m[0;34m.[0m[0mdays[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     56[0m       [0mdays_between[0m [0;34m=[0m [0;34m([0m[0mnext_date[0m [0;34m-[0m [0mlast_date[0m[0;34m)[0m[0;34m.[0m[0mdays[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     57[0m       [0;32mreturn[0m [0mcoupon[0m[0;34m/[0m[0mfreq[0m[0;34m*[0m[0mdays_since_last[0m[0;34m/[0m[0mdays_between[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mTypeError[0m: unsupported operand type(s) for -: 'datetime.datetime' and 'datetime.date'
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'datetime.date'
 

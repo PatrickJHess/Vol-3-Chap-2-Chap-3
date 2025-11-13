@@ -3,6 +3,7 @@
 format: jb-book
 root: intro
 chapters:
+- file: Interacting With Jupyter Books
 - file: Chapter_Two_Highlights
   sections:
   - file: Machanics_Of_Bond_Pricces
