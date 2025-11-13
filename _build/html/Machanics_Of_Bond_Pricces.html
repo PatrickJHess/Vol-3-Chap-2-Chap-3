@@ -181,13 +181,27 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The Mechanics Of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
 
@@ -403,7 +417,7 @@ document.write(`
 </section>
 <section id="calculating-accrued-interest">
 <h4>Calculating Accrued Interest<a class="headerlink" href="#calculating-accrued-interest" title="Link to this heading">#</a></h4>
-<p>Accrued interest for Government bonds is calculated by determining the ratio of days since the last scheduled payment to the total days between the last and the next scheduled payments. The example below uses the so-called actual/actual day-count convention of Government bonds.</p>
+<p>Accrued interest for Government bonds is calculated by determining the ratio of days since the last scheduled payment to the total days between the last and the next scheduled payments. The example below uses the so-called ‘Actual/Actual’ day-count convention of Government bonds.</p>
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vR6XvDjt0b_IiI23LnhIthZ1uMpS4dMOX9LH0gW5wMK_7DnpkaFiu1lkP3T8otpurLPU5jI9y8f18ea/pub?w=960&h=720'>
 <p>Other securities use different day-count conventions; ‘30/360’ is used for non-government bonds, ‘Actual/360’ is used for non-coupon bonds, and ‘Actual/ 365’ is used for some derivatives and international bonds and currency markets.  The Table <em>Day-Count Convention Rules</em> describes the four conventions.
 ‘</p>
@@ -472,7 +486,7 @@ document.write(`
 </section>
 <section id="id1">
 <h3>Bond Prices And Accrued Interest<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>The function <font color='green'>accrued_interest</font> developed in the notebook <em>Calculating Accrued Interest</em> of this chapter, accounts for the for conventions. As you undoubtedly surmised, the calculation requires the manipulation of dates and several Python modules are used in the notebook <em>Calculating Accrued Interest</em>.  If this is a new or somewhat unfamiliar subject, you should take a look at the notebook <em>Manipulating Dates</em> in this chapter as well as the notebook in the <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Manipulating_Dates.html">background material</a>.</p>
+<p>The function <font color='green'>accrued_interest()</font> is developed in the notebook <em>Calculating Accrued Interest</em> of this chapter, and accounts for the four day-count conventions. As you undoubtedly surmised, the calculation requires the manipulation of dates. Several new Python libraries or modules are introduced that allows us to make calculatins with dates.  If this is a new or somewhat unfamiliar subject, you should take a look at the notebook <em>Manipulating Dates</em> in this chapter as well as the notebook in the <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Manipulating_Dates.html">background material</a>.</p>
 </section>
 </section>
 </section>

@@ -1,0 +1,3215 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Calculating Accrued Interest &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Basic Concepts Of Fixed Income- Chapter Two/Chapter_Two_Accrued_Interest';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Small_Logo.svg" class="logo__image only-light" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>
+    <script>document.write(`<img src="../_static/Small_Logo.svg" class="logo__image only-dark" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_Two_Highlights.html">Accrued Interest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Dealing_With_Dates.html">Manipulating Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_Three_Highlights.html">Bond Payment Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-2-Chap-3/master?urlpath=tree/Basic Concepts Of Fixed Income- Chapter Two/Chapter_Two_Accrued_Interest.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-2-Chap-3/blob/master/Basic Concepts Of Fixed Income- Chapter Two/Chapter_Two_Accrued_Interest.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2FBasic Concepts Of Fixed Income- Chapter Two/Chapter_Two_Accrued_Interest.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Basic Concepts Of Fixed Income- Chapter Two/Chapter_Two_Accrued_Interest.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calculating Accrued Interest</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing The Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-dataframe-bond-data">Creating The DataFrame bond_data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-accrued-interest-with-five-unique-maturity-dates">Illustrating Accrued Interest With Five Unique Maturity Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-access-bonds-with-specific-characteristics"><font color="green">Application:Access Bonds With Specific Characteristics</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-dates-and-converting-datetime-to-date">Validating dates and converting <font color="green">datetime</font> to <font color="green">date</font>.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-settlement-or-maturity-date-is-month-end">Determine If Settlement Or Maturity Date Is Month End</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-day-month-function">last_day_month() function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-next-coupon-period">The Next Coupon Period</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-function-calculating-the-settlement-year-maturity-month-and-day">A Function Calculating The Settlement Year, Maturity Month, And Day</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-results-of-settle-year-mat">Checking The Results Of settle_year_mat()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-function-returning-the-next-and-last-coupon-date">A Function Returning The Next And Last Coupon Date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-results-of-next-last-coupon-dates">Checking The Results Of next_last_coupon_dates()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-days-between-coupon-and-payment-dates"><font color="green">Application:Days Between Coupon And Payment Dates</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculating Accrued Interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-bond-data-with-accrued-interest">Update Bond Data With Accrued Interest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-a-transaction-price"><font color="green">Application:Calculate A Transaction Price</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-workbook">Creating The Workbook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-path">The Default Path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-an-excel-workbook"><font color="green">Application:Create An Excel Workbook</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-accrued-interest">
+<h1>Calculating Accrued Interest<a class="headerlink" href="#calculating-accrued-interest" title="Link to this heading">#</a></h1>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<p>This notebook utilizes the date manipulation tools from the <em>Manipulating Dates</em> notebook to determine the accrued interest of coupon bonds. As outlined in <em>The Mechanics Of Bond Pricing</em>, the transaction price of a coupon bond combines its quoted price with accrued interest. The key elements for this calculation are:</p>
+<ul class="simple">
+<li><p>The settlement date of the bond’s purchase and sale.</p></li>
+<li><p>The next scheduled coupon date.</p></li>
+<li><p>The last scheduled coupon date.</p></li>
+</ul>
+<p>The function <font color='green'>accrued_interest()</font> is developed and employed to calculate the accrued interest for 304 bonds. This function relies on several helper functions. The notebook then updates a DataFrame using the Pandas <font color='green'>apply</font> method, which is subsequently saved as an Excel workbook with the <font color='green'>create_workbook()</font> function.</p>
+</section>
+<section id="preparing-the-notebook">
+<h2>Preparing The Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
+<section id="importing-libraries-modules-and-functions">
+<h3>Importing Libraries, Modules, And Functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h3>
+<p>As in Chapter One of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported.<span class="math notranslate nohighlight">\(^{1}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import os
+import sys
+import requests
+from datetime import , date, timedelta
+from types import ModuleType
+
+try:
+    from IPython.display import Markdown, display
+except:
+    !pip -q install IPython
+    from IPython.display import Markdown, displayr
+
+try:
+    import numpy as np
+except:
+    !pip -q install numpy
+    import numpy as np
+
+try:
+    import pandas as pd
+except:
+    !pip -q install pandas
+    import pandas as pd
+
+try:
+    from dateutil.relativedelta import relativedelta
+except:
+    !pip -q install python-dateutil
+    from dateutil.relativedelta import relativedelta
+
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{1}\)</span><a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Control_Statements.html#the-try-and-except'>try and except statements</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import OS to interact with local computer operating system</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="c1"># Import the datetime and date class from the datetime module for working with dates.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="c1"># Last calendar day of the month and day of the week for first day</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>IPython
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">displayr</span>
+
+<span class="c1"># Import the numpu library for data manipulation and analysis, aliased as np</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>numpy
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># Import the pandas library for data manipulation and analysis, aliased as pd.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>pandas
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Import the relativedelta class from dateutil for advanced date calculations.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>python-dateutil
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+
+<span class="c1"># Import the relativedelta class from dateutil for advanced date calculations.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>python-dateutil
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-a-custom-module-and-importing-functions">
+<h3>Adding A Custom Module And Importing Functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h3>
+<p>Like Chapter One the custom module <font color='green'>module_basic_concepts_fixed_income</font> custom module  is accessed from Dropbox and named <font color='green'>basic_concepts_fixed_income</font>.  As a reminder, the module is accessible in the notebook’s memory, but is not added to a drive.  Two functions are added to the notebook.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_income_module</span><span class="p">(</span><span class="n">accrued_interest</span><span class="p">,</span>
+                         <span class="n">create_workbook</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><font color='green'>accrured_interest()</font> <a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/accrued_interest.html#accrued-interest-is-a-helper-function-that-calculates-accrued-interest">view here</a>.</p></li>
+<li><p><font color='green'>create_workbook() <a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/create_workbook.html#create-workbook-is-a-helper-function-that-creates-excel-workbooks-from-dataframes-created-by-financial-python">view here</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
+<span class="c1"># The &#39;dl=1&#39; parameter in the URL forces a direct download of the file content.</span>
+<span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
+<span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=87sztshr&amp;dl=1&#39;</span>
+<span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;basic_concepts_fixed_income&#39;</span>
+<span class="c1"># Send an HTTP GET request to the URL and store the server&#39;s response.</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">response</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="c1"># Raise an exception for bad status codes (like 404 Not Found)</span>
+  <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+  <span class="n">module</span><span class="o">=</span> <span class="n">ModuleType</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+  <span class="c1">#Code contained in response.text executed</span>
+  <span class="n">exec</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+  <span class="c1"># Module added to sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">=</span><span class="n">module</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Could not fetch module from URL. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Failed to execute or import the module. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now that &#39;basic_concepts_fixed_income&#39; exists in the notebook, import the specific functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span><span class="p">(</span><span class="n">accrued_interest</span><span class="p">,</span>
+                                        <span class="n">create_workbook</span><span class="p">,</span>
+                                        <span class="n">validate_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-the-dataframe-bond-data">
+<h2>Creating The DataFrame bond_data<a class="headerlink" href="#creating-the-dataframe-bond-data" title="Link to this heading">#</a></h2>
+<p><font color='black'> U.S. Treasury notes and bonds data, for settlement on January 21, 2025, was obtained from Fidelity. The Fidelity data, an Excel workbook, is downloaded from DropBox using the Panda’s <font color='green'>read_excel()</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
+<p>Three arguments are pass to the method.</p>
+<ol class="arabic simple">
+<li><p>The URL address (<font color='green'>url</font>) is required.</p></li>
+<li><p>Assigning the index column is optional. The maturity dates, located in the first column, are set as the index of the DataFrame  (<font color='green'>index_col=’Maturity Date’</font>).</p></li>
+<li><p>The worksheet name defaults to the first worksheet. The worksheet’s name, ‘Fidelity Data’, is the assigned sheet (<font color='green'>sheet_name=’Fidelity Data’</font>)</p></li>
+</ol>
+<p>The <font color='green'>display()</font>  function shows the first and last five rows confirming that data has been successfully accessed.</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{2}\)</span> <a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#dataframes-csv-and-excel-files'>Pandas method read_excel</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The full file path.</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.dropbox.com/scl/fi/lgnaj41bt8o9sv5a63rr1/</span><span class="se">\</span>
+<span class="s1">bond_data_jan21_2025.xlsx?rlkey=twjzkcqo0g2ahvot78518ti4x&amp;st=ihc5feog&amp;dl=1&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to load data from: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#Load the data from Excel, using the first column as the index.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">bond_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Maturity Date&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Fidelity Data&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Display the first and last 5 rows of the loaded DataFrame to verify it worked..</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">bond_data</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ERROR: File not found.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check that the &#39;folder&#39; and &#39;file&#39; variables are spelled correctly&#39;</span><span class="se">\</span>
+<span class="s2">&#39; and that the file exists in that location.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to load data from: https://www.dropbox.com/scl/fi/lgnaj41bt8o9sv5a63rr1/bond_data_jan21_2025.xlsx?rlkey=twjzkcqo0g2ahvot78518ti4x&amp;st=ihc5feog&amp;dl=1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Coupon</th>
+      <th>Price Bid</th>
+      <th>Price Ask</th>
+      <th>Bid Size</th>
+      <th>Ask Size</th>
+    </tr>
+    <tr>
+      <th>Maturity Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-01-28</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.929</td>
+      <td>99.930</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-30</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.906</td>
+      <td>99.907</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER U-2025          1.3750...</td>
+      <td>1.375</td>
+      <td>99.921</td>
+      <td>99.934</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER AW-2025         4.1250...</td>
+      <td>4.125</td>
+      <td>99.988</td>
+      <td>99.997</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER G-2025          2.5000...</td>
+      <td>2.500</td>
+      <td>99.953</td>
+      <td>99.965</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER AG-2029         4.1250...</td>
+      <td>4.125</td>
+      <td>98.910</td>
+      <td>98.914</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER S-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.763</td>
+      <td>97.782</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER T-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.734</td>
+      <td>97.738</td>
+      <td>65000.0</td>
+      <td>65000.0</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER AH-2029         4.3750...</td>
+      <td>4.375</td>
+      <td>99.988</td>
+      <td>99.989</td>
+      <td>7000.0</td>
+      <td>7000.0</td>
+    </tr>
+    <tr>
+      <th>2030-01-31</th>
+      <td>UNITED STATES TREAS SER G-2030          3.5000...</td>
+      <td>3.500</td>
+      <td>95.994</td>
+      <td>96.011</td>
+      <td>16000.0</td>
+      <td>16000.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>304 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="illustrating-accrued-interest-with-five-unique-maturity-dates">
+<h2>Illustrating Accrued Interest With Five Unique Maturity Dates<a class="headerlink" href="#illustrating-accrued-interest-with-five-unique-maturity-dates" title="Link to this heading">#</a></h2>
+<p>The <font color='green'>loc</font> attribute is utilized to identify the bonds with the five maturity dates. The <font color='green'>sample_bonds</font> DataFrame includes several bonds with the same maturity date. The Pandas method <font color='green'>duplicated()</font> selects the the first instances of the bonds resulting in five bonds with unique maturity dates.<span class="math notranslate nohighlight">\(^{3}\)</span></p>
+<p><font color='green'>sample_bonds</font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maturity_dates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
+<span class="n">sample_bonds</span><span class="o">=</span><span class="n">bond_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">maturity_dates</span><span class="p">]</span>
+<span class="n">unique_bond</span><span class="o">=</span> <span class="o">~</span><span class="n">all_sample_bonds</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="n">five_bonds</span><span class="o">=</span><span class="n">sample_bonds</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">unique_bonds</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">five_bonds</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(^{3}\)</span> <a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#pandas-duplicated-method'>The Pandas Method duplicated</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Define a specific list of upcoming bond maturity dates to analyze ---</span>
+<span class="c1"># These dates were selected for a targeted review of bonds maturing in</span>
+<span class="c1"># late 2025 and early 2026.</span>
+<span class="n">maturity_dates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># Use the .loc indexer to perform a label-based lookup.</span>
+<span class="c1"># This retrieves all rows where the DataFrame&#39;s index exactly matches the dates in the list.</span>
+<span class="n">sample_bonds</span> <span class="o">=</span> <span class="n">bond_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">maturity_dates</span><span class="p">]</span>
+<span class="c1"># ~ negates the value of duplicated..the maturity is unique</span>
+<span class="c1"># keep the first instance that is not a duplicate...a unique index is unmodified</span>
+<span class="n">unique_bonds</span><span class="o">=</span> <span class="o">~</span><span class="n">sample_bonds</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="n">five_bonds</span><span class="o">=</span><span class="n">sample_bonds</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">unique_bonds</span><span class="p">]</span>
+
+<span class="c1"># Render the resulting &#39;five_bonds&#39; DataFrame as a formatted table in the output.</span>
+<span class="n">display</span><span class="p">(</span><span class="n">five_bonds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Coupon</th>
+      <th>Price Bid</th>
+      <th>Price Ask</th>
+      <th>Bid Size</th>
+      <th>Ask Size</th>
+    </tr>
+    <tr>
+      <th>Maturity Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-02-28</th>
+      <td>UNITED STATES TREAS NOTE 1.12500% 02/28/2025</td>
+      <td>1.125</td>
+      <td>99.671</td>
+      <td>99.684</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2025-07-15</th>
+      <td>UNITED STATES TREAS SER AQ-2025         3.0000...</td>
+      <td>3.000</td>
+      <td>99.394</td>
+      <td>99.406</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2025-08-31</th>
+      <td>UNITED STATES TREAS SER AC-2025         0.2500...</td>
+      <td>0.250</td>
+      <td>97.605</td>
+      <td>97.610</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2026-01-15</th>
+      <td>UNITED STATES TREAS SER AJ-2026         3.8750...</td>
+      <td>3.875</td>
+      <td>99.671</td>
+      <td>99.688</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+    </tr>
+    <tr>
+      <th>2028-02-29</th>
+      <td>UNITED STATES TREAS SER V-2028          4.0000...</td>
+      <td>4.000</td>
+      <td>99.099</td>
+      <td>99.118</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="application-access-bonds-with-specific-characteristics">
+<h2><font color='green'>Application:Access Bonds With Specific Characteristics</font><a class="headerlink" href="#application-access-bonds-with-specific-characteristics" title="Link to this heading">#</a></h2>
+<p><span style="display:block;background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+Access the bonds that mature at the end of April and October 2025. Create a DataFrame of the bonds with a coupon greater than 3.5. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#access-bonds-with-specific-characteristics">Chapter Two Hints:Access Bonds With Specific Characteristics</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#access-bonds-with-specific-characteristics">expected results here</a>.
+<br>
+<br>
+</span></p>
+</section>
+<section id="validating-dates-and-converting-datetime-to-date">
+<h2>Validating dates and converting <font color='green'>datetime</font> to <font color='green'>date</font>.<a class="headerlink" href="#validating-dates-and-converting-datetime-to-date" title="Link to this heading">#</a></h2>
+<p>As discussed in the section  <em>Manipulating Dates</em>, the datetime library generates two distinct but related object types. For calculations of accrued interest or bond payment dates, <font color='green'>date</font> objects, with their year, month, and day attributes are preferred to <font color='green'>datetime</font> objects.</p>
+<p><font color='green'>datetime</font> objects include unnecessary attributes such as hour, second, and microsecond. These time-based attributes of <font color='green'>datetime</font> objects can impact comparisons between two dates that share the same month, day, and year. To prevent such issues, all <font color='green'>datetime</font> objects are converted to <font color='green'>date</font> objects.</p>
+<p>The function <font color='green'>validate_date</font> determines if the argument of the function is an instance of a <font color='green'>date</font> or <font color='green'>datetime</font> and converts <font color='green'>dateime</font> objects to <font color='green'>date</font> objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_date</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Validates input is a date/datetime and returns a date object.</span>
+
+<span class="sd">  This helper function checks if the input is either a</span>
+<span class="sd">  datetime.datetime or datetime.date object. If it&#39;s a</span>
+<span class="sd">  datetime.datetime, it converts it to a datetime.date.</span>
+<span class="sd">  It always returns a datetime.date object.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    datetime_obj (datetime.date or datetime.datetime):</span>
+<span class="sd">      The input to validate and convert.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    datetime.date: The resulting date object.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If the input is not a datetime.date or</span>
+<span class="sd">               datetime.datetime object.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+
+  <span class="c1">#Validation ---</span>
+
+  <span class="c1"># Check if the object is of the expected type (date or datetime)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">,</span> <span class="p">(</span><span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">)):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input must be a datetime or date object.&quot;</span><span class="p">)</span>
+
+  <span class="c1">#Standardization ---</span>
+
+  <span class="c1"># If the object is a datetime, convert it to a date.</span>
+  <span class="c1"># This makes the return type consistent.</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+    <span class="n">datetime_obj</span> <span class="o">=</span> <span class="n">datetime_obj</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+
+  <span class="c1"># Return the object, which is now guaranteed to be a date object.</span>
+  <span class="k">return</span> <span class="n">datetime_obj</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_41589</span><span class="o">/</span><span class="mf">2977602463.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validate</span>
+
+<span class="ne">NameError</span>: name &#39;validate&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="determine-if-settlement-or-maturity-date-is-month-end">
+<h3>Determine If Settlement Or Maturity Date Is Month End<a class="headerlink" href="#determine-if-settlement-or-maturity-date-is-month-end" title="Link to this heading">#</a></h3>
+<p>The maturity dates of five_bonds are Panda’s timestamps with the attribute <font color='green'>is_month_end</font>.  The settlement date is converted to a Pandas timestamp.<span class="math notranslate nohighlight">\(^{4}\)</span>  The maturities and settlemen dates are check for month end.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Month-End Status Of Five Maturity Dates </span><span class="si">{</span><span class="n">five_bond</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_month_end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">settlement_date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Month-End Status Of Settlement Date </span><span class="si">{</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">is_month_end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{4}\)</span> <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#pandas-to-timestamp-method">Pandas Timestamp method</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For a collection of dates (a DatetimeIndex), .is_month_end returns a boolean array (True or False values).</span>
+<span class="c1"># Here, we check each maturity date in the &#39;five_bonds&#39; index and print the resulting array.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Month-End Status Of Five Maturity Dates </span><span class="si">{</span><span class="n">five_bonds</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_month_end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define a single, specific date (January 21, 2025) as a Pandas Timestamp object.</span>
+<span class="c1"># This is a standard way to represent a single point in time for financial calculations.</span>
+<span class="n">settlement_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+
+<span class="c1"># For a single Timestamp, .is_month_end returns a single boolean value (True or False).</span>
+<span class="c1"># We check if our settlement date falls on the last day of its month and print the result.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Month-End Status Of Settlement Date </span><span class="si">{</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">is_month_end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Month-End Status Of Five Maturity Dates [ True False  True False  True]
+Month-End Status Of Settlement Date False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="last-day-month-function">
+<h3>last_day_month() function<a class="headerlink" href="#last-day-month-function" title="Link to this heading">#</a></h3>
+<p>The <font color='green'>last_day_month()</font> function adjusts bond date calculations to account for the final day of a month.  It utilizes the <font color='green'>monthrange()</font> method of <font color='green'>calendar</font> that returns a tuple containing the weekday of the first day and the last calendar day of the month. The function selects the last day of the month using an index value of one and then returns a date object for that day. The argument <font color='green'>date_value</font> is validated with the <font color='green'>date_validate</font> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">last_day_month</span><span class="p">(</span><span class="n">date_value</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculates the last day of the month for a given date or datetime object.</span>
+
+<span class="sd">  This function accepts either a datetime.datetime or datetime.date</span>
+<span class="sd">  object and always returns a datetime.date object representing the</span>
+<span class="sd">  final day (e.g., 30, 31, 28, or 29) of that month.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    date_value (datetime.date or datetime.datetime):</span>
+<span class="sd">      The input date or datetime to find the month-end for.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    datetime.date: A date object for the last day of the given month.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    calls validate_date to check correct data</span>
+<span class="sd">    TypeError: If the input is not a datetime.date or datetime.datetime.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+  <span class="c1">#Validate the data- datetime_obj and settlement</span>
+  <span class="c1">#If necessary convert datetime to date</span>
+  <span class="n">date_value</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">date_value</span><span class="p">)</span>
+
+  <span class="c1"># calendar.monthrange() returns a tuple: (weekday_of_first_day, num_days_in_month)</span>
+  <span class="c1"># We only need the second value [1], which is the last day of the month.</span>
+  <span class="c1"># Example: For Feb 2024 (leap year), it returns (3, 29)</span>
+  <span class="c1"># Example: For Feb 2025, it returns (5, 28)</span>
+  <span class="n">month_end_day</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">date_value</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">date_value</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">date</span><span class="p">(</span><span class="n">date_value</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">date_value</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">month_end_day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-next-coupon-period">
+<h3>The Next Coupon Period<a class="headerlink" href="#the-next-coupon-period" title="Link to this heading">#</a></h3>
+<p>The end of the next coupon period is determined by adding the number of months between payments to the settlement date.  In these examples the bonds pay semi-annually and the number of months between payments is six. The end of the next coupon period is calculated with <font color='green'>relativedelta()</font>. If the settlement date is a month end, the last day of the date range is adjusted for month end with the <font color='green'>last_day()</font> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_months</span><span class="o">=</span><span class="mi">12</span><span class="o">//</span><span class="mi">2</span>
+<span class="n">range_start</span><span class="o">=</span><span class="n">settlement_date</span>
+<span class="n">range_end</span><span class="o">=</span><span class="n">settlement_date</span><span class="o">+</span><span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+<span class="n">settlement_month_end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">settlement_date</span><span class="p">)</span><span class="o">.</span><span class="n">is_month_end</span>
+<span class="k">if</span> <span class="n">settlement_month_end</span><span class="p">:</span> <span class="n">range_end</span><span class="o">=</span><span class="n">last_day</span><span class="p">(</span><span class="n">range_end</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">range_start</span><span class="p">,</span><span class="n">range_end</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Semi-annual bonds so number of months is 6 (12/2 with floor division // )</span>
+<span class="n">num_months</span> <span class="o">=</span> <span class="mi">12</span><span class="o">//</span> <span class="mi">2</span>
+
+<span class="c1"># Set the starting point of our date range from the settlement date.</span>
+<span class="c1"># Set end date with relativedelts</span>
+<span class="n">range_start</span> <span class="o">=</span> <span class="n">settlement_date</span>
+<span class="n">range_end</span> <span class="o">=</span> <span class="n">range_start</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+
+<span class="c1"># month_end adjustment</span>
+<span class="n">range_start_month_end</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">range_start</span><span class="p">)</span><span class="o">.</span><span class="n">is_month_end</span>
+
+<span class="k">if</span> <span class="n">range_start_month_end</span><span class="p">:</span>
+  <span class="c1"># The `last_day` helper function enforces the EOM rule on our calculated end_date.</span>
+  <span class="c1"># This correctly handles cases like Jan 31 + 1 month -&gt; Feb 28.</span>
+  <span class="n">range_end</span> <span class="o">=</span> <span class="n">last_day_month</span><span class="p">(</span><span class="n">range_end</span><span class="p">)</span>
+
+<span class="c1"># Display the final start and end dates to verify the result.</span>
+<span class="n">display</span><span class="p">(</span><span class="n">range_start</span><span class="p">,</span> <span class="n">range_end</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2025-01-21 00:00:00&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2025-07-21 00:00:00&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-function-calculating-the-settlement-year-maturity-month-and-day">
+<h3>A Function Calculating The Settlement Year, Maturity Month, And Day<a class="headerlink" href="#a-function-calculating-the-settlement-year-maturity-month-and-day" title="Link to this heading">#</a></h3>
+<p>The <font color='green'>settle_year_mat()</font> function calculates the anniversary of the maturity date within the settlement year. It takes the maturity and settlement dates as arguments, with the settlement date defaulting to the current date. This function utilizes <font color='green'>monthrange()</font> from the <font color='green'>calendar</font> module, If necessary, the function adjusts the settlement year date to account for month-end.</p>
+<p>Both the validity of the <font color='green'>maturity_date</font> and <font color='green'>settlement</font> are checked with the <font color='green'>validate_date</font> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">settle_year_mat</span><span class="p">(</span><span class="n">maturity_date</span><span class="p">,</span> <span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+  <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">settlement</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+  <span class="n">days_in_month</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">maturity</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">maturity</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">end_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">maturity</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="n">days_in_month</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">end_month</span><span class="p">:</span><span class="n">day</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">maturity</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span><span class="n">day</span><span class="o">=</span><span class="n">maturity</span><span class="o">.</span><span class="n">day</span>
+  <span class="k">return</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">),</span><span class="n">end_month</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">settle_year_mat</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Returns a new date with the maturity month/day in the settlement year,</span>
+<span class="sd">  and a boolean indicating if the original maturity was a month-end.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    maturity (datetime.date or datetime.datetime): The original maturity date.</span>
+<span class="sd">    settlement (datetime.date or datetime.datetime, optional):</span>
+<span class="sd">      The settlement date. Defaults to today&#39;s date if None.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">     tuple: A (datetime.date, bool) tuple containing:</span>
+<span class="sd">       - The new maturity date (a date object).</span>
+<span class="sd">       - True if the original maturity was the last day of its month, False otherwise.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+  <span class="c1">#Validate the data- maturity_date and settlement</span>
+  <span class="c1">#If necessary convert datetime to date</span>
+
+  <span class="c1">#maturity</span>
+  <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+
+  <span class="c1">#settlement</span>
+  <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">settlement</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+
+  <span class="c1"># Determine year for settlement</span>
+  <span class="n">year</span><span class="o">=</span><span class="n">settlement</span><span class="o">.</span><span class="n">year</span>
+
+  <span class="c1"># Get the total number of days in the given month and year</span>
+  <span class="n">days_in_month</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">maturity</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">maturity</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="c1"># Check if the date&#39;s day is the last day of the month</span>
+  <span class="n">end_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">maturity</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="n">days_in_month</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">end_month</span><span class="p">:</span><span class="n">day</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">maturity</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span><span class="n">day</span><span class="o">=</span><span class="n">maturity</span><span class="o">.</span><span class="n">day</span>
+  <span class="k">return</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">maturity</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">),</span><span class="n">end_month</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-the-results-of-settle-year-mat">
+<h3>Checking The Results Of settle_year_mat()<a class="headerlink" href="#checking-the-results-of-settle-year-mat" title="Link to this heading">#</a></h3>
+<p>The function is tested by iterating through the index of <font color='green'>five_bonds</font>. The settlement date is the current year so no value is assigned to the year argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">maturity</span> <span class="ow">in</span> <span class="n">five_bonds</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">settle_year_mat</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(datetime.date(2025, 2, 28), True)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(datetime.date(2025, 7, 15), False)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(datetime.date(2025, 8, 31), True)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(datetime.date(2025, 1, 15), False)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(datetime.date(2025, 2, 28), True)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-function-returning-the-next-and-last-coupon-date">
+<h3>A Function Returning The Next And Last Coupon Date<a class="headerlink" href="#a-function-returning-the-next-and-last-coupon-date" title="Link to this heading">#</a></h3>
+<p>The <font color='green'>next_last_coupon()</font> function returns the next and last coupon dates required for accrued interest calculations.  It takes arguments for the maturity date (maturity), the settlement date (settlement), and the frequency of payments (freq). Settlement and freq have default values; None and two (for semi-annual payments), respectively. If the settlement argument is None, the current date becomes the settlement date. The integer value of twelve divided by the frequency of payments (floor diviision //) is assigned to the variable <font color='green'>num_months</font>. The settlement date marks the start of the next coupon period, and the end of the period is the settlement date plus <font color='green'>relativedelta(months=num_months)</font>, adjusted if the maturity date is the last day of the month.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">next_last_coupon_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+    <span class="k">if</span> <span class="n">freq</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">]:</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># Default to semi-annual if input is invalid</span>
+
+    <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>  
+
+    <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">settlement</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <font color='green'>settle_year_mat()</font> function is called, returning the bond’s maturity anniversary date in the settlement year. If that coupon date precedes or exceeds the settlement date, the next coupon date’s values are adjusted until it is greater than or  equal to the settlement date . The while control statement modifies the dates by the number of months in the coupon period.  Last day of the month is accounted for.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">coupon_date</span><span class="p">,</span> <span class="n">is_month_end</span> <span class="o">=</span> <span class="n">settle_year_mat</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">settlement</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>    
+    <span class="k">if</span> <span class="n">coupon_date</span> <span class="o">&lt;</span> <span class="n">settlement</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">coupon_date</span> <span class="o">&lt;</span> <span class="n">settlement</span><span class="p">:</span>
+            <span class="n">coupon_date</span> <span class="o">+=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_month_end</span><span class="p">:</span>
+                <span class="n">coupon_date</span> <span class="o">=</span> <span class="n">_last_day_of_month</span><span class="p">(</span><span class="n">coupon_date</span><span class="p">)</span>
+    <span class="c1"># If the anniversary is too far in the future, step back</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">coupon_date</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="n">settlement</span><span class="p">:</span>
+             <span class="n">coupon_date</span> <span class="o">-=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+             <span class="k">if</span> <span class="n">is_month_end</span><span class="p">:</span>
+                <span class="n">coupon_date</span> <span class="o">=</span> <span class="n">last_day_month</span><span class="p">(</span><span class="n">coupon_date</span><span class="p">)</span>
+    <span class="n">next_coupon</span> <span class="o">=</span> <span class="n">coupon_date</span>
+</pre></div>
+</div>
+<p>The last coupon date is calculated from the next coupon date. The last coupon is adjusted for month end maturity date.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">last_coupon</span> <span class="o">=</span> <span class="n">next_coupon</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>    
+    <span class="k">if</span> <span class="n">is_month_end</span><span class="p">:</span>
+        <span class="n">last_coupon</span> <span class="o">=</span> <span class="n">last_day_month</span><span class="p">(</span><span class="n">last_coupon</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">next_coupon</span><span class="p">,</span> <span class="n">last_coupon</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">next_last_coupon_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculates the next and last coupon dates relative to a settlement date.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      maturity (datetime): The maturity date of the instrument.</span>
+<span class="sd">      settlement (datetime, optional): The date for which the calculation is made.</span>
+<span class="sd">                                      Defaults to the current date if None.</span>
+<span class="sd">      freq (int, optional): The frequency of payments per year.</span>
+<span class="sd">                            Valid values: 1 (annual), 2 (semi-annual),</span>
+<span class="sd">                            4 (quarterly), 12 (monthly). Defaults to 2.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      tuple: A tuple containing (next_coupon_date, last_coupon_date).</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+
+  <span class="c1">#Validate data</span>
+  <span class="c1">#freq</span>
+  <span class="k">if</span> <span class="n">freq</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">]:</span>
+      <span class="n">freq</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># Default to semi-annual if input is invalid</span>
+
+  <span class="c1">#maturity</span>
+  <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+
+  <span class="c1">#settlement</span>
+  <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">settlement</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+
+  <span class="n">num_months</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">//</span> <span class="n">freq</span>
+
+  <span class="c1">#Determine Coupon Anniversary and Month-End Status ---</span>
+  <span class="c1"># Start by finding the coupon date in the settlement year</span>
+  <span class="n">coupon_date</span><span class="p">,</span> <span class="n">is_month_end</span> <span class="o">=</span> <span class="n">settle_year_mat</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">)</span>
+
+  <span class="c1">#Find the NEXT Coupon Date ---</span>
+  <span class="c1"># If the anniversary in the settlement year has already passed, find the first one after</span>
+  <span class="k">if</span> <span class="n">coupon_date</span> <span class="o">&lt;</span> <span class="n">settlement</span><span class="p">:</span>
+      <span class="k">while</span> <span class="n">coupon_date</span> <span class="o">&lt;</span> <span class="n">settlement</span><span class="p">:</span>
+          <span class="n">coupon_date</span> <span class="o">+=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">is_month_end</span><span class="p">:</span>
+              <span class="n">coupon_date</span> <span class="o">=</span> <span class="n">last_day_month</span><span class="p">(</span><span class="n">coupon_date</span><span class="p">)</span>
+  <span class="c1"># If the anniversary is too far in the future, step back</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="k">while</span> <span class="p">(</span><span class="n">coupon_date</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="n">settlement</span><span class="p">:</span>
+            <span class="n">coupon_date</span> <span class="o">-=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_month_end</span><span class="p">:</span>
+              <span class="n">coupon_date</span> <span class="o">=</span> <span class="n">last_day_month</span><span class="p">(</span><span class="n">coupon_date</span><span class="p">)</span>
+
+  <span class="n">next_coupon</span> <span class="o">=</span> <span class="n">coupon_date</span>
+
+  <span class="c1">#Find the LAST Coupon Date ---</span>
+  <span class="c1"># The last coupon is simply one period before the next coupon</span>
+  <span class="n">last_coupon</span> <span class="o">=</span> <span class="n">next_coupon</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">is_month_end</span><span class="p">:</span>
+      <span class="n">last_coupon</span> <span class="o">=</span> <span class="n">last_day_month</span><span class="p">(</span><span class="n">last_coupon</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">next_coupon</span><span class="p">,</span> <span class="n">last_coupon</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-the-results-of-next-last-coupon-dates">
+<h3>Checking The Results Of next_last_coupon_dates()<a class="headerlink" href="#checking-the-results-of-next-last-coupon-dates" title="Link to this heading">#</a></h3>
+<p>The function is tested by iterating through the index of <font color='green'>five_bonds</font>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">maturity</span> <span class="ow">in</span> <span class="n">five_bonds</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">next_last_coupon_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(datetime.date(2025, 2, 28), datetime.date(2024, 8, 31))
+(datetime.date(2025, 7, 15), datetime.date(2025, 1, 15))
+(datetime.date(2025, 2, 28), datetime.date(2024, 8, 31))
+(datetime.date(2025, 7, 15), datetime.date(2025, 1, 15))
+(datetime.date(2025, 2, 28), datetime.date(2024, 8, 31))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="application-days-between-coupon-and-payment-dates">
+<h2><font color='green'>Application:Days Between Coupon And Payment Dates</font><a class="headerlink" href="#application-days-between-coupon-and-payment-dates" title="Link to this heading">#</a></h2>
+<p><span style="display:block;background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+Assume a bond matures on January 15<span class="math notranslate nohighlight">\(^{th}\)</span> 2030 and the settlement date is May 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2024.  Calculate the number of days since the last coupon payment and the number of days between the last and next coupon payment. see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-days-between-coupon-payment-and-settlement-dates">Calculate Days Between Coupon Payment And Settlement Dates</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-days-between-coupon-payment-and-settlement-dates">expected results here</a>.
+<br>
+<br>
+</span></p>
+<section id="id1">
+<h3>Calculating Accrued Interest<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The <font color='green'>next_last_coupon_dates()</font> function determines the next and last coupon dates using the bond’s maturity and settlement dates as arguments.</p>
+<p>For government bonds, calculating the days since the last coupon payment and the interval between coupon dates is straightforward, involving a simple difference between date objects.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">day_type</span> <span class="o">==</span> <span class="s1">&#39;Actual/Actual&#39;</span><span class="p">:</span>
+    <span class="n">days_between</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_date</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+    <span class="n">days_since_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">settlement</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>For the ‘30/30’convention assumes all months (except February) have 30 days. The <font color='green'>convert_30_360()</font> function implements this.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_30_360</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">validate_date</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">validate_date</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span>
+
+    <span class="n">d1</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">start_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">start_date</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">d2</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">end_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">end_date</span><span class="o">.</span><span class="n">year</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_last_day_of_feb</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="n">date</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">is_last_day_of_feb</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_last_day_of_feb</span><span class="p">(</span><span class="n">end_date</span><span class="p">):</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="k">if</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">31</span> <span class="ow">or</span> <span class="n">is_last_day_of_feb</span><span class="p">(</span><span class="n">start_date</span><span class="p">):</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="k">if</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">31</span> <span class="ow">and</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="n">day_count</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">+</span> <span class="p">(</span><span class="n">m2</span> <span class="o">-</span> <span class="n">m1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="p">(</span><span class="n">d2</span> <span class="o">-</span> <span class="n">d1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">day_count</span>
+</pre></div>
+</div>
+<p>Here are examples illustrating the differences in day count using the 30/360 convention:</p>
+<ul class="simple">
+<li><p><strong>January 21, 2025, to August 31, 2024:</strong></p>
+<ul>
+<li><p>30/360 convention: 141 days</p></li>
+<li><p>Actual: 143 days</p></li>
+</ul>
+</li>
+<li><p><strong>February 28, 2025, to August 31, 2024:</strong></p>
+<ul>
+<li><p>30/360 convention: 178 days</p></li>
+<li><p>Actual: 181 days</p></li>
+</ul>
+</li>
+</ul>
+<p>Finally, the accrued interest adjustment is calculated as the ratio of days since the last payment to the total days between payments. If this ratio is 1 (meaning the settlement date is a coupon date), the accrued interest is zero because the coupon is paid and no accrued interest is due. The final return value is the coupon divided by the payment frequency, multiplied by the <font color='green'>accrued_adjustment</font>.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">accrued_adjustment</span> <span class="o">=</span> <span class="n">days_since_last</span> <span class="o">/</span> <span class="n">days_between</span>
+<span class="k">if</span> <span class="n">accrued_adjustment</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">accrued_adjustment</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">return</span> <span class="n">coupon</span> <span class="o">/</span> <span class="n">freq</span> <span class="o">*</span> <span class="n">accrued_adjustment</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_30_360</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculates the number of days between two dates using the 30U/360</span>
+<span class="sd">  (US Bond Basis) convention.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      start_date: The beginning date of the period.</span>
+<span class="sd">      end_date: The ending date of the period.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      The number of days calculated using the 30U/360 convention.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+  <span class="c1">#Validate data</span>
+  <span class="c1">#start_date</span>
+  <span class="n">start_date</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+
+  <span class="c1">#end_date</span>
+  <span class="n">end_date</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span>
+
+  <span class="n">d1</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">start_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">start_date</span><span class="o">.</span><span class="n">year</span>
+  <span class="n">d2</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">end_date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">end_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">end_date</span><span class="o">.</span><span class="n">year</span>
+
+  <span class="c1"># Helper to check if a date is the last day of February</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">is_last_day_of_feb</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="n">date</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="c1"># --- Apply the 30U/360 rules ---</span>
+
+  <span class="c1"># Rule 1: If both dates are the last day of Feb, change end_date&#39;s day to 30.</span>
+  <span class="k">if</span> <span class="n">is_last_day_of_feb</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_last_day_of_feb</span><span class="p">(</span><span class="n">end_date</span><span class="p">):</span>
+      <span class="n">d2</span> <span class="o">=</span> <span class="mi">30</span>
+
+  <span class="c1"># Rule 2: If start_date is 31 or last day of Feb, change its day to 30.</span>
+  <span class="k">if</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">31</span> <span class="ow">or</span> <span class="n">is_last_day_of_feb</span><span class="p">(</span><span class="n">start_date</span><span class="p">):</span>
+      <span class="n">d1</span> <span class="o">=</span> <span class="mi">30</span>
+
+  <span class="c1"># Rule 3: If end_date is 31 AND start_date&#39;s day was changed to 30, change end_date&#39;s day to 30.</span>
+  <span class="k">if</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">31</span> <span class="ow">and</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">30</span><span class="p">:</span>
+      <span class="n">d2</span> <span class="o">=</span> <span class="mi">30</span>
+
+  <span class="c1"># --- Perform the final calculation ---</span>
+  <span class="n">day_count</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">+</span> <span class="p">(</span><span class="n">m2</span> <span class="o">-</span> <span class="n">m1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="p">(</span><span class="n">d2</span> <span class="o">-</span> <span class="n">d1</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">day_count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">accrued_interest</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">coupon</span><span class="p">,</span> <span class="n">day_type</span><span class="o">=</span><span class="s1">&#39;Actual/Actual&#39;</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Returns the accrued interest for a bond.</span>
+
+<span class="sd">  Uses Actual/Actual for Government bonds or 30/360 for other bond types.</span>
+<span class="sd">  No accrued interest is calculated if settlement is on a payment date.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      maturity (datetime): The maturity date of the bond.</span>
+<span class="sd">      coupon (float): The annual coupon rate (e.g., 0.05 for 5%).</span>
+<span class="sd">      bond_type (str, optional): &#39;Government&#39; or other. Defaults to &#39;Government&#39;.</span>
+<span class="sd">      settlement (datetime, optional): The settlement date. Defaults to today.</span>
+<span class="sd">      freq (int, optional): Coupon frequency per year. Defaults to 2.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+
+  <span class="c1">#Validate data</span>
+  <span class="c1">#freq</span>
+  <span class="k">if</span> <span class="n">freq</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">]:</span>
+      <span class="n">display</span><span class="p">(</span><span class="n">md</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### ⚠️  your assigned freq </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s2"> it must be (1, 2, 4, or 12)</span><span class="se">\</span>
+<span class="s2">     </span><span class="se">\n</span><span class="s2">     semi-annual assumed (2).&quot;</span><span class="p">))</span>
+      <span class="n">freq</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="c1">#maturity</span>
+  <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+
+  <span class="c1">#coupon</span>
+  <span class="k">try</span><span class="p">:</span>
+      <span class="n">coupon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">coupon</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">coupon</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;coupon rate cannot be negative.&quot;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;coupon must be a valid number.&quot;</span><span class="p">)</span>
+
+  <span class="c1">#trans_date</span>
+  <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">settlemente</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+
+  <span class="c1">#day_type</span>
+  <span class="k">if</span> <span class="n">day_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Actual/Actual&#39;</span><span class="p">,</span><span class="s1">&#39;30/360&#39;</span><span class="p">,</span><span class="s1">&#39;Actual/365&#39;</span><span class="p">,</span><span class="s1">&#39;Actual/360&#39;</span><span class="p">]:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">md</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### ⚠️  your assigned day_type </span><span class="si">{</span><span class="n">day_type</span><span class="si">}</span><span class="s2"> it must be</span><span class="se">\</span>
+<span class="s2">    (&#39;Actual/Actual&#39;,&#39;30/360&#39;,&#39;Actual/365&#39;,&#39;Actual/360&#39;)</span><span class="se">\</span>
+<span class="s2">    </span><span class="se">\n</span><span class="s2">     Acuual/Actual assumed.&quot;</span><span class="p">))</span>
+    <span class="n">day_type</span><span class="o">=</span><span class="s1">&#39;Actual/Actual&#39;</span>
+
+  <span class="n">num_months</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">//</span> <span class="n">freq</span>
+
+  <span class="n">next_date</span><span class="p">,</span><span class="n">last_date</span><span class="o">=</span><span class="n">next_last_coupon_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">)</span>
+  <span class="n">settlement_less_one</span><span class="o">=</span><span class="n">settlement</span><span class="o">-</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="c1">#Government bonds are actual/acutal</span>
+  <span class="k">if</span> <span class="n">day_type</span> <span class="o">==</span> <span class="s1">&#39;Actual/Actual&#39;</span><span class="p">:</span>
+      <span class="c1"># Actual/Actual convention</span>
+      <span class="n">days_since_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">settlement_less_one</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+      <span class="n">days_between</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_date</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+      <span class="k">return</span> <span class="n">coupon</span><span class="o">/</span><span class="n">freq</span><span class="o">*</span><span class="n">days_since_last</span><span class="o">/</span><span class="n">days_between</span>
+
+  <span class="c1">#Less comon conventions:f Actual/365 and Actual/360</span>
+  <span class="k">elif</span> <span class="n">day_type</span><span class="o">==</span><span class="s1">&#39;Actual/365&#39;</span><span class="p">:</span>
+      <span class="n">days_since_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">settlement_less_one</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+      <span class="k">return</span> <span class="n">coupon</span><span class="o">*</span><span class="n">days_since_last</span><span class="o">/</span><span class="mi">365</span>
+  <span class="k">elif</span> <span class="n">day_type</span><span class="o">==</span><span class="s1">&#39;Actual/360&#39;</span><span class="p">:</span>
+      <span class="n">days_since_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">settlement_less_one</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+      <span class="k">return</span> <span class="n">coupon</span><span class="o">*</span><span class="n">days_since_last</span><span class="o">/</span><span class="mi">360</span>
+
+  <span class="c1">#common 30/360 convention for corporate, agency, and mortgage-backed</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="c1"># 30/360 convention</span>
+      <span class="n">days_since_last</span> <span class="o">=</span> <span class="n">_days_30_360</span><span class="p">(</span><span class="n">last_date</span><span class="p">,</span> <span class="n">settlement_less_one</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">coupon</span><span class="o">*</span><span class="n">days_since_last</span><span class="o">/</span><span class="mi">360</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <font color='green'>apply</font> method eliminates the need to iterate through all the values of a row or column. While many examples can be vectorized by operating directly on columns, <font color='green'>apply</font> is particularly useful for complex scenarios, such as calculating accrued interest, where column-wise operations are not feasible.</p>
+<p>The benefits of using <code class="docutils literal notranslate"><span class="pre">apply</span></code> include:</p>
+<ol class="arabic simple">
+<li><p><strong>Direct Column Access:</strong> The lambda function can directly access specific columns within each row.</p></li>
+<li><p><strong>Simplified Code:</strong> It leads to less complex and more easily understandable code.</p></li>
+</ol>
+<p>The method is demonstrated with the DataFrame of Chapter One, <font color='green'>rows_to_columns</font>.  The examples could be solved with column operations, but their simplicity makes the use of <font color='green'>apply</font> clear.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rows_to_columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Rates&#39;</span><span class="p">:[</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.07</span><span class="p">],</span>
+                              <span class="s1">&#39;Future Values&#39;</span><span class="p">:[</span><span class="mf">1.030455</span><span class="p">,</span><span class="mf">1.05171</span><span class="p">,</span><span class="mf">1.072508</span><span class="p">],</span>
+                              <span class="s1">&#39;Present Value&#39;</span><span class="p">:[</span><span class="mf">0.970446</span><span class="p">,</span><span class="mf">0.951229</span><span class="p">,</span><span class="mf">0.93294</span><span class="p">]})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Discrete&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">rows_to_column</span><span class="o">=</span> <span class="n">rows_to_columns</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Rates&#39;</span><span class="p">]),</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Log Future Values&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Future Values&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(^{5}\)</span> <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#the-apply-method">Pandas method apply</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create rows_to_columns DataFrame</span>
+<span class="n">rows_to_columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Rates&#39;</span><span class="p">:[</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.07</span><span class="p">],</span>
+                              <span class="s1">&#39;Future Values&#39;</span><span class="p">:[</span><span class="mf">1.030455</span><span class="p">,</span><span class="mf">1.05171</span><span class="p">,</span><span class="mf">1.072508</span><span class="p">],</span>
+                              <span class="s1">&#39;Present Value&#39;</span><span class="p">:[</span><span class="mf">0.970446</span><span class="p">,</span><span class="mf">0.951229</span><span class="p">,</span><span class="mf">0.93294</span><span class="p">]})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+<span class="c1"># Access the value of rows</span>
+<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Discrete&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">rows_to_column</span><span class="o">=</span> <span class="n">rows_to_columns</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Rates&#39;</span><span class="p">]),</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+<span class="c1"># Access the values of column</span>
+<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Log Future Values&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Future Values&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-b3c02305-7246-49e9-bf1a-edf8106ff5df" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rates</th>
+      <th>Future Values</th>
+      <th>Present Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.03</td>
+      <td>1.030455</td>
+      <td>0.970446</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.05</td>
+      <td>1.051710</td>
+      <td>0.951229</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.07</td>
+      <td>1.072508</td>
+      <td>0.932940</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b3c02305-7246-49e9-bf1a-edf8106ff5df')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b3c02305-7246-49e9-bf1a-edf8106ff5df button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b3c02305-7246-49e9-bf1a-edf8106ff5df');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-ac3a6662-fe3e-43b2-81c5-4239807664a8">
+      <button class="colab-df-quickchart" onclick="quickchart('df-ac3a6662-fe3e-43b2-81c5-4239807664a8')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-ac3a6662-fe3e-43b2-81c5-4239807664a8 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_fb53c749-47a7-408e-bc4c-af5e6d72009b">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('rows_to_columns')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_fb53c749-47a7-408e-bc4c-af5e6d72009b button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('rows_to_columns');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div><div class="output text_html">
+  <div id="df-1cc989f0-d72c-4033-98d4-a5b74495e226" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rates</th>
+      <th>Future Values</th>
+      <th>Present Value</th>
+      <th>Discrete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.03</td>
+      <td>1.030455</td>
+      <td>0.970446</td>
+      <td>0.029559</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.05</td>
+      <td>1.051710</td>
+      <td>0.951229</td>
+      <td>0.048790</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.07</td>
+      <td>1.072508</td>
+      <td>0.932940</td>
+      <td>0.067659</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-1cc989f0-d72c-4033-98d4-a5b74495e226')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-1cc989f0-d72c-4033-98d4-a5b74495e226 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-1cc989f0-d72c-4033-98d4-a5b74495e226');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-732a6891-c58d-4c71-aef8-1cc9608f4df1">
+      <button class="colab-df-quickchart" onclick="quickchart('df-732a6891-c58d-4c71-aef8-1cc9608f4df1')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-732a6891-c58d-4c71-aef8-1cc9608f4df1 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_5c7b15d9-3e7f-4ed8-99fd-1e81ef89b1dc">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('rows_to_columns')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5c7b15d9-3e7f-4ed8-99fd-1e81ef89b1dc button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('rows_to_columns');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div><div class="output text_html">
+  <div id="df-28fe7b2a-63e6-418f-a255-9563ead2f3af" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rates</th>
+      <th>Future Values</th>
+      <th>Present Value</th>
+      <th>Discrete</th>
+      <th>Log Future Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.03</td>
+      <td>1.030455</td>
+      <td>0.970446</td>
+      <td>0.029559</td>
+      <td>0.030000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.05</td>
+      <td>1.051710</td>
+      <td>0.951229</td>
+      <td>0.048790</td>
+      <td>0.050417</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.07</td>
+      <td>1.072508</td>
+      <td>0.932940</td>
+      <td>0.067659</td>
+      <td>0.070000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-28fe7b2a-63e6-418f-a255-9563ead2f3af')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-28fe7b2a-63e6-418f-a255-9563ead2f3af button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-28fe7b2a-63e6-418f-a255-9563ead2f3af');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-6ade1109-c17d-44e2-8190-f05b64957188">
+      <button class="colab-df-quickchart" onclick="quickchart('df-6ade1109-c17d-44e2-8190-f05b64957188')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-6ade1109-c17d-44e2-8190-f05b64957188 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_f9d01720-1147-4417-b3c3-6309087c2cf8">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('rows_to_columns')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_f9d01720-1147-4417-b3c3-6309087c2cf8 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('rows_to_columns');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="update-bond-data-with-accrued-interest">
+<h3>Update Bond Data With Accrued Interest<a class="headerlink" href="#update-bond-data-with-accrued-interest" title="Link to this heading">#</a></h3>
+<p>The DataFrame <font color='green'>bond_data</font> is expanded by applying the <font color='green'>accurred_interesta</font> function to each row of <font color='green'>bond_data</font>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Accrued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bond_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">accrued_interest</span><span class="p">(</span>
+        <span class="n">maturity</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>      <span class="c1"># The row&#39;s index label (maturity date) is accessed via .name</span>
+        <span class="n">coupon</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Coupon&#39;</span><span class="p">],</span>   <span class="c1"># Access the &#39;Coupon&#39; value from the row</span>
+        <span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span>   <span class="c1"># Use the globally defined settlement date</span>
+    <span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="c1"># Use DataFrame.apply() to create the new column</span>
+<span class="c1"># &#39;axis=1&#39; tells pandas to apply the function to each row.</span>
+<span class="c1"># A lambda function is used to pass the correct columns from each row to accrued_interest.</span>
+<span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Accrued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bond_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">accrued_interest</span><span class="p">(</span>
+        <span class="n">maturity</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>      <span class="c1"># The row&#39;s index label (maturity date) is accessed via .name</span>
+        <span class="n">coupon</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Coupon&#39;</span><span class="p">],</span>   <span class="c1"># Access the &#39;Coupon&#39; value from the row</span>
+        <span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span>   <span class="c1"># Use the globally defined settlement date</span>
+    <span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">bond_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Coupon</th>
+      <th>Price Bid</th>
+      <th>Price Ask</th>
+      <th>Bid Size</th>
+      <th>Ask Size</th>
+      <th>Accrued</th>
+    </tr>
+    <tr>
+      <th>Maturity Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-01-28</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.929</td>
+      <td>99.930</td>
+      <td>100000</td>
+      <td>100000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2025-01-30</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.906</td>
+      <td>99.907</td>
+      <td>40000</td>
+      <td>40000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER U-2025          1.3750...</td>
+      <td>1.375</td>
+      <td>99.921</td>
+      <td>99.934</td>
+      <td>60000</td>
+      <td>60000</td>
+      <td>0.646399</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER AW-2025         4.1250...</td>
+      <td>4.125</td>
+      <td>99.988</td>
+      <td>99.997</td>
+      <td>60000</td>
+      <td>60000</td>
+      <td>1.939198</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER G-2025          2.5000...</td>
+      <td>2.500</td>
+      <td>99.953</td>
+      <td>99.965</td>
+      <td>60000</td>
+      <td>60000</td>
+      <td>1.175272</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER AG-2029         4.1250...</td>
+      <td>4.125</td>
+      <td>98.910</td>
+      <td>98.914</td>
+      <td>100000</td>
+      <td>100000</td>
+      <td>0.577953</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER S-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.763</td>
+      <td>97.782</td>
+      <td>40000</td>
+      <td>40000</td>
+      <td>0.542926</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER T-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.734</td>
+      <td>97.738</td>
+      <td>65000</td>
+      <td>65000</td>
+      <td>0.214088</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER AH-2029         4.3750...</td>
+      <td>4.375</td>
+      <td>99.988</td>
+      <td>99.989</td>
+      <td>7000</td>
+      <td>7000</td>
+      <td>0.241713</td>
+    </tr>
+    <tr>
+      <th>2030-01-31</th>
+      <td>UNITED STATES TREAS SER G-2030          3.5000...</td>
+      <td>3.500</td>
+      <td>95.994</td>
+      <td>96.011</td>
+      <td>16000</td>
+      <td>16000</td>
+      <td>1.645380</td>
+    </tr>
+  </tbody>
+</table>
+<p>304 rows × 7 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-d8cfd6e1-0c66-4fbe-8513-aeabe7c07c26">
+      <button class="colab-df-quickchart" onclick="quickchart('df-d8cfd6e1-0c66-4fbe-8513-aeabe7c07c26')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-d8cfd6e1-0c66-4fbe-8513-aeabe7c07c26 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_5b472b53-2a86-4440-861e-5d83f3dc54e8">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('bond_data')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5b472b53-2a86-4440-861e-5d83f3dc54e8 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('bond_data');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+</section>
+<section id="application-calculate-a-transaction-price">
+<h2><font color='green'>Application:Calculate A Transaction Price</font><a class="headerlink" href="#application-calculate-a-transaction-price" title="Link to this heading">#</a></h2>
+<div style="background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+<p>Assume a bond matures on January 15<span class="math notranslate nohighlight">\(^{th}\)</span> 2030 and the settlement date is May 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2024. The bond’s clean quoted price is $95 and the coupon is 5.0. see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-a-transaction-price">Chapter Two Hints:Calculate A Transaction Price</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-a-transaction-price">expected results here</a>.</p>
+<br>
+</div>
+<section id="creating-the-workbook">
+<h3>Creating The Workbook<a class="headerlink" href="#creating-the-workbook" title="Link to this heading">#</a></h3>
+<p>The <font color='green'>create_workbook</font> function transforms the bond_data DataFrame into an Excel workbook. It takes the sheet name, DataFrame name, and the dictionary <font color='green'>save_config</font>  as arguments. The sheet and DataFrame names are required, while save_config defaults to an empty dictionary. When <font color='green'>save_config</font> is not specified, the workbook is created in the current working directory of the notebook.</p>
+<p>Note: The working directory for a Jupyter notebook is its current folder. For a Colab notebook, the location is ‘contents’ and is only available during runtime.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="s1">&#39;Basic Concepts Of Fixed Income&#39;</span><span class="p">,</span>
+                 <span class="n">chapter</span><span class="o">=</span><span class="s1">&#39;Accrued Interest&#39;</span><span class="p">,</span>
+                 <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;Accrued Interest.xlsx&#39;</span><span class="p">)</span>
+<span class="n">create_workbook</span><span class="p">(</span><span class="s1">&#39;Basic Bond Data&#39;</span><span class="p">,</span><span class="n">bond_data</span><span class="p">,</span><span class="n">save_config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❓ Do you want to save the file? (y/n): y
+</pre></div>
+</div>
+<p>###<em><strong>⌛ Generating A Path</strong></em></p>
+<h3 class="rubric" id="file-path-generated">✅ <strong>File Path Generated:</strong></h3>
+<p><code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive/Basic</span> <span class="pre">Concepts</span> <span class="pre">Of</span> <span class="pre">Fixed</span> <span class="pre">Income/Accrued</span> <span class="pre">Interest/Accrued</span> <span class="pre">Interest.xlsx</span></code></p>
+<p>###<em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in /content/drive/MyDrive/Basic Concepts Of Fixed Income/Accrued Interest/Accrued Interest.xlsx</strong></em></p>
+</div>
+</div>
+</section>
+<section id="the-default-path">
+<h3>The Default Path<a class="headerlink" href="#the-default-path" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="p">,</span><span class="n">folder</span><span class="p">,</span><span class="n">subfolder</span><span class="o">=</span><span class="n">parent_folder_subfolder</span><span class="p">()</span>
+<span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Fidelity Data&#39;</span>
+<span class="n">create_workbook</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">,</span><span class="n">bond_data</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="application-create-an-excel-workbook">
+<h2><font color='green'>Application:Create An Excel Workbook</font><a class="headerlink" href="#application-create-an-excel-workbook" title="Link to this heading">#</a></h2>
+<div style="background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+<p>Use the first ten rows of bond_data to create the workbook ‘Test Data’ and save it to the worksheet ‘Ten Rows Of Data’ see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#create-a-workbook">Chapter Two Hints: Create A Workbook</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#create-a-workbook">expected results here</a>.</p>
+<br>
+</div>
+</section>
+<section id="chapter-exercise">
+<h2><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span><a class="headerlink" href="#chapter-exercise" title="Link to this heading">#</a></h2>
+<p><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 0; margin-bottom: 0.5em; font-style: italic;"><big><font color='black'>Create A Workbook With Accrued Interest For 100 Bonds</big></font></span></p>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px">
+<big>Using Download bond_jan_21_2025.xlsx For The Exercoise</big><br></span>
+<span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 2;">
+<br><big>          1. For the first 100 rows of the workbook calculate the accrued interest and save it in a new DataFrame.<br><br>          2. Save the new DataFrame as an Excel Workbook..</big><br></span>
+<span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px">
+<br><big>For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#chapter-one-exercise">Chapter One Hints</a>. For expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#chapter-one-exercise">Chapter One Expected Results</a>.</big></p>
+</span></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PatrickJHess/Vol-3-Chap-2-Chap-3",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Basic Concepts Of Fixed Income- Chapter Two"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing The Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-dataframe-bond-data">Creating The DataFrame bond_data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-accrued-interest-with-five-unique-maturity-dates">Illustrating Accrued Interest With Five Unique Maturity Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-access-bonds-with-specific-characteristics"><font color="green">Application:Access Bonds With Specific Characteristics</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-dates-and-converting-datetime-to-date">Validating dates and converting <font color="green">datetime</font> to <font color="green">date</font>.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-settlement-or-maturity-date-is-month-end">Determine If Settlement Or Maturity Date Is Month End</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-day-month-function">last_day_month() function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-next-coupon-period">The Next Coupon Period</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-function-calculating-the-settlement-year-maturity-month-and-day">A Function Calculating The Settlement Year, Maturity Month, And Day</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-results-of-settle-year-mat">Checking The Results Of settle_year_mat()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-function-returning-the-next-and-last-coupon-date">A Function Returning The Next And Last Coupon Date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-results-of-next-last-coupon-dates">Checking The Results Of next_last_coupon_dates()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-days-between-coupon-and-payment-dates"><font color="green">Application:Days Between Coupon And Payment Dates</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculating Accrued Interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-bond-data-with-accrued-interest">Update Bond Data With Accrued Interest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-a-transaction-price"><font color="green">Application:Calculate A Transaction Price</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-workbook">Creating The Workbook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-path">The Default Path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-an-excel-workbook"><font color="green">Application:Create An Excel Workbook</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

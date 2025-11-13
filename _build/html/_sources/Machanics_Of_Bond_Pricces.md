@@ -36,7 +36,7 @@ The end of the next coupon period is determined by adding the number of months b
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vS1L8ZT3QiCyUdLd8kddTgsgqGHUp7u8d1nUDZ4KhiIMTuHrPq1Jc3dpfmSmgbaI6bd4EPLnTqEKJj4/pub?w=960&h=720'>
 
 #### Calculating Accrued Interest
-Accrued interest for Government bonds is calculated by determining the ratio of days since the last scheduled payment to the total days between the last and the next scheduled payments. The example below uses the so-called actual/actual day-count convention of Government bonds.  
+Accrued interest for Government bonds is calculated by determining the ratio of days since the last scheduled payment to the total days between the last and the next scheduled payments. The example below uses the so-called 'Actual/Actual' day-count convention of Government bonds.  
 
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vR6XvDjt0b_IiI23LnhIthZ1uMpS4dMOX9LH0gW5wMK_7DnpkaFiu1lkP3T8otpurLPU5jI9y8f18ea/pub?w=960&h=720'>
 
@@ -62,6 +62,6 @@ The accrued interest formulas of each convention are shown in the Table *Day-Cou
 
 
 ### Bond Prices And Accrued Interest
-The function <font color='green'>accrued_interest</font> developed in the notebook *Calculating Accrued Interest* of this chapter, accounts for the for conventions. As you undoubtedly surmised, the calculation requires the manipulation of dates and several Python modules are used in the notebook *Calculating Accrued Interest*.  If this is a new or somewhat unfamiliar subject, you should take a look at the notebook *Manipulating Dates* in this chapter as well as the notebook in the [background material](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Manipulating_Dates.html).
+The function <font color='green'>accrued_interest()</font> is developed in the notebook *Calculating Accrued Interest* of this chapter, and accounts for the four day-count conventions. As you undoubtedly surmised, the calculation requires the manipulation of dates. Several new Python libraries or modules are introduced that allows us to make calculatins with dates.  If this is a new or somewhat unfamiliar subject, you should take a look at the notebook *Manipulating Dates* in this chapter as well as the notebook in the [background material](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Manipulating_Dates.html).
 
 

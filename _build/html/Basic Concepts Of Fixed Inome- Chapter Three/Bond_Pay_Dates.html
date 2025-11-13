@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Calculating Bond Payment Dates And Amounts &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Basic Concepts Of Fixed Inome- Chapter Three/Bond_Pay_Dates';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Small_Logo.svg" class="logo__image only-light" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>
+    <script>document.write(`<img src="../_static/Small_Logo.svg" class="logo__image only-dark" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_Two_Highlights.html">Accrued Interest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Dealing_With_Dates.html">Manipulating Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_Three_Highlights.html">Bond Payment Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-2-Chap-3/master?urlpath=tree/Basic Concepts Of Fixed Inome- Chapter Three/Bond_Pay_Dates.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-2-Chap-3/blob/master/Basic Concepts Of Fixed Inome- Chapter Three/Bond_Pay_Dates.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2FBasic Concepts Of Fixed Inome- Chapter Three/Bond_Pay_Dates.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Basic Concepts Of Fixed Inome- Chapter Three/Bond_Pay_Dates.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calculating Bond Payment Dates And Amounts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduled-pay-dates">Scheduled Pay Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond Payment Dates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-bond-payment-dates-and-amounts">
+<h1>Calculating Bond Payment Dates And Amounts<a class="headerlink" href="#calculating-bond-payment-dates-and-amounts" title="Link to this heading">#</a></h1>
+<section id="importing-libraries-modules-and-functions">
+<h2>Importing Libraries, Modules, And Functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h2>
+<p>As in Chapter One of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported. If necessary, The new module <font color='green'>holidays</font> is installed and then imported.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import sys
+import requests
+from datetime import datetime, date, timedelta
+from types import ModuleType
+import calendar
+
+try:
+    from IPython.display import Markdown, display
+except:
+    !pip -q install IPython
+    from IPython.display import Markdown, displayr
+
+try:
+    import numpy as np
+except:
+    !pip -q install numpy
+    import numpy as np
+
+try:
+    from dateutil.relativedelta import relativedelta
+except:
+    !pip install python-dateutil
+    from dateutil.relativedelta import relativedelta
+    from datetutil.easter import easter
+
+try:
+    import holidays
+except:
+    !pip -q install holidays
+    import holidays
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import OS to interact with local computer operating system</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="c1"># Import the datetime and date classes from the datetime module, and timedelta for working with dates.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="c1">#Import markdown and display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span> <span class="k">as</span> <span class="n">md</span><span class="p">,</span> <span class="n">display</span>
+<span class="c1"># Last calendar day of the month and day of the week for first day</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>
+
+<span class="c1"># Ipython not builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>IPython
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">displayr</span>
+
+<span class="c1"># Pandas not builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>pandas
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># NumPy not builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>numpy
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># dateutilnot builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>python-dateutil
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.easter</span><span class="w"> </span><span class="kn">import</span> <span class="n">easter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-a-custom-module-and-importing-functions">
+<h2>Adding A Custom Module And Importing Functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h2>
+<p>Like Chapter One the custom module <font color='green'>module_basic_concepts_fixed_income</font> custom module is accessed from Dropbox and named <font color='green'>basic_concepts_fixed_income</font>. Two functions are imported. The first is the function <font color='green'>last_day_month()</font> that was developed in the previous chapter. The second function is <font color='green'>bond_pay_data()</font> and is developed in this chapter. developed in this</p>
+<p>and is a helper function a new function  That function, however, relies upon a number of helper functions developed in Chapter Two and the vectorized function <font color='green'>adjust_bond_pay_dates()</font> developed in this chapter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_income_module</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">bond_pay_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><font color='green'>bond_pay_data()</font> (This Chapter) Returns NumPy arrays of payment dates and amounts.<a href='https://docs.google.com/document/d/e/2PACX-1vQGqmvajJO28fLjbClysLCUTxH-TvNII2waYX1eYO2c8Gbra-YkVy3OmBQucKJj8LM5PzhDaJBBfGSj/pub'>View Here</a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
+<span class="c1"># The &#39;dl=1&#39; parameter in the URL forces a direct download of the file content.</span>
+<span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
+<span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=87sztshr&amp;dl=1&#39;</span>
+<span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;basic_concepts_fixed_income&#39;</span>
+<span class="c1"># Send an HTTP GET request to the URL and store the server&#39;s response.</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">response</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="c1"># Raise an exception for bad status codes (like 404 Not Found)</span>
+  <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+  <span class="n">module</span><span class="o">=</span> <span class="n">ModuleType</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+  <span class="c1">#Code contained in response.text executed</span>
+  <span class="n">exec</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+  <span class="c1"># Module added to sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">=</span><span class="n">module</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Could not fetch module from URL. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Failed to execute or import the module. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now that &#39;basic_concepts_fixed_income&#39; exists in the notebook, import the specific functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">validate_date</span><span class="p">,</span>
+                                         <span class="n">last_day_month</span><span class="p">,</span>
+                                         <span class="n">adjust_bond_pay_dates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scheduled-pay-dates">
+<h2>Scheduled Pay Dates<a class="headerlink" href="#scheduled-pay-dates" title="Link to this heading">#</a></h2>
+<p>Because a bond’s maturity is a scheduled pay date, all other scheduled pay dates can be calculated from that date by stepping backwards by the time between payments.  The heart of the function is six statements. The <font color='green'>dates</font> list is created and <font color='green'>current_date</font> is assigned the <font color='green'>maturity</font> date.  At each iteration of the <font color='green'>while</font> loop a value is appended to the <font color='green'>dates</font> list and the value of <font color='green'>current_date</font> is decreased by the time between payments, <font color='green'>num_months</font>.  For a semi-annual bond, <font color='green'>num_months</font> is six. As long as the value of <font color='green'>current_date</font> is greater than the <font color='green'>settlement</font> date, dates are appended to <font color='green'>dates</font> list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">dates</span><span class="o">=</span><span class="p">[]</span>
+ <span class="n">current_date</span><span class="o">=</span><span class="n">maturity</span>
+ <span class="c1"># Loop backward from the maturity date.</span>
+ <span class="k">while</span> <span class="n">current_date</span><span class="o">&gt;</span><span class="n">settlement</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">end_month</span><span class="p">:</span><span class="n">current_date</span><span class="o">=</span><span class="n">last_day_month</span><span class="p">(</span><span class="n">current_date</span><span class="p">)</span>
+   <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_date</span><span class="p">)</span>
+   <span class="n">current_date</span> <span class="o">-=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Because the function starts at the maturity date, the payument dates are in reverse chronological order.  The chronological ordered dates are returned by slicing the dates list with an increment of -1.<span class="math notranslate nohighlight">\(^{1}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">dates</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>$^{1} see <a class="reference external" href="https://">see A Quick Introduction To Lists</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">scheduled_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">  &#39;&#39;&#39;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span><span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+  <span class="c1">#Validate the data- maturity, coupon, settlement, freq</span>
+  <span class="c1">#maturity</span>
+  <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+
+  <span class="c1">#settlement</span>
+  <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">settlement</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+  <span class="c1">#freq</span>
+  <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">]:</span>
+      <span class="n">display</span><span class="p">(</span><span class="n">md</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### ⚠️  your assigned freq </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s2"> it must be (1, 2, 4, or 12)</span><span class="se">\</span>
+<span class="s2">     </span><span class="se">\n</span><span class="s2">     semi-annual assumed (2).&quot;</span><span class="p">))</span>
+      <span class="n">freq</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="c1"># Calculate the number of months between each coupon payment.</span>
+  <span class="n">num_months</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="n">freq</span><span class="p">)</span>
+
+  <span class="c1">#Need to check for month_end</span>
+  <span class="n">end_month</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span><span class="o">.</span><span class="n">is_month_end</span>
+
+  <span class="c1"># This list will store the scheduled payment dates.</span>
+  <span class="n">dates</span><span class="o">=</span><span class="p">[]</span>
+  <span class="n">current_date</span><span class="o">=</span><span class="n">maturity</span>
+
+  <span class="c1"># Loop backward from the maturity date.</span>
+  <span class="k">while</span> <span class="n">current_date</span><span class="o">&gt;</span><span class="n">settlement</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">end_month</span><span class="p">:</span><span class="n">current_date</span><span class="o">=</span><span class="n">last_day_month</span><span class="p">(</span><span class="n">current_date</span><span class="p">)</span>
+    <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_date</span><span class="p">)</span>
+    <span class="n">current_date</span> <span class="o">-=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">num_months</span><span class="p">)</span>
+
+  <span class="c1"># The dates were generated backward, slice to for chronological order</span>
+  <span class="k">return</span> <span class="n">dates</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <font color='green'>bond_pay_data()</font> function requires two arguments: <font color='green'>maturity</font> (the maturity date) and <font color='green'>coupon</font> (the coupon). <font color='green'>settlement</font> date defaults to the current day. The payment frequency <font color='green'>freq</font>  defaults to semi-annual (2) but can be set to 1 (annual), 4 (quarterly), or 12 (monthly). Both <font color='green'>settlement</font> and <font color='green'>maturity</font> dates must be <code class="docutils literal notranslate"><span class="pre">datetime</span></code> or date objects.</p>
+<p>If <font color='green'>coupon</font> is zero, a NumPy array with the maturity date and a NumPy array with the par value of 100 is returned. Otherwise, the NumPy array <font color='green'>pay</font> is created with length equal to the length of <font color='green'>dates</font> and a value equal to the annual coupon divided by the frequency of payments. The last value of <font color='green'>pay</font> is increased by the par value of 100.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pay</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span><span class="n">coupon</span><span class="o">/</span><span class="n">freq</span><span class="p">)</span>
+<span class="n">pay</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="mi">100</span>
+</pre></div>
+</div>
+<p>The  <font color='green'>dates</font> list is passed to the vectorized version of <font color='green'>adjust_pay_dates()</font> as a NumPy array. A NumPy array of payment dates and a NumPy array of payments are returned</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pay_dates</span><span class="o">=</span><span class="n">vect_adjust_bond_pay_dates</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dates</span><span class="p">))</span>
+<span class="k">return</span> <span class="n">pay_dates</span><span class="p">,</span><span class="n">pay</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bond_pay_data</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">coupon</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">  Function calculates payment Dates And Amounts.</span>
+<span class="sd">  maturity is a datetime object and coupon is a real number.</span>
+<span class="sd">  Required arguments are maturity and annual coupon.</span>
+<span class="sd">  If provided, the value of settlement is a datetime object;</span>
+<span class="sd">  otherwise defaults to date.today()</span>
+<span class="sd">  freq defaults to semi-annual but accepts freq equal</span>
+<span class="sd">  to 1 for annual, 2 for semi-annal, 4 for quarterly, and 12 for monthly.</span>
+<span class="sd">  The function assumes a par value of 100.</span>
+<span class="sd">  Returns Numpy arrays of dates and amounts.</span>
+
+<span class="sd">   Raises:</span>
+<span class="sd">      TypeError: If maturity or settlement are not datetime objects.</span>
+<span class="sd">      ValueError: If inputs are not logically valid (e.g., negative coupon,</span>
+<span class="sd">                  maturity before settlement).</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span><span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span> <span class="k">as</span> <span class="n">md</span>
+
+  <span class="c1">#Validate the data- maturity, coupon, settlement, freq</span>
+  <span class="c1">#maturity</span>
+  <span class="n">maturity</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+
+  <span class="c1">#coupon</span>
+  <span class="k">try</span><span class="p">:</span>
+      <span class="n">coupon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">coupon</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">coupon</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;coupon rate cannot be negative.&quot;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;coupon must be a valid number.&quot;</span><span class="p">)</span>
+
+  <span class="c1">#settlement</span>
+  <span class="k">if</span> <span class="n">settlement</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">settlement</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">settlement</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">settlement</span><span class="p">)</span>
+
+  <span class="c1">#freq</span>
+  <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">]:</span>
+      <span class="n">display</span><span class="p">(</span><span class="n">md</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### ⚠️  your assigned freq </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s2"> it must be (1, 2, 4, or 12)</span><span class="se">\</span>
+<span class="s2">      </span><span class="se">\n</span><span class="s2">  ###    semi-annual assumed (2).&quot;</span><span class="p">))</span>
+      <span class="n">freq</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+  <span class="k">if</span> <span class="n">coupon</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">maturity</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">])</span>
+
+  <span class="c1">#get scheduled payment dates from helper function scheduled_pay_dates</span>
+  <span class="n">dates</span><span class="o">=</span><span class="n">scheduled_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
+
+  <span class="c1">#pandas apply method to calculate adjusted pay dates</span>
+  <span class="c1">#Convert dates to pandas series</span>
+  <span class="n">dates_series</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+
+  <span class="c1">#Use pandas apply to vectorize calculations</span>
+  <span class="n">adjusted_dates</span><span class="o">=</span><span class="n">dates_series</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">adjust_bond_pay_dates</span><span class="p">)</span>
+
+  <span class="c1">#Convert pandas series to numpy array</span>
+  <span class="n">pay_dates</span><span class="o">=</span><span class="n">adjusted_dates</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+  <span class="c1">#calculate payments</span>
+  <span class="c1">#coupon divided by freq at each date</span>
+  <span class="n">pay</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span><span class="n">coupon</span><span class="o">/</span><span class="n">freq</span><span class="p">)</span>
+
+  <span class="c1">#Add principal payment as last cash payment</span>
+  <span class="n">pay</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="mi">100</span>
+
+  <span class="k">return</span> <span class="n">pay_dates</span><span class="p">,</span><span class="n">pay</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">maturity</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">29</span><span class="p">)</span>
+<span class="n">coupon</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">bond_pay_data</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">coupon</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([datetime.date(2025, 2, 28), datetime.date(2025, 9, 2),
+        datetime.date(2026, 3, 2), datetime.date(2026, 8, 31),
+        datetime.date(2027, 3, 1), datetime.date(2027, 8, 31),
+        datetime.date(2028, 2, 29)], dtype=object),
+ array([  2.,   2.,   2.,   2.,   2.,   2., 102.]))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bond-payment-dates">
+<h2>Bond Payment Dates<a class="headerlink" href="#bond-payment-dates" title="Link to this heading">#</a></h2>
+<p>The function is demonstrated with the February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 Coupon Bond.
+The diagram shows the correct pattern of pay dates and payments of the bond.
+February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 Coupon Bond Payment Dates And Amounts
+<img src='https://docs.google.com/drawings/d/e/2PACX-1vSaXeujj_5-3TMLbGrVHdZ-RkxmRv4TTkPH5aQ-JCxDsObw5Mj6XyyayVsBIEvAM42rNakP-Zmrlmq_/pub?w=960&h=540'></p>
+<p>The <font color='green'>bond_pay_data()</font> function relies upon the helper function <font color='green'>last_day_monthh()</font> introduced in Chapter Two: Accrued Interest.  The function is included in the module <font color='green'>basic_conceepts_fixed_income</font>.  Although it is available to <font color='green'>bond_pay_data()</font> imported from the module, it is not available to the function in the previous cell of the notebook.  If you executed this cell, <font color='green'>last_day_monht()</font> can not be accessed by <font color='green'>bond_pay_data()</font>.  In this instance you need to import it from <font color='green'>basic_conceepts_fixed_income</font> before you use <font color='green'>bond_pay_data()</font>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">last_day_month</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, you can import  <font color='green'>bond_pay_data()</font> again from <font color='green'>basic_conceepts_fixed_income</font> to reassign the function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">bond_pay_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PatrickJHess/Vol-3-Chap-2-Chap-3",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Basic Concepts Of Fixed Inome- Chapter Three"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduled-pay-dates">Scheduled Pay Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond Payment Dates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
