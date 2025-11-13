@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Financial Python &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+    <title>Bond Payment Data &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
   
   
   
@@ -59,10 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter_Three_Highlights';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working With Jupyter Books" href="Interacting%20With%20Jupyter%20Books.html" />
+    <link rel="next" title="Actual Versus Scheduled Payment Dates" href="Actual_Payment_Dates.html" />
+    <link rel="prev" title="Updating Quoted Bond Prices With Accrued Interest" href="Chapter_Two_Summary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,8 +175,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Financial Python
                 </a>
             </li>
@@ -197,12 +196,12 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Bond Payment Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
 
@@ -247,7 +246,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2FChapter_Three_Highlights.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button"
    title="Open an issue"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -273,7 +272,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/Chapter_Three_Highlights.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Financial Python</h1>
+    <h1>Bond Payment Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -367,13 +366,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-of-fixed-income">Basic Concepts of Fixed Income</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters-two-and-three">Chapters Two And Three</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
             </nav>
         </div>
@@ -385,38 +378,52 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="financial-python">
-<h1>Financial Python<a class="headerlink" href="#financial-python" title="Link to this heading">#</a></h1>
-<section id="basic-concepts-of-fixed-income">
-<h2>Basic Concepts of Fixed Income<a class="headerlink" href="#basic-concepts-of-fixed-income" title="Link to this heading">#</a></h2>
-<section id="chapters-two-and-three">
-<h3>Chapters Two And Three<a class="headerlink" href="#chapters-two-and-three" title="Link to this heading">#</a></h3>
-<p>The first Chapter of <em>Basic Concepts Of Fixed Income</em> introduced basic concepts of bond pricing and calculated the term structure of interest rates from the prices of  U.S. Treasury Bills  The term structure was calculated for a handful of dates all with a maturity of one year or less.  The bond pricing concepts of Chapter One can be used to estimate the term structure with coupon bonds.  An exercise known as bootstrapping the term structure of interest rates.  Because there are many coupon bonds with longer maturity dates, we can greatly increase our knowledge of the term structure and gain a deeper understanding of the state of financial markets.</p>
-<p>There are two things that we need to know in order to use coupon bonds in calculating the term structure:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="bond-payment-data">
+<h1>Bond Payment Data<a class="headerlink" href="#bond-payment-data" title="Link to this heading">#</a></h1>
+<p><strong>Chapter Three of the Volume <em>Basic Concepts of Fixed Income</em></strong>.</p>
+<p><strong>Highlights of the Chapter are:</strong></p>
+<ul class="simple">
+<li><p><em><strong>Financial Concepts</strong></em></p>
+<ul>
+<li><p><em>Settlement Dates</em></p></li>
+<li><p><em>Scheduled Payment Dates</em></p></li>
+<li><p><em>Acutal Payment Dates</em></p></li>
+</ul>
+</li>
+<li><p><em><strong>Python Concepts</strong></em></p>
+<ul>
+<li><p><em>NumPy arrays</em></p></li>
+<li><p><em>Python Series</em></p></li>
+<li><p><em>Accesing data with a URL address</em></p></li>
+<li><p><em>Custom modules</em></p></li>
+</ul>
+</li>
+</ul>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<div style="font-family: 'Garamond', serif;
+    font-size: 16px;
+    text-indent: 0.25in;
+    line-height: 1.5;">
+<p>This chapter uses the ibraries <strong>datetime</strong> and <strong>holidays</strong>. The <strong>datetime</strong> is descrbed in the <em>Manipulating Dates</em> notebook of Chapater Two and in “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>”.  These Notebooks are part of the introductory volume <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html">Background Material: An Introduction to Python for Financial Python</a>. Portions of the volume will be cited throughout this chapter. Feel free to consult these materials as needed for greater discussion of Python concepts.</p>
+</div>
+</br>
+<p><strong>The Chapter includes Four sections.</strong></p>
 <ol class="arabic simple">
-<li><p>the price of coupon bonds</p></li>
-<li><p>the dates and amounts of payments made by coupon bonds.</p></li>
+<li><p><em>Acual Versus Schedules Payment Dates</em>.</p></li>
+<li><p>The Jupyter notebook <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em>.</p></li>
+<li><p>The  Jupyter notebook <em>Calculating Bond Payment Dates And Amounts</em></p></li>
+<li><p><em>Summary</em> summarizes the financial concepts and results.</p></li>
+<li><p>Functions Imported By <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em> and <em>Calculating Bond Payment Dates And Amounts</em>..</p></li>
 </ol>
-<p>Once we know the prices and the dates and amounts of payments for a large number of bonds, the present value principle can be used to tease out the present value factors that price these bonds.  The same as the zero prices.  And as we know from Chapter One, the term structure follows from those zero prices.</p>
-<p>This book includes two chapters that will calculate the two things we need to know.</p>
-<ol class="arabic simple">
-<li><p>Chapter Two <em>Accrued Interest</em> demonstrates a calculation that is necessary to go from quoted prices of coupon bonds to transaction prices.</p></li>
-<li><p>Chapter Three: <em>Bond Payment Data</em> calculates the payment dates and amounts for coupon bonds.</p></li>
-</ol>
-<p>A bit of honesty is called for. These chapters are very much blocking and tackling, but not easy.  The financial concepts are straightforward; the Python concepts are more difficult.</p>
-<hr class="docutils" />
-<section id="id1">
-<h4><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<p>DRAFT CHAPTER FOR PILOT. NOT FOR DISTRIBUTION. This Jupyter Notebook was prepared by Ken Eades, Professor Emeritus of Business Administration, and Pat Hess, Owner, Perceptum Financial Analytics. Copyright © 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA. All rights reserved. <em>No part of this publication may be reproduced, stored in a retrieval system, used in a spreadsheet, or transmitted in any form or by any means</em>—<em>electronic, mechanical, photocopying, recording, or otherwise</em>—<em>without the permission of the Darden School Foundation. This publication is protected by copyright and may not be uploaded in whole or part to any AI, large language model, or similar system, or to any related training database.</em> We welcome your feedback on the <em>Financial Python</em> pilot program. For any comments or questions related to the pilot and the <em>Financial Python</em> users, <a class="reference external" href="mailto:sales&#37;&#52;&#48;dardenbusinesspublishing&#46;com">contact sales</a>.</p>
-</section>
-</section>
-</section>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
+</ul>
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -449,12 +456,21 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter_Two_Summary.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Updating Quoted Bond Prices With Accrued Interest</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="Interacting%20With%20Jupyter%20Books.html"
+       href="Actual_Payment_Dates.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Working With Jupyter Books</p>
+        <p class="prev-next-title">Actual Versus Scheduled Payment Dates</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -474,13 +490,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-of-fixed-income">Basic Concepts of Fixed Income</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters-two-and-three">Chapters Two And Three</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
   </nav></div>
 

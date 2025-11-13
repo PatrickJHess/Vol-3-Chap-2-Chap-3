@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Non_Settlement_Days';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculating Bond Payment Dates And Amounts" href="Bond_Pay_Dates.html" />
+    <link rel="prev" title="Actual Versus Scheduled Payment Dates" href="Actual_Payment_Dates.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Small_Logo.svg" class="logo__image only-light" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>
+    <script>document.write(`<img src="_static/Small_Logo.svg" class="logo__image only-dark" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-2-Chap-3/master?urlpath=tree/Non_Settlement_Days.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-2-Chap-3/blob/master/Non_Settlement_Days.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-2-Chap-3/issues/new?title=Issue%20on%20page%20%2FNon_Settlement_Days.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Non_Settlement_Days.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-holidays-module">The holidays Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-find-a-holiday"><font color="green">Application: Find a holiday</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-easter-function">The easter Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-settlement-days-holidays-good-friday-and-weekend">Non-Settlement Days: Holidays, Good Friday, and Weekend</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#holidays-and-good-friday">Holidays And Good Friday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weekends">Weekends</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-scheduled-pay-dates-for-non-settlement-days">Adjusting scheduled_pay_dates For non_settlement_days</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-payment-date"><font color="green">Calculate Payment Date</font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-turn-of-the-year-adjustment">A Turn Of The Year Adjustment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-bond-pay-dates">Adjust Bond Pay Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-payment-dates-and-day-of-the-week-for-five-scheduled-payment-dates"><font color="green">Application: Calculate Payment Dates And Day Of The Week For Five Scheduled Payment Dates</font></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accounting-for-non-settlement-days-holidays-weekends-and-good-friday">
+<h1>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday<a class="headerlink" href="#accounting-for-non-settlement-days-holidays-weekends-and-good-friday" title="Link to this heading">#</a></h1>
+<section id="importing-libraries-modules-and-functions">
+<h2>Importing Libraries, Modules, And Functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h2>
+<p>As in Chapter One of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported. If necessary, The new module <font color='green'>holidays</font> is installed and then imported.<span class="math notranslate nohighlight">\(^{1}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from datetime import  date, timdelta
+from IPython.display import Markdown, display
+
+try:
+    from IPython.display import Markdown, display
+except:
+    !pip -q install IPython
+    from IPython.display import Markdown, displayr
+
+try:
+    from dateutil.easter import easter
+except:
+    !pip -q install python-dateutil
+    from datetutil.easter import easter
+
+try:
+    import holidays
+except:
+    !pip -q install holidays
+    import holidays
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{1}\)</span> The <font color='green'>-q</font> key suppress output from installation being printed in the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># datetime library is builtin module...no need to insall</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="c1"># Ipython not builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>IPython
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">displayr</span>
+
+<span class="c1"># dateutile not builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.easter</span><span class="w"> </span><span class="kn">import</span> <span class="n">easter</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w">  </span>install<span class="w"> </span>python-dateutil
+    <span class="kn">from</span><span class="w"> </span><span class="nn">datetutil.easter</span><span class="w"> </span><span class="kn">import</span> <span class="n">easter</span>
+
+<span class="c1"># holidays not builtin, not builtin, install if  necessary with quiet flag (-q)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">holidays</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>holidays
+    <span class="kn">import</span><span class="w"> </span><span class="nn">holidays</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="adding-a-custom-module-and-importing-functions">
+<h3>Adding A Custom Module And Importing Functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h3>
+<p>Like Chapter One the custom module <font color='green'>module_basic_concepts_fixed_income</font> custom module is accessed from Dropbox and named <font color='green'>basic_concepts_fixed_income</font>. The function <font color='green'>validate_date</font> developed in Chapter Two: <em>Accrured Interest</em> is imported from the module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_income_module</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">validate_date</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
+<span class="c1"># The &#39;dl=1&#39; parameter in the URL forces a direct download of the file content.</span>
+<span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
+<span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=87sztshr&amp;dl=1&#39;</span>
+<span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;basic_concepts_fixed_income&#39;</span>
+<span class="c1"># Send an HTTP GET request to the URL and store the server&#39;s response.</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">response</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="c1"># Raise an exception for bad status codes (like 404 Not Found)</span>
+  <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+  <span class="n">module</span><span class="o">=</span> <span class="n">ModuleType</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+  <span class="c1">#Code contained in response.text executed</span>
+  <span class="n">exec</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+  <span class="c1"># Module added to sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">=</span><span class="n">module</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Could not fetch module from URL. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Failed to execute or import the module. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now that &#39;basic_concepts_fixed_income&#39; exists in the notebook, import the specific functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">validate_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-holidays-module">
+<h2>The holidays Module<a class="headerlink" href="#the-holidays-module" title="Link to this heading">#</a></h2>
+<p>The <font color='green'>holidays</font> module returns US holidays for designated years as a dictionary. The keys of the dictionary are the dates and the values are the name of the holiday. The geographic location of <font color='green'>holidays</font> is indicated with the dot notation. In this case the abbreviation is for the United States is <font color='green'>US</font>. The argument for <font color='green'>years</font> can be a single value or iterable. Here it is a list with the years 2025 and 2026.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">holidays_2025_2026_US</span> <span class="o">=</span> <span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2025</span><span class="p">,</span><span class="mi">2026</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">holidays_2025_2026_US</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The module adjusts for weekends and returns both the actual and observed date. For example in 2026, the 4<span class="math notranslate nohighlight">\(^{th}\)</span> of July occurs on a Saturday and is observed on a Friday the 3<span class="math notranslate nohighlight">\(^{rd}\)</span>. The value of the key <font color='green'>datetime.date(2026,7,4)</font> had the value <font color='green'>Independence Day’</font>; the value of <font color='green'>datetime.date(2026,7,3)</font> is <font color='green'>Independence Day (observed)’</font>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">holidays_2025_2026_US</span> <span class="o">=</span> <span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2025</span><span class="p">,</span><span class="mi">2026</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">holidays_2025_2026_US</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{datetime.date(2025, 1, 1): &quot;New Year&#39;s Day&quot;, datetime.date(2025, 5, 26): &#39;Memorial Day&#39;, datetime.date(2025, 6, 19): &#39;Juneteenth National Independence Day&#39;, datetime.date(2025, 7, 4): &#39;Independence Day&#39;, datetime.date(2025, 9, 1): &#39;Labor Day&#39;, datetime.date(2025, 11, 11): &#39;Veterans Day&#39;, datetime.date(2025, 11, 27): &#39;Thanksgiving Day&#39;, datetime.date(2025, 12, 25): &#39;Christmas Day&#39;, datetime.date(2025, 1, 20): &#39;Martin Luther King Jr. Day&#39;, datetime.date(2025, 2, 17): &quot;Washington&#39;s Birthday&quot;, datetime.date(2025, 10, 13): &#39;Columbus Day&#39;, datetime.date(2026, 1, 1): &quot;New Year&#39;s Day&quot;, datetime.date(2026, 5, 25): &#39;Memorial Day&#39;, datetime.date(2026, 6, 19): &#39;Juneteenth National Independence Day&#39;, datetime.date(2026, 7, 4): &#39;Independence Day&#39;, datetime.date(2026, 7, 3): &#39;Independence Day (observed)&#39;, datetime.date(2026, 9, 7): &#39;Labor Day&#39;, datetime.date(2026, 11, 11): &#39;Veterans Day&#39;, datetime.date(2026, 11, 26): &#39;Thanksgiving Day&#39;, datetime.date(2026, 12, 25): &#39;Christmas Day&#39;, datetime.date(2026, 1, 19): &#39;Martin Luther King Jr. Day&#39;, datetime.date(2026, 2, 16): &quot;Washington&#39;s Birthday&quot;, datetime.date(2026, 10, 12): &#39;Columbus Day&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-find-a-holiday">
+<h2><font color='green'>Application: Find a holiday</font><a class="headerlink" href="#application-find-a-holiday" title="Link to this heading">#</a></h2>
+<div style="background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+<p>Define U.S. holidays and find ‘Columbus Day’ in 2029 and 2030. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-numpy-array">Chapter One Hints: Create a NumPy Array</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-numpy-array">expected results here</a>.</p>
+<br>
+</div>
+</section>
+<section id="the-easter-function">
+<h2>The easter Function<a class="headerlink" href="#the-easter-function" title="Link to this heading">#</a></h2>
+<p>The <font color='green'>easter()</font> function is imported from the <font color='green'>dateutil</font> module and has the year as its sole argument.  As the name makes plain, the function retunrs the date of Easter for the specified year.  The code below returns the value for 2025.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.easter</span><span class="w"> </span><span class="kn">import</span> <span class="n">easter</span>
+<span class="n">easter_2025</span><span class="o">=</span><span class="n">easter</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">easter_2025</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.easter</span><span class="w"> </span><span class="kn">import</span> <span class="n">easter</span>
+<span class="n">easter_2025</span><span class="o">=</span><span class="n">easter</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">easter_2025</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2025, 4, 20)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="non-settlement-days-holidays-good-friday-and-weekend">
+<h2>Non-Settlement Days: Holidays, Good Friday, and Weekend<a class="headerlink" href="#non-settlement-days-holidays-good-friday-and-weekend" title="Link to this heading">#</a></h2>
+<section id="holidays-and-good-friday">
+<h3>Holidays And Good Friday<a class="headerlink" href="#holidays-and-good-friday" title="Link to this heading">#</a></h3>
+<p>In the United States, holidays are designated as non-settlement days. Although Good Friday is a non-settlement day, it is not a federal holiday. Good Friday is added to the <font color='green'>non_settlement</font> dictionary by subtracting two days from Easter in 2025 and assigning the value <font color='green'>’Good Friday’</font> to the key <font color='green'>non_settlement[easter(2025)-timedelta(days=2)]</font>.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">non_settlement</span><span class="o">=</span><span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">2025</span><span class="p">)</span>
+<span class="n">non_settlement</span><span class="p">[</span><span class="n">easter</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span><span class="o">-</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span><span class="o">=</span><span class="s1">&#39;Good Friday&#39;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{2}\)</span> <font color='green'>non_settlement</font> is a dictionary with dates as keys and the names of of the non-settlement day as values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get a dictionary of U.S. holidays For 2025 &amp; assign to non_settlement</span>
+<span class="n">non_settlement</span><span class="o">=</span><span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">2025</span><span class="p">)</span>
+
+<span class="c1">#Add Good Friday 2025 to the non_settlement dictionary</span>
+<span class="n">non_settlement</span><span class="p">[</span><span class="n">easter</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span><span class="o">-</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span><span class="o">=</span><span class="s1">&#39;Good Friday&#39;</span>
+<span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="weekends">
+<h3>Weekends<a class="headerlink" href="#weekends" title="Link to this heading">#</a></h3>
+<p>Weekends are not settlement dates and are checked with the datetime method <font color='green'>weekdays()</font> that returns zero for Monday and five and six for Saturday and Sunday respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scheduled_payment_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Results are demonstrated for January 21<span class="math notranslate nohighlight">\(^{st}\)</span> 2025 (not a holiday or weekend) and July 4<span class="math notranslate nohighlight">\(^{th}\)</span> 2025 (a holiday but not a weekend).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Determine and assign the tuple of both dates holiday and weekend status (weekday()&gt;4)</span>
+<span class="c1">#Not a holiday or weekend</span>
+<span class="n">jan_21_2025</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">,</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">#Holiday but not a weekend</span>
+<span class="n">jul_4_2025</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">,</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">#Display the tuples</span>
+<span class="n">display</span><span class="p">(</span><span class="n">jan_21_2025</span><span class="p">,</span><span class="n">jul_4_2025</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(False, False)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(True, False)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="adjusting-scheduled-pay-dates-for-non-settlement-days">
+<h2>Adjusting scheduled_pay_dates For non_settlement_days<a class="headerlink" href="#adjusting-scheduled-pay-dates-for-non-settlement-days" title="Link to this heading">#</a></h2>
+<p>Scheduled payment dates that fall on holidays or weekends are adjusted to the next settlement day. This is achieved using a <font color='green'>while</font> loop that incrementally advances the scheduled payment date by a day until it coincides with a settlement date.  The 4<span class="math notranslate nohighlight">\(^{th}\)</span> of July in 2025 is on Friday and the scheduled payment date is advanced to Monday July 7<span class="math notranslate nohighlight">\(^{th}\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scheduled_pay_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">adjusted_pay_date</span><span class="o">=</span><span class="n">scheduled_pay_date</span>
+<span class="k">while</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span> <span class="ow">or</span> <span class="n">adjusted_pay_date</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">:</span>
+  <span class="n">adjusted_pay_date</span><span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">actual_pay_date</span><span class="o">=</span><span class="n">adjusted_pay_date</span>
+<span class="n">display</span><span class="p">(</span><span class="n">actual_pay_date</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#July 4 falls on a Friday in 2025</span>
+<span class="n">scheduled_pay_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">#The next settlement day is found with while loop</span>
+<span class="c1">#adjusted_pay_date date is advanced by one day until a settlment date is found</span>
+<span class="n">adjusted_pay_date</span><span class="o">=</span><span class="n">scheduled_pay_date</span>
+<span class="k">while</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span> <span class="ow">or</span> <span class="n">adjusted_pay_date</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">:</span>
+  <span class="n">adjusted_pay_date</span><span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">#actual_pay_date is assigned the valid settlement date</span>
+<span class="n">actual_pay_date</span><span class="o">=</span><span class="n">adjusted_pay_date</span>
+<span class="n">display</span><span class="p">(</span><span class="n">actual_pay_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2025, 7, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="calculate-payment-date">
+<h3><font color='green'>Calculate Payment Date</font><a class="headerlink" href="#calculate-payment-date" title="Link to this heading">#</a></h3>
+<div style="background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+<p>Calculate the payment dates for July 4^<span class="math notranslate nohighlight">\({th}\)</span> in 2026 and 2028. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-numpy-array">Chapter One Hints: Create a NumPy Array</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-numpy-array">expected results here</a>.</p>
+<br>
+</div>
+</section>
+</section>
+<section id="a-turn-of-the-year-adjustment">
+<h2>A Turn Of The Year Adjustment<a class="headerlink" href="#a-turn-of-the-year-adjustment" title="Link to this heading">#</a></h2>
+<p>Payment dates scheduled late in the year may be shifted to the following year. If holidays for the new year haven’t been updated, a pay date could be assigned a non-settlement date. When the year of an incremented scheduled payment date isn’t found in the non-settlement dictionary, it needs to be updated with the new year’s holidays. The <font color='green'>update()</font> method is used to add new key-value pairs to the non-settlement dictionary.<span class="math notranslate nohighlight">\(^{2}\)</span> A pay date of December 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2028 falls on a Sunday. As a result, Monday January 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2029 is a holiday. The actual pay date gets moved to Tuesday January 2<span class="math notranslate nohighlight">\(^{nd}\)</span> 2029.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scheduled_pay_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">adjusted_pay_date</span><span class="o">=</span><span class="n">scheduled_pay_date</span>
+<span class="k">while</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span> <span class="ow">or</span> <span class="n">scheduled_pay_date</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">:</span>
+  <span class="n">adjusted_pay_date</span><span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">:</span>
+    <span class="n">non_settlement</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">scheduled_pay_date</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">adjusted_pay_date</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{2}\)</span><a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Dictionaries.html#an-introduction-to-dictionaries">A Quick Ibtroduction to Dictionaries</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Pay date of Dec 31, 2028 falls on Sunday and January 1, 2029 is a Monday</span>
+<span class="n">scheduled_pay_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="c1">#The next settlement day is found with while loop</span>
+<span class="n">adjusted_pay_date</span><span class="o">=</span><span class="n">scheduled_pay_date</span>
+<span class="k">while</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span> <span class="ow">or</span> <span class="n">adjusted_pay_date</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">:</span>
+  <span class="n">adjusted_pay_date</span><span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="c1">#test for change of year. update() non_settlement with holidays.US() for next year</span>
+  <span class="k">if</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">non_settlement</span><span class="p">:</span>
+    <span class="n">non_settlement</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
+<span class="n">actual_pay_date</span><span class="o">=</span><span class="n">adjusted_pay_date</span>
+<span class="n">display</span><span class="p">(</span><span class="n">actual_pay_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2029, 1, 2)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adjust-bond-pay-dates">
+<h2>Adjust Bond Pay Dates<a class="headerlink" href="#adjust-bond-pay-dates" title="Link to this heading">#</a></h2>
+<p>The <font color='green'>adjust_bond_pay_dates()</font> function is responsible for converting scheduled payment dates to actual payment dates. The argument of the function is the scheduled payment date.</p>
+<p>Before checking if a scheduled payment date falls on a holiday, Good Friday, or a weekend, it is important to first confirm that the date is a <font color='green'>datetime</font> or <font color='green'>date</font> object, and if necessary, convert the scheduled payment date to a <font color='green'>date</font> object. The <font color='green'>validate_date</font> determines if the scheduled payment is a datetime or date object and as necessary converts it to a date object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">adjust_bond_pay_dates</span><span class="p">(</span><span class="n">scheduled_date</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the next valid business day (Modified Following convention),</span>
+<span class="sd">    skipping weekends and US holidays (including Good Friday).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        scheduled_date: The scheduled payment date as a datetime or date object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The adjusted payment date as a date object.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: If the input is not a datetime.date or datetime.datetime object.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">holidays</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.easter</span><span class="w"> </span><span class="kn">import</span> <span class="n">easter</span>
+
+  <span class="c1"># Validate scheduled_date</span>
+  <span class="n">scheduled_date</span><span class="o">=</span><span class="n">validate_date</span><span class="p">(</span><span class="n">scheduled_date</span><span class="p">)</span>
+
+  <span class="c1"># Create the holiday list for the year, including Good Friday</span>
+  <span class="n">us_holidays</span> <span class="o">=</span> <span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">scheduled_date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+  <span class="n">us_holidays</span><span class="p">[</span><span class="n">easter</span><span class="p">(</span><span class="n">scheduled_date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Good Friday&#39;</span>
+
+  <span class="c1">#set initial value of adjusted_paydate</span>
+  <span class="n">adjusted_pay_date</span><span class="o">=</span><span class="n">scheduled_date</span>
+
+  <span class="c1"># Loop as long as the adjusted_pay date is a weekend OR a holiday</span>
+  <span class="k">while</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">adjusted_pay_date</span> <span class="ow">in</span> <span class="n">us_holidays</span><span class="p">:</span>
+    <span class="n">adjusted_pay_date</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># If the date rolls over into a new year, ensure we have the correct holidays.</span>
+    <span class="k">if</span> <span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">us_holidays</span><span class="p">:</span>
+      <span class="n">us_holidays</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">adjusted_pay_date</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">adjusted_pay_date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adjust_bond_pay_dates</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2025, 7, 7)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-calculate-payment-dates-and-day-of-the-week-for-five-scheduled-payment-dates">
+<h2><font color='green'>Application: Calculate Payment Dates And Day Of The Week For Five Scheduled Payment Dates</font><a class="headerlink" href="#application-calculate-payment-dates-and-day-of-the-week-for-five-scheduled-payment-dates" title="Link to this heading">#</a></h2>
+<div style="background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+<p>:</p>
+<ul class="simple">
+<li><p>October 9<span class="math notranslate nohighlight">\(^{th}\)</span> 2028</p></li>
+<li><p>December 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2028</p></li>
+<li><p>November 28<span class="math notranslate nohighlight">\(^{th}\)</span> 2030</p></li>
+<li><p>October 10<span class="math notranslate nohighlight">\(^{th}\)</span> 2027</p></li>
+<li><p>February 18<span class="math notranslate nohighlight">\(^{th}\)</span> 2029</p></li>
+</ul>
+<p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-numpy-array">Chapter One Hints: Create a NumPy Array</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-numpy-array">expected results here</a>.</p>
+<br>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PatrickJHess/Vol-3-Chap-2-Chap-3",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Actual_Payment_Dates.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Actual Versus Scheduled Payment Dates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Bond_Pay_Dates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculating Bond Payment Dates And Amounts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-holidays-module">The holidays Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-find-a-holiday"><font color="green">Application: Find a holiday</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-easter-function">The easter Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-settlement-days-holidays-good-friday-and-weekend">Non-Settlement Days: Holidays, Good Friday, and Weekend</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#holidays-and-good-friday">Holidays And Good Friday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weekends">Weekends</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-scheduled-pay-dates-for-non-settlement-days">Adjusting scheduled_pay_dates For non_settlement_days</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-payment-date"><font color="green">Calculate Payment Date</font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-turn-of-the-year-adjustment">A Turn Of The Year Adjustment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-bond-pay-dates">Adjust Bond Pay Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-payment-dates-and-day-of-the-week-for-five-scheduled-payment-dates"><font color="green">Application: Calculate Payment Dates And Day Of The Week For Five Scheduled Payment Dates</font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
