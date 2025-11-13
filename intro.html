@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Accrued Interest" href="Chapter_Two_Highlights.html" />
+    <link rel="next" title="Working With Jupyter Books" href="Interacting%20With%20Jupyter%20Books.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,11 +183,11 @@
             </li>
         </ul>
         <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html"><span style="font-family:Franklin Gothic Medium', sans-serif;">The Mechanics Of Bond Pricing</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
-
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
@@ -354,7 +354,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-of-fixed-income">Basic Concepts of Fixed Income</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-jupyter-book-includes-chapters-two-and-three">This Jupyter Book Includes Chapters Two And Three</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters-two-and-three">Chapters Two And Three</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
 </li>
@@ -375,12 +375,21 @@ document.write(`
 <h1>Financial Python<a class="headerlink" href="#financial-python" title="Link to this heading">#</a></h1>
 <section id="basic-concepts-of-fixed-income">
 <h2>Basic Concepts of Fixed Income<a class="headerlink" href="#basic-concepts-of-fixed-income" title="Link to this heading">#</a></h2>
-<section id="this-jupyter-book-includes-chapters-two-and-three">
-<h3>This Jupyter Book Includes Chapters Two And Three<a class="headerlink" href="#this-jupyter-book-includes-chapters-two-and-three" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Chapter Two: <em>Accrued Interest</em></p></li>
-<li><p>Chapter Three: <em>Bond Payment Data</em></p></li>
-</ul>
+<section id="chapters-two-and-three">
+<h3>Chapters Two And Three<a class="headerlink" href="#chapters-two-and-three" title="Link to this heading">#</a></h3>
+<p>The first Chapter of <em>Basic Concepts Of Fixed Income</em> introduced basic concepts of bond pricing and calculated the term structure of interest rates from the prices of  U.S. Treasury Bills  The term structure was calculated for a handful of dates all with a maturity of one year or less.  The bond pricing concepts of Chapter One can be used to estimate the term structure with coupon bonds.  An exercise known as bootstrapping the term structure of interest rates.  Because there are many coupon bonds with longer maturity dates, we can greatly increase our knowledge of the term structure and gain a deeper understanding of the state of financial markets.</p>
+<p>There are two things that we need to know in order to use coupon bonds in calculating the term structure:</p>
+<ol class="arabic simple">
+<li><p>the price of coupon bonds</p></li>
+<li><p>the dates and amounts of payments made by coupon bonds.</p></li>
+</ol>
+<p>Once we know the prices and the dates and amounts of payments for a large number of bonds, the present value principle can be used to tease out the present value factors that price these bonds.  The same as the zero prices.  And as we know from Chapter One, the term structure follows from those zero prices.</p>
+<p>This book includes two chapters that will calculate the two things we need to know.</p>
+<ol class="arabic simple">
+<li><p>Chapter Two <em>Accrued Interest</em> demonstrates a calculation that is necessary to go from quoted prices of coupon bonds to transaction prices.</p></li>
+<li><p>Chapter Three: <em>Bond Payment Data</em> calculates the payment dates and amounts for coupon bonds.</p></li>
+</ol>
+<p>A bit of honesty is called for. These chapters are very much blocking and tackling, but not easy.  The financial concepts are straightforward; the Python concepts are more difficult.</p>
 <hr class="docutils" />
 <section id="id1">
 <h4><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
@@ -423,11 +432,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="Chapter_Two_Highlights.html"
+       href="Interacting%20With%20Jupyter%20Books.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Accrued Interest</p>
+        <p class="prev-next-title">Working With Jupyter Books</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -448,7 +457,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-of-fixed-income">Basic Concepts of Fixed Income</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-jupyter-book-includes-chapters-two-and-three">This Jupyter Book Includes Chapters Two And Three</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters-two-and-three">Chapters Two And Three</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
 </li>
