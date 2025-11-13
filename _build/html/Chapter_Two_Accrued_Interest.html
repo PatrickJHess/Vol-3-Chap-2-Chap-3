@@ -1527,24 +1527,6 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span> <span class="k">as</span> <span class="n">md</span><span class="p">,</span> <span class="n">display</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
-<span class="n">accrued_interest</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span><span class="n">coupon</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">day_type</span><span class="o">=</span><span class="s1">&#39;5/6&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<h3 class="rubric" id="your-assigned-day-type-5-6-it-must-be-actual-actual-30-360-actual-365-actual-360">⚠️  your assigned day_type 5/6 it must be    (‘Actual/Actual’,’30/360’,’Actual/365’,’Actual/360’)</h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Acuual/Actual assumed.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8342391304347827
-</pre></div>
-</div>
-</div>
-</div>
 <p>The <font color='green'>apply</font> method eliminates the need to iterate through all the values of a row or column. While many examples can be vectorized by operating directly on columns, <font color='green'>apply</font> is particularly useful for complex scenarios, such as calculating accrued interest, where column-wise operations are not feasible.</p>
 <p>The benefits of using <code class="docutils literal notranslate"><span class="pre">apply</span></code> include:</p>
 <ol class="arabic simple">
@@ -1746,7 +1728,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
 <span class="c1"># Use DataFrame.apply() to create the new column</span>
 <span class="c1"># &#39;axis=1&#39; tells pandas to apply the function to each row.</span>
 <span class="c1"># A lambda function is used to pass the correct columns from each row to accrued_interest.</span>
@@ -1762,61 +1744,158 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_9653</span><span class="o">/</span><span class="mf">2931914549.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># &#39;axis=1&#39; tells pandas to apply the function to each row.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># A lambda function is used to pass the correct columns from each row to accrued_interest.</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Accrued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bond_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">accrued_interest</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">maturity</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>      <span class="c1"># The row&#39;s index label (maturity date) is accessed via .name</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">~/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py</span> in <span class="ni">apply</span><span class="nt">(self, func, axis, raw, result_type, args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">8738</span>             <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8739</span>         <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">8740</span>         <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">8741</span> 
-<span class="g g-Whitespace">   </span><span class="mi">8742</span>     <span class="k">def</span><span class="w"> </span><span class="nf">applymap</span><span class="p">(</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py</span> in <span class="ni">apply</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">686</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_raw</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">687</span> 
-<span class="ne">--&gt; </span><span class="mi">688</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_standard</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">689</span> 
-<span class="g g-Whitespace">    </span><span class="mi">690</span>     <span class="k">def</span><span class="w"> </span><span class="nf">agg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py</span> in <span class="ni">apply_standard</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">810</span> 
-<span class="g g-Whitespace">    </span><span class="mi">811</span>     <span class="k">def</span><span class="w"> </span><span class="nf">apply_standard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">812</span>         <span class="n">results</span><span class="p">,</span> <span class="n">res_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_series_generator</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">813</span> 
-<span class="g g-Whitespace">    </span><span class="mi">814</span>         <span class="c1"># wrap results</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/site-packages/pandas/core/apply.py</span> in <span class="ni">apply_series_generator</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">826</span>             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">series_gen</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">827</span>                 <span class="c1"># ignore SettingWithCopy here in case the user mutates</span>
-<span class="ne">--&gt; </span><span class="mi">828</span>                 <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">829</span>                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ABCSeries</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">830</span>                     <span class="c1"># If we have a view on v, we need to make a copy because</span>
-
-<span class="nn">/tmp/ipykernel_9653/2931914549.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(row)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># A lambda function is used to pass the correct columns from each row to accrued_interest.</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Accrued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bond_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">accrued_interest</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">maturity</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>      <span class="c1"># The row&#39;s index label (maturity date) is accessed via .name</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="n">coupon</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Coupon&#39;</span><span class="p">],</span>   <span class="c1"># Access the &#39;Coupon&#39; value from the row</span>
-
-<span class="nn">/tmp/ipykernel_9653/905131098.py</span> in <span class="ni">accrued_interest</span><span class="nt">(maturity, coupon, day_type, settlement, freq)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>   <span class="k">if</span> <span class="n">day_type</span> <span class="o">==</span> <span class="s1">&#39;Actual/Actual&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>       <span class="c1"># Actual/Actual convention</span>
-<span class="ne">---&gt; </span><span class="mi">55</span>       <span class="n">days_since_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">settlement_less_one</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>       <span class="n">days_between</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_date</span> <span class="o">-</span> <span class="n">last_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>       <span class="k">return</span> <span class="n">coupon</span><span class="o">/</span><span class="n">freq</span><span class="o">*</span><span class="n">days_since_last</span><span class="o">/</span><span class="n">days_between</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;datetime.datetime&#39; and &#39;datetime.date&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Coupon</th>
+      <th>Price Bid</th>
+      <th>Price Ask</th>
+      <th>Bid Size</th>
+      <th>Ask Size</th>
+      <th>Accrued</th>
+    </tr>
+    <tr>
+      <th>Maturity Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-01-28</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.929</td>
+      <td>99.930</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2025-01-30</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.906</td>
+      <td>99.907</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER U-2025          1.3750...</td>
+      <td>1.375</td>
+      <td>99.921</td>
+      <td>99.934</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+      <td>0.646399</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER AW-2025         4.1250...</td>
+      <td>4.125</td>
+      <td>99.988</td>
+      <td>99.997</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+      <td>1.939198</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER G-2025          2.5000...</td>
+      <td>2.500</td>
+      <td>99.953</td>
+      <td>99.965</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+      <td>1.175272</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER AG-2029         4.1250...</td>
+      <td>4.125</td>
+      <td>98.910</td>
+      <td>98.914</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
+      <td>0.577953</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER S-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.763</td>
+      <td>97.782</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+      <td>0.542926</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER T-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.734</td>
+      <td>97.738</td>
+      <td>65000.0</td>
+      <td>65000.0</td>
+      <td>0.214088</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER AH-2029         4.3750...</td>
+      <td>4.375</td>
+      <td>99.988</td>
+      <td>99.989</td>
+      <td>7000.0</td>
+      <td>7000.0</td>
+      <td>0.241713</td>
+    </tr>
+    <tr>
+      <th>2030-01-31</th>
+      <td>UNITED STATES TREAS SER G-2030          3.5000...</td>
+      <td>3.500</td>
+      <td>95.994</td>
+      <td>96.011</td>
+      <td>16000.0</td>
+      <td>16000.0</td>
+      <td>1.645380</td>
+    </tr>
+  </tbody>
+</table>
+<p>304 rows × 7 columns</p>
+</div></div></div>
 </div>
 </section>
 </section>
@@ -1846,13 +1925,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❓ Do you want to save the file? (y/n): y
-</pre></div>
-</div>
-<p>###<em><strong>⌛ Generating A Path</strong></em></p>
-<h3 class="rubric" id="file-path-generated">✅ <strong>File Path Generated:</strong></h3>
-<p><code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive/Basic</span> <span class="pre">Concepts</span> <span class="pre">Of</span> <span class="pre">Fixed</span> <span class="pre">Income/Accrued</span> <span class="pre">Interest/Accrued</span> <span class="pre">Interest.xlsx</span></code></p>
-<p>###<em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in /content/drive/MyDrive/Basic Concepts Of Fixed Income/Accrued Interest/Accrued Interest.xlsx</strong></em></p>
+<p>###<em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in Accrued Interest.xlsx</strong></em></p>
 </div>
 </div>
 </section>

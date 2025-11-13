@@ -33,7 +33,7 @@ bond_data
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_9653/2931914549.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_10310/2931914549.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      3[0m [0;31m# 'axis=1' tells pandas to apply the function to each row.[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      4[0m [0;31m# A lambda function is used to pass the correct columns from each row to accrued_interest.[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 5[0;31m bond_data['Accrued'] = bond_data.apply(
@@ -68,14 +68,14 @@ bond_data
 [0m[1;32m    829[0m                 [0;32mif[0m [0misinstance[0m[0;34m([0m[0mresults[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m,[0m [0mABCSeries[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m    830[0m                     [0;31m# If we have a view on v, we need to make a copy because[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/tmp/ipykernel_9653/2931914549.py[0m in [0;36m<lambda>[0;34m(row)[0m
+[0;32m/tmp/ipykernel_10310/2931914549.py[0m in [0;36m<lambda>[0;34m(row)[0m
 [1;32m      4[0m [0;31m# A lambda function is used to pass the correct columns from each row to accrued_interest.[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      5[0m bond_data['Accrued'] = bond_data.apply(
 [0;32m----> 6[0;31m     lambda row: accrued_interest(
 [0m[1;32m      7[0m         [0mmaturity[0m[0;34m=[0m[0mrow[0m[0;34m.[0m[0mname[0m[0;34m,[0m      [0;31m# The row's index label (maturity date) is accessed via .name[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      8[0m         [0mcoupon[0m[0;34m=[0m[0mrow[0m[0;34m[[0m[0;34m'Coupon'[0m[0;34m][0m[0;34m,[0m   [0;31m# Access the 'Coupon' value from the row[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/tmp/ipykernel_9653/905131098.py[0m in [0;36maccrued_interest[0;34m(maturity, coupon, day_type, settlement, freq)[0m
+[0;32m/tmp/ipykernel_10310/905131098.py[0m in [0;36maccrued_interest[0;34m(maturity, coupon, day_type, settlement, freq)[0m
 [1;32m     53[0m   [0;32mif[0m [0mday_type[0m [0;34m==[0m [0;34m'Actual/Actual'[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     54[0m       [0;31m# Actual/Actual convention[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 55[0;31m       [0mdays_since_last[0m [0;34m=[0m [0;34m([0m[0msettlement_less_one[0m [0;34m-[0m [0mlast_date[0m[0;34m)[0m[0;34m.[0m[0mdays[0m[0;34m[0m[0;34m[0m[0m
