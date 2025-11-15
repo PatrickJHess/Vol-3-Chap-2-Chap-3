@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -204,6 +204,10 @@
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two And Three</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -343,9 +347,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -361,14 +363,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -380,42 +374,46 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bond-payment-data">
 <h1>Bond Payment Data<a class="headerlink" href="#bond-payment-data" title="Link to this heading">#</a></h1>
-<p><strong>Chapter Three of the Volume <em>Basic Concepts of Fixed Income</em></strong>.</p>
-<p><strong>Highlights of the Chapter are:</strong></p>
+<p>*<em>Chapter Three of the Volume <em>Basic Concepts of Fixed Income</em></em>.</p>
+<p><strong>Key Topics Covered:</strong></p>
 <ul class="simple">
-<li><p><em><strong>Financial Concepts</strong></em></p>
+<li><p><strong>Financial Concepts:</strong></p>
 <ul>
-<li><p><em>Settlement Dates</em></p></li>
-<li><p><em>Scheduled Payment Dates</em></p></li>
-<li><p><em>Acutal Payment Dates</em></p></li>
+<li><p>Settlement Dates</p></li>
+<li><p>Scheduled Payment Dates</p></li>
+<li><p>Actual Payment Dates</p></li>
 </ul>
 </li>
-<li><p><em><strong>Python Concepts</strong></em></p>
+<li><p><strong>Python Concepts:</strong></p>
 <ul>
-<li><p><em>NumPy arrays</em></p></li>
-<li><p><em>Python Series</em></p></li>
-<li><p><em>Accesing data with a URL address</em></p></li>
-<li><p><em>Custom modules</em></p></li>
+<li><p>NumPy arrays</p></li>
+<li><p>Python Series</p></li>
+<li><p>Accessing data with a URL address</p></li>
+<li><p>Custom modules</p></li>
 </ul>
 </li>
 </ul>
-<section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<div style="font-family: 'Garamond', serif;
-    font-size: 16px;
-    text-indent: 0.25in;
-    line-height: 1.5;">
-<p>This chapter uses the ibraries <strong>datetime</strong> and <strong>holidays</strong>. The <strong>datetime</strong> is descrbed in the <em>Manipulating Dates</em> notebook of Chapater Two and in “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>”.  These Notebooks are part of the introductory volume <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html">Background Material: An Introduction to Python for Financial Python</a>. Portions of the volume will be cited throughout this chapter. Feel free to consult these materials as needed for greater discussion of Python concepts.</p>
-</div>
-</br>
-<p><strong>The Chapter includes Four sections.</strong></p>
+<p><strong>Background Material:</strong></p>
+<p>The examples and discussions in this chapter utilize the <strong>datetime</strong> and <strong>holidays</strong> Python libraries.</p>
+<ul class="simple">
+<li><p>The <strong>datetime</strong> library is introduced in the <em>Manipulating Dates</em> notebook of Chapter Two, and is further described in the introductory volume, <strong>Background Material: An Introduction to Python for Financial Python</strong>.</p>
+<ul>
+<li><p>A quick reference is available in: “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>”.</p></li>
+<li><p>The complete introductory volume is located at: “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html">Background Material: An Introduction to Python for Financial Python</a>”.</p></li>
+<li><p>Consult these cited materials for a more detailed discussion of Python concepts.</p></li>
+</ul>
+</li>
+<li><p>The <strong>holidays</strong> library, along with the <code class="docutils literal notranslate"><span class="pre">easter</span></code> function and determining weekends, is demonstrated in the notebook, <em>Accounting For Non Settlement Days: Holidays, Weekends, And Good Friday</em>.</p></li>
+</ul>
+<p><strong>Chapter Structure:</strong></p>
+<p>The chapter is divided into the following four sections:</p>
 <ol class="arabic simple">
-<li><p><em>Acual Versus Schedules Payment Dates</em>.</p></li>
+<li><p><em>Actual Versus Scheduled Payment Dates</em>.</p></li>
 <li><p>The Jupyter notebook <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em>.</p></li>
-<li><p>The  Jupyter notebook <em>Calculating Bond Payment Dates And Amounts</em></p></li>
-<li><p><em>Summary</em> summarizes the financial concepts and results.</p></li>
-<li><p>Functions Imported By <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em> and <em>Calculating Bond Payment Dates And Amounts</em>..</p></li>
+<li><p>The Jupyter notebook <em>Calculating Bond Payment Dates And Amounts</em>.</p></li>
+<li><p><em>Summary</em>, which reviews the financial concepts and outcomes.</p></li>
 </ol>
+<p><em>Note: The functions imported by the notebooks Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday and Calculating Bond Payment Dates And Amounts are also detailed.</em></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
@@ -423,7 +421,6 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="Bond_Pay_Dates.html">Calculating Bond Payment Dates And Amounts</a></li>
 </ul>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -480,21 +477,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
