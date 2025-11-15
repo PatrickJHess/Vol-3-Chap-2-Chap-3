@@ -1,51 +1,35 @@
 # Accrued Interest
 
-**Chapter Two of the Volume *Basic Concepts of Fixed Income***.
-
-**Highlights of the Chapter are:**
-
-* ***Financial Concepts***
-
-    * *Quoted verss transaction prices pf bpmds*
-    * *The clean price of a bond*
-    * *The dirty price of a bond*
-    * *Accrued interest*
-
-* ***Python Concepts***
-
-    * *NumPy arrays*
-    * *Python DataFrames*
-    * *Accesing data with a URL address*
-    * *Custom modules*
-    * *The Pandas apply method*
-    * *Saving DataFrames as spreadsheets*
-
-## Background
+**Chapter Two of the Volume Basic Concepts of Fixed Income***.
 
 
-<div style="font-family: 'Garamond', serif;
-    font-size: 16px;
-    text-indent: 0.25in;
-    line-height: 1.5;">
+This chapter focuses on the essential financial principles and practical Python programming skills needed to convert bond quoted prices into transaction prices.
 
-This chapter uses the Python libraries Pandas and NumPy. The basic usage of these libraries is detailed in three Notebooks: "[A Quick Introduction to Pandas](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html)" reviews some basic concepts of Pandas, "[A Quick Introduction to NumPy](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html)" and "[A Quick Introduction to Manipulating Dates](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html)"  do the same for NumPy and the datetime module. These Notebooks are part of the introductory volume [Background Material: An Introduction to Python for Financial Python](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html). Portions of the volume will be cited throughout this chapter. Feel free to consult these materials as needed for greater discussion of Python concepts.
-</div>
-</br>
+**Key Topics Covered**
 
+* **Financial Concepts:**  
+  * Clean Price of a Bond  
+  * Dirty Price of a Bond  
+  * Accrued Interest  
+* **Python Concepts:**  
+  * NumPy Arrays  
+  * Pandas DataFrames  
+  * Accessing Data via a URL  
+  * Custom Modules  
+  * The Pandas `apply` Method  
+  * Saving DataFrames as Spreadsheets
 
+**Background Information**
 
-**The Chapter includes Four sections.**
+This chapter utilizes the Python libraries **Pandas** and **NumPy**. For those requiring a review of basic usage for these libraries or the `datetime` module, please consult the introductory volume, **Background Material: An Introduction to Python for Financial Python**.
 
+The following notebooks from the introductory volume are referenced throughout this chapter:
 
-1. *Introduction To The Mechanics Of Bond Pricing*.  
-2. The Jupyter notebook *Dealing With Dates*.
-2. The  Jupyter notebook *Accrued Interest* that:  
-3. *Summary* summarizes the financial concepts and results.  
-4. *Functions Imported By Accrued Interest* describes the functions imported from DropBox. (*module\_basic\_concepts\_fixed\_income*)..
+* "[A Quick Introduction to Pandas](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html)" (Covers basic Pandas concepts)  
+* "[A Quick Introduction to NumPy](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html)" (Covers basic NumPy concepts)  
+* "[A Quick Introduction to Manipulating Dates](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html)" (Covers the `datetime` module)
 
-
-**Any code cell in a notebook or code block in a text cell can be copied to the clipboard by moving your cursor to upper-right corner of the code cell or code block.**
-
+Refer to these supplementary materials for a more detailed discussion of the underlying Python concepts as necessary.
 
 ```{tableofcontents}
 ```

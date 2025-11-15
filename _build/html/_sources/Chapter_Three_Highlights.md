@@ -1,48 +1,40 @@
 # Bond Payment Data
 
-**Chapter Three of the Volume *Basic Concepts of Fixed Income***.
-
-**Highlights of the Chapter are:**
-
-* ***Financial Concepts***
-
-    * *Settlement Dates*
-    * *Scheduled Payment Dates*
-    * *Acutal Payment Dates*
+**Chapter Three of the Volume *Basic Concepts of Fixed Income**.
 
 
-* ***Python Concepts***
+**Key Topics Covered:**
 
-    * *NumPy arrays*
-    * *Python Series*
-    * *Accesing data with a URL address*
-    * *Custom modules*
+* **Financial Concepts:**  
+  * Settlement Dates  
+  * Scheduled Payment Dates  
+  * Actual Payment Dates  
+* **Python Concepts:**  
+  * NumPy arrays  
+  * Python Series  
+  * Accessing data with a URL address  
+  * Custom modules
 
-## Background
+**Background Material:**
 
+The examples and discussions in this chapter utilize the **datetime** and **holidays** Python libraries.
 
-<div style="font-family: 'Garamond', serif;
-    font-size: 16px;
-    text-indent: 0.25in;
-    line-height: 1.5;">
+* The **datetime** library is introduced in the *Manipulating Dates* notebook of Chapter Two, and is further described in the introductory volume, **Background Material: An Introduction to Python for Financial Python**.  
+  * A quick reference is available in: "[A Quick Introduction to Manipulating Dates](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html)".  
+  * The complete introductory volume is located at: "[Background Material: An Introduction to Python for Financial Python](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html)".  
+  * Consult these cited materials for a more detailed discussion of Python concepts.  
+* The **holidays** library, along with the `easter` function and determining weekends, is demonstrated in the notebook, *Accounting For Non Settlement Days: Holidays, Weekends, And Good Friday*.
 
-This chapter uses the ibraries **datetime** and **holidays**. The **datetime** is descrbed in the *Manipulating Dates* notebook of Chapater Two and in "[A Quick Introduction to Manipulating Dates](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html)".  These Notebooks are part of the introductory volume [Background Material: An Introduction to Python for Financial Python](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html). Portions of the volume will be cited throughout this chapter. Feel free to consult these materials as needed for greater discussion of Python concepts.
-</div>
-</br>
+**Chapter Structure:**
 
+The chapter is divided into the following four sections:
 
+1. *Actual Versus Scheduled Payment Dates*.  
+2. The Jupyter notebook *Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday*.  
+3. The Jupyter notebook *Calculating Bond Payment Dates And Amounts*.  
+4. *Summary*, which reviews the financial concepts and outcomes.
 
-**The Chapter includes Four sections.**
-
-
-1. *Acual Versus Schedules Payment Dates*.  
-2. The Jupyter notebook *Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday*.
-3. The  Jupyter notebook *Calculating Bond Payment Dates And Amounts*  
-4. *Summary* summarizes the financial concepts and results.  
-5. Functions Imported By *Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday* and *Calculating Bond Payment Dates And Amounts*..
-
-
-
+*Note: The functions imported by the notebooks Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday and Calculating Bond Payment Dates And Amounts are also detailed.*
 
 ```{tableofcontents}
 ```

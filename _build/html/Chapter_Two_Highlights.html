@@ -204,6 +204,10 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two And Three</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -343,9 +347,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -361,14 +363,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -380,46 +374,37 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="accrued-interest">
 <h1>Accrued Interest<a class="headerlink" href="#accrued-interest" title="Link to this heading">#</a></h1>
-<p><strong>Chapter Two of the Volume <em>Basic Concepts of Fixed Income</em></strong>.</p>
-<p><strong>Highlights of the Chapter are:</strong></p>
+<p><strong>Chapter Two of the Volume Basic Concepts of Fixed Income</strong>*.</p>
+<p>This chapter focuses on the essential financial principles and practical Python programming skills needed to convert bond quoted prices into transaction prices.</p>
+<p><strong>Key Topics Covered</strong></p>
 <ul class="simple">
-<li><p><em><strong>Financial Concepts</strong></em></p>
+<li><p><strong>Financial Concepts:</strong></p>
 <ul>
-<li><p><em>Quoted verss transaction prices pf bpmds</em></p></li>
-<li><p><em>The clean price of a bond</em></p></li>
-<li><p><em>The dirty price of a bond</em></p></li>
-<li><p><em>Accrued interest</em></p></li>
+<li><p>Clean Price of a Bond</p></li>
+<li><p>Dirty Price of a Bond</p></li>
+<li><p>Accrued Interest</p></li>
 </ul>
 </li>
-<li><p><em><strong>Python Concepts</strong></em></p>
+<li><p><strong>Python Concepts:</strong></p>
 <ul>
-<li><p><em>NumPy arrays</em></p></li>
-<li><p><em>Python DataFrames</em></p></li>
-<li><p><em>Accesing data with a URL address</em></p></li>
-<li><p><em>Custom modules</em></p></li>
-<li><p><em>The Pandas apply method</em></p></li>
-<li><p><em>Saving DataFrames as spreadsheets</em></p></li>
+<li><p>NumPy Arrays</p></li>
+<li><p>Pandas DataFrames</p></li>
+<li><p>Accessing Data via a URL</p></li>
+<li><p>Custom Modules</p></li>
+<li><p>The Pandas <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method</p></li>
+<li><p>Saving DataFrames as Spreadsheets</p></li>
 </ul>
 </li>
 </ul>
-<section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<div style="font-family: 'Garamond', serif;
-    font-size: 16px;
-    text-indent: 0.25in;
-    line-height: 1.5;">
-<p>This chapter uses the Python libraries Pandas and NumPy. The basic usage of these libraries is detailed in three Notebooks: “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html">A Quick Introduction to Pandas</a>” reviews some basic concepts of Pandas, “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to NumPy</a>” and “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>”  do the same for NumPy and the datetime module. These Notebooks are part of the introductory volume <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html">Background Material: An Introduction to Python for Financial Python</a>. Portions of the volume will be cited throughout this chapter. Feel free to consult these materials as needed for greater discussion of Python concepts.</p>
-</div>
-</br>
-<p><strong>The Chapter includes Four sections.</strong></p>
-<ol class="arabic simple">
-<li><p><em>Introduction To The Mechanics Of Bond Pricing</em>.</p></li>
-<li><p>The Jupyter notebook <em>Dealing With Dates</em>.</p></li>
-<li><p>The  Jupyter notebook <em>Accrued Interest</em> that:</p></li>
-<li><p><em>Summary</em> summarizes the financial concepts and results.</p></li>
-<li><p><em>Functions Imported By Accrued Interest</em> describes the functions imported from DropBox. (<em>module_basic_concepts_fixed_income</em>)..</p></li>
-</ol>
-<p><strong>Any code cell in a notebook or code block in a text cell can be copied to the clipboard by moving your cursor to upper-right corner of the code cell or code block.</strong></p>
+<p><strong>Background Information</strong></p>
+<p>This chapter utilizes the Python libraries <strong>Pandas</strong> and <strong>NumPy</strong>. For those requiring a review of basic usage for these libraries or the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module, please consult the introductory volume, <strong>Background Material: An Introduction to Python for Financial Python</strong>.</p>
+<p>The following notebooks from the introductory volume are referenced throughout this chapter:</p>
+<ul class="simple">
+<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html">A Quick Introduction to Pandas</a>” (Covers basic Pandas concepts)</p></li>
+<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to NumPy</a>” (Covers basic NumPy concepts)</p></li>
+<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>” (Covers the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module)</p></li>
+</ul>
+<p>Refer to these supplementary materials for a more detailed discussion of the underlying Python concepts as necessary.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
@@ -428,7 +413,6 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
 </ul>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -485,21 +469,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

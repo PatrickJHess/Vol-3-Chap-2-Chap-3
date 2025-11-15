@@ -3,22 +3,24 @@
 ## Basic Concepts of Fixed Income
 
 ### Chapters Two And Three
-The first Chapter of *Basic Concepts Of Fixed Income* introduced basic concepts of bond pricing and calculated the term structure of interest rates from the prices of  U.S. Treasury Bills  The term structure was calculated for a handful of dates all with a maturity of one year or less.  The bond pricing concepts of Chapter One can be used to estimate the term structure with coupon bonds.  An exercise known as bootstrapping the term structure of interest rates.  Because there are many coupon bonds with longer maturity dates, we can greatly increase our knowledge of the term structure and gain a deeper understanding of the state of financial markets.  
+Chapter One of *Basic Concepts Of Fixed Income* introduced the fundamentals of bond pricing and demonstrated how to calculate the term structure of interest rates using the prices of short-term U.S. Treasury Bills (those with a maturity of one year or less).
 
-There are two things that we need to know in order to use coupon bonds in calculating the term structure:
+To significantly expand our knowledge of the term structure—and, consequently, gain a deeper understanding of the financial markets—we must extend this analysis using coupon bonds, which often have much longer maturity dates. This process is known as bootstrapping the term structure of interest rates.
 
-1. the price of coupon bonds  
-2. the dates and amounts of payments made by coupon bonds.
+Applying the bond pricing concepts from Chapter One to coupon bonds requires two specific pieces of information:
 
-Once we know the prices and the dates and amounts of payments for a large number of bonds, the present value principle can be used to tease out the present value factors that price these bonds.  The same as the zero prices.  And as we know from Chapter One, the term structure follows from those zero prices.
+1. The price of the coupon bonds.  
+2. The dates and amounts of all payments made by the coupon bonds.
 
- This book includes two chapters that will calculate the two things we need to know.
+With this data for a substantial number of bonds, we can use the present value principle to derive the present value factors—or "zero prices"—that determine the bonds' value. As established in Chapter One, the term structure of interest rates naturally follows from these zero prices.
 
-1. Chapter Two *Accrued Interest* demonstrates a calculation that is necessary to go from quoted prices of coupon bonds to transaction prices.  
-2. Chapter Three: *Bond Payment Data* calculates the payment dates and amounts for coupon bonds.
+To equip us with the necessary inputs, this book dedicates two subsequent chapters to these requirements:
 
-A bit of honesty is called for. These chapters are very much blocking and tackling, but not easy.  The financial concepts are straightforward; the Python concepts are more difficult. 
+1. **Chapter Two: *Accrued Interest*** focuses on a critical calculation needed to convert the quoted prices of coupon bonds into their actual transaction prices.  
+2. **Chapter Three: *Bond Payment Data*** details the calculation of the payment dates and amounts for coupon bonds.
+
+A candid note: The financial concepts pf these two chapters are straightforward, the implementation in Python is more challenging. These chapters involve complex, fundamental work—the "blocking and tackling"—necessary for advanced analysis.
 ___
 
-####
+######
 DRAFT CHAPTER FOR PILOT. NOT FOR DISTRIBUTION. This Jupyter Notebook was prepared by Ken Eades, Professor Emeritus of Business Administration, and Pat Hess, Owner, Perceptum Financial Analytics. Copyright © 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA. All rights reserved. *No part of this publication may be reproduced, stored in a retrieval system, used in a spreadsheet, or transmitted in any form or by any means*&mdash;*electronic, mechanical, photocopying, recording, or otherwise*&mdash;*without the permission of the Darden School Foundation. This publication is protected by copyright and may not be uploaded in whole or part to any AI, large language model, or similar system, or to any related training database.* We welcome your feedback on the *Financial Python* pilot program. For any comments or questions related to the pilot and the *Financial Python* users, [contact sales](mailto:sales@dardenbusinesspublishing.com).
