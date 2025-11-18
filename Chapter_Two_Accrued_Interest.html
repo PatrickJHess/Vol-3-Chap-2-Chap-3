@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -456,7 +456,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-results-of-next-last-coupon-dates">Checking The Results Of next_last_coupon_dates()</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-days-between-coupon-and-payment-dates"><font color="green">Application:Days Between Coupon And Payment Dates</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-days-for-accrued-interest"><font color="green">Application:Calculate Days For Accrued Interest</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculating Accrued Interest</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-bond-data-with-accrued-interest">Update Bond Data With Accrued Interest</a></li>
 </ul>
@@ -483,13 +483,15 @@ document.write(`
 <h1>Calculating Accrued Interest<a class="headerlink" href="#calculating-accrued-interest" title="Link to this heading">#</a></h1>
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<p>This notebook utilizes the date manipulation tools from the <em>Manipulating Dates</em> notebook to determine the accrued interest of coupon bonds. As outlined in <em>The Mechanics Of Bond Pricing</em>, the transaction price of a coupon bond combines its quoted price with accrued interest. The key elements for this calculation are:</p>
+<p><strong>Background Information</strong>
+This chapter utilizes the Python libraries <strong>Pandas</strong>, <strong>NumPy</strong>, and <strong>datetime</strong>.</p>
+<p>The following notebooks from the introductory volume are referenced throughout this chapter:</p>
 <ul class="simple">
-<li><p>The settlement date of the bond’s purchase and sale.</p></li>
-<li><p>The next scheduled coupon date.</p></li>
-<li><p>The last scheduled coupon date.</p></li>
+<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html">A Quick Introduction to Pandas</a>” (Covers basic Pandas concepts)</p></li>
+<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to NumPy</a>” (Covers basic NumPy concepts)</p></li>
+<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>” (Covers the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module)</p></li>
+<li><p>*<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html#background-material-an-introduction-to-python-for-financial-python">Background Maerial</a></p></li>
 </ul>
-<p>The function <font color='green'>accrued_interest()</font> is developed and employed to calculate the accrued interest for 304 bonds. This function relies on several helper functions. The notebook then updates a DataFrame using the Pandas <font color='green'>apply</font> method, which is subsequently saved as an Excel workbook with the <font color='green'>create_workbook()</font> function.</p>
 </section>
 <section id="preparing-the-notebook">
 <h2>Preparing The Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
@@ -501,12 +503,13 @@ import sys
 import requests
 from datetime import , date, timedelta
 from types import ModuleType
+import calendar
 
 try:
     from IPython.display import Markdown, display
 except:
     !pip -q install IPython
-    from IPython.display import Markdown, displayr
+    from IPython.display import Markdown, display
 
 try:
     import numpy as np
@@ -546,7 +549,7 @@ except:
     <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>IPython
-    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">displayr</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
 
 <span class="c1"># Import the numpu library for data manipulation and analysis, aliased as np</span>
 <span class="k">try</span><span class="p">:</span>
@@ -560,13 +563,6 @@ except:
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>pandas
     <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="c1"># Import the relativedelta class from dateutil for advanced date calculations.</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>python-dateutil
-    <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
 
 <span class="c1"># Import the relativedelta class from dateutil for advanced date calculations.</span>
 <span class="k">try</span><span class="p">:</span>
@@ -625,7 +621,7 @@ except:
 <section id="creating-the-dataframe-bond-data">
 <h2>Creating The DataFrame bond_data<a class="headerlink" href="#creating-the-dataframe-bond-data" title="Link to this heading">#</a></h2>
 <p><font color='black'> U.S. Treasury notes and bonds data, for settlement on January 21, 2025, was obtained from Fidelity. The Fidelity data, an Excel workbook, is downloaded from DropBox using the Panda’s <font color='green'>read_excel()</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
-<p>Three arguments are pass to the method.</p>
+<p>Three arguments are passed to the method.</p>
 <ol class="arabic simple">
 <li><p>The URL address (<font color='green'>url</font>) is required.</p></li>
 <li><p>Assigning the index column is optional. The maturity dates, located in the first column, are set as the index of the DataFrame  (<font color='green'>index_col=’Maturity Date’</font>).</p></li>
@@ -949,7 +945,7 @@ Access the bonds that mature at the end of April and October 2025. Create a Data
 <h2>Validating dates and converting <font color='green'>datetime</font> to <font color='green'>date</font>.<a class="headerlink" href="#validating-dates-and-converting-datetime-to-date" title="Link to this heading">#</a></h2>
 <p>As discussed in the section  <em>Manipulating Dates</em>, the datetime library generates two distinct but related object types. For calculations of accrued interest or bond payment dates, <font color='green'>date</font> objects, with their year, month, and day attributes are preferred to <font color='green'>datetime</font> objects.</p>
 <p><font color='green'>datetime</font> objects include unnecessary attributes such as hour, second, and microsecond. These time-based attributes of <font color='green'>datetime</font> objects can impact comparisons between two dates that share the same month, day, and year. To prevent such issues, all <font color='green'>datetime</font> objects are converted to <font color='green'>date</font> objects.</p>
-<p>The function <font color='green'>validate_date</font> determines if the argument of the function is an instance of a <font color='green'>date</font> or <font color='green'>datetime</font> and converts <font color='green'>dateime</font> objects to <font color='green'>date</font> objects.</p>
+<p>The function <font color='green'>validate_date</font> determines if the argument of the function is an instance of a <font color='green'>date</font> or <font color='green'>datetime</font> and converts <font color='green'>datetime</font> objects to <font color='green'>date</font> objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_date</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">):</span>
@@ -993,26 +989,9 @@ Access the bonds that mature at the end of April and October 2025. Create a Data
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validate</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6040</span><span class="o">/</span><span class="mf">2977602463.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validate</span>
-
-<span class="ne">NameError</span>: name &#39;validate&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
 <section id="determine-if-settlement-or-maturity-date-is-month-end">
 <h3>Determine If Settlement Or Maturity Date Is Month End<a class="headerlink" href="#determine-if-settlement-or-maturity-date-is-month-end" title="Link to this heading">#</a></h3>
-<p>The maturity dates of five_bonds are Panda’s timestamps with the attribute <font color='green'>is_month_end</font>.  The settlement date is converted to a Pandas timestamp.<span class="math notranslate nohighlight">\(^{4}\)</span>  The maturities and settlemen dates are check for month end.</p>
+<p>The maturity dates of five_bonds are Panda’s timestamps with the attribute <font color='green'>is_month_end</font>.  The settlement date is converted to a Pandas timestamp.<span class="math notranslate nohighlight">\(^{4}\)</span>  The maturities and settlement dates are checked for month end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Month-End Status Of Five Maturity Dates </span><span class="si">{</span><span class="n">five_bond</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_month_end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">settlement_date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Month-End Status Of Settlement Date </span><span class="si">{</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">is_month_end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1365,15 +1344,15 @@ Month-End Status Of Settlement Date False
 </div>
 </section>
 </section>
-<section id="application-days-between-coupon-and-payment-dates">
-<h2><font color='green'>Application:Days Between Coupon And Payment Dates</font><a class="headerlink" href="#application-days-between-coupon-and-payment-dates" title="Link to this heading">#</a></h2>
+<section id="application-calculate-days-for-accrued-interest">
+<h2><font color='green'>Application:Calculate Days For Accrued Interest</font><a class="headerlink" href="#application-calculate-days-for-accrued-interest" title="Link to this heading">#</a></h2>
 <p><span style="display:block;background-color:LightGray;
     border-left: 12px solid green;
     font-family: 'Garamond', serif;
     line-height: 1.5;
     padding: 15px">
 <br>
-Assume a bond matures on January 15<span class="math notranslate nohighlight">\(^{th}\)</span> 2030 and the settlement date is May 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2024.  Calculate the number of days since the last coupon payment and the number of days between the last and next coupon payment. see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-days-between-coupon-payment-and-settlement-dates">Calculate Days Between Coupon Payment And Settlement Dates</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-days-between-coupon-payment-and-settlement-dates">expected results here</a>.
+Assume a bond matures on January 15<span class="math notranslate nohighlight">\(^{th}\)</span> 2030 and the settlement date is May 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2024.  Calculate the number of days since the last coupon payment and the number of days between the last and next coupon payment. see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-days-between-coupon-payment-and-settlement-dates">Chapter Two Calculate Days For Accrued Interest</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-days-between-coupon-payment-and-settlement-dates">expected results here</a>.
 <br>
 <br>
 </span></p>
@@ -1575,7 +1554,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
                               <span class="s1">&#39;Future Values&#39;</span><span class="p">:[</span><span class="mf">1.030455</span><span class="p">,</span><span class="mf">1.05171</span><span class="p">,</span><span class="mf">1.072508</span><span class="p">],</span>
                               <span class="s1">&#39;Present Value&#39;</span><span class="p">:[</span><span class="mf">0.970446</span><span class="p">,</span><span class="mf">0.951229</span><span class="p">,</span><span class="mf">0.93294</span><span class="p">]})</span>
 <span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
-<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Discrete&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">rows_to_column</span><span class="o">=</span> <span class="n">rows_to_columns</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Discrete&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">rows_to_columns</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Rates&#39;</span><span class="p">]),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
@@ -1593,7 +1572,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
                               <span class="s1">&#39;Present Value&#39;</span><span class="p">:[</span><span class="mf">0.970446</span><span class="p">,</span><span class="mf">0.951229</span><span class="p">,</span><span class="mf">0.93294</span><span class="p">]})</span>
 <span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
 <span class="c1"># Access the value of rows</span>
-<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Discrete&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">rows_to_column</span><span class="o">=</span> <span class="n">rows_to_columns</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="n">rows_to_columns</span><span class="p">[</span><span class="s1">&#39;Discrete&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">rows_to_columns</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Rates&#39;</span><span class="p">]),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
@@ -1605,9 +1584,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-b3c02305-7246-49e9-bf1a-edf8106ff5df" class="colab-df-container">
-    <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1651,274 +1628,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
     </tr>
   </tbody>
 </table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b3c02305-7246-49e9-bf1a-edf8106ff5df')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-b3c02305-7246-49e9-bf1a-edf8106ff5df button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b3c02305-7246-49e9-bf1a-edf8106ff5df');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-ac3a6662-fe3e-43b2-81c5-4239807664a8">
-      <button class="colab-df-quickchart" onclick="quickchart('df-ac3a6662-fe3e-43b2-81c5-4239807664a8')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-ac3a6662-fe3e-43b2-81c5-4239807664a8 button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-  <div id="id_fb53c749-47a7-408e-bc4c-af5e6d72009b">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('rows_to_columns')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_fb53c749-47a7-408e-bc4c-af5e6d72009b button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('rows_to_columns');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div><div class="output text_html">
-  <div id="df-1cc989f0-d72c-4033-98d4-a5b74495e226" class="colab-df-container">
-    <div>
+</div></div><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1966,274 +1676,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
     </tr>
   </tbody>
 </table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1cc989f0-d72c-4033-98d4-a5b74495e226')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-1cc989f0-d72c-4033-98d4-a5b74495e226 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1cc989f0-d72c-4033-98d4-a5b74495e226');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-732a6891-c58d-4c71-aef8-1cc9608f4df1">
-      <button class="colab-df-quickchart" onclick="quickchart('df-732a6891-c58d-4c71-aef8-1cc9608f4df1')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-732a6891-c58d-4c71-aef8-1cc9608f4df1 button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-  <div id="id_5c7b15d9-3e7f-4ed8-99fd-1e81ef89b1dc">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('rows_to_columns')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_5c7b15d9-3e7f-4ed8-99fd-1e81ef89b1dc button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('rows_to_columns');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div><div class="output text_html">
-  <div id="df-28fe7b2a-63e6-418f-a255-9563ead2f3af" class="colab-df-container">
-    <div>
+</div></div><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2285,272 +1728,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
     </tr>
   </tbody>
 </table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-28fe7b2a-63e6-418f-a255-9563ead2f3af')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-28fe7b2a-63e6-418f-a255-9563ead2f3af button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-28fe7b2a-63e6-418f-a255-9563ead2f3af');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-6ade1109-c17d-44e2-8190-f05b64957188">
-      <button class="colab-df-quickchart" onclick="quickchart('df-6ade1109-c17d-44e2-8190-f05b64957188')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-6ade1109-c17d-44e2-8190-f05b64957188 button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-  <div id="id_f9d01720-1147-4417-b3c3-6309087c2cf8">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('rows_to_columns')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_f9d01720-1147-4417-b3c3-6309087c2cf8 button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('rows_to_columns');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 </section>
 <section id="update-bond-data-with-accrued-interest">
@@ -2582,9 +1760,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c" class="colab-df-container">
-    <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2628,8 +1804,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>0.000</td>
       <td>99.929</td>
       <td>99.930</td>
-      <td>100000</td>
-      <td>100000</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
       <td>0.000000</td>
     </tr>
     <tr>
@@ -2638,8 +1814,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>0.000</td>
       <td>99.906</td>
       <td>99.907</td>
-      <td>40000</td>
-      <td>40000</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
       <td>0.000000</td>
     </tr>
     <tr>
@@ -2648,8 +1824,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>1.375</td>
       <td>99.921</td>
       <td>99.934</td>
-      <td>60000</td>
-      <td>60000</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
       <td>0.646399</td>
     </tr>
     <tr>
@@ -2658,8 +1834,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>4.125</td>
       <td>99.988</td>
       <td>99.997</td>
-      <td>60000</td>
-      <td>60000</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
       <td>1.939198</td>
     </tr>
     <tr>
@@ -2668,8 +1844,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>2.500</td>
       <td>99.953</td>
       <td>99.965</td>
-      <td>60000</td>
-      <td>60000</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
       <td>1.175272</td>
     </tr>
     <tr>
@@ -2688,8 +1864,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>4.125</td>
       <td>98.910</td>
       <td>98.914</td>
-      <td>100000</td>
-      <td>100000</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
       <td>0.577953</td>
     </tr>
     <tr>
@@ -2698,8 +1874,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>3.875</td>
       <td>97.763</td>
       <td>97.782</td>
-      <td>40000</td>
-      <td>40000</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
       <td>0.542926</td>
     </tr>
     <tr>
@@ -2708,8 +1884,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>3.875</td>
       <td>97.734</td>
       <td>97.738</td>
-      <td>65000</td>
-      <td>65000</td>
+      <td>65000.0</td>
+      <td>65000.0</td>
       <td>0.214088</td>
     </tr>
     <tr>
@@ -2718,8 +1894,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>4.375</td>
       <td>99.988</td>
       <td>99.989</td>
-      <td>7000</td>
-      <td>7000</td>
+      <td>7000.0</td>
+      <td>7000.0</td>
       <td>0.241713</td>
     </tr>
     <tr>
@@ -2728,279 +1904,14 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
       <td>3.500</td>
       <td>95.994</td>
       <td>96.011</td>
-      <td>16000</td>
-      <td>16000</td>
+      <td>16000.0</td>
+      <td>16000.0</td>
       <td>1.645380</td>
     </tr>
   </tbody>
 </table>
 <p>304 rows × 7 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b0286c5f-e1bc-4a6c-87de-b73e3f1a041c');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-d8cfd6e1-0c66-4fbe-8513-aeabe7c07c26">
-      <button class="colab-df-quickchart" onclick="quickchart('df-d8cfd6e1-0c66-4fbe-8513-aeabe7c07c26')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-d8cfd6e1-0c66-4fbe-8513-aeabe7c07c26 button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-  <div id="id_5b472b53-2a86-4440-861e-5d83f3dc54e8">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('bond_data')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_5b472b53-2a86-4440-861e-5d83f3dc54e8 button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('bond_data');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 </section>
 </section>
@@ -3030,13 +1941,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❓ Do you want to save the file? (y/n): y
-</pre></div>
-</div>
-<p>###<em><strong>⌛ Generating A Path</strong></em></p>
-<h3 class="rubric" id="file-path-generated">✅ <strong>File Path Generated:</strong></h3>
-<p><code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive/Basic</span> <span class="pre">Concepts</span> <span class="pre">Of</span> <span class="pre">Fixed</span> <span class="pre">Income/Accrued</span> <span class="pre">Interest/Accrued</span> <span class="pre">Interest.xlsx</span></code></p>
-<p>###<em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in /content/drive/MyDrive/Basic Concepts Of Fixed Income/Accrued Interest/Accrued Interest.xlsx</strong></em></p>
+<p>###<em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in Accrued Interest.xlsx</strong></em></p>
 </div>
 </div>
 </section>
@@ -3168,7 +2073,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-results-of-next-last-coupon-dates">Checking The Results Of next_last_coupon_dates()</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-days-between-coupon-and-payment-dates"><font color="green">Application:Days Between Coupon And Payment Dates</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-days-for-accrued-interest"><font color="green">Application:Calculate Days For Accrued Interest</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculating Accrued Interest</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-bond-data-with-accrued-interest">Update Bond Data With Accrued Interest</a></li>
 </ul>
