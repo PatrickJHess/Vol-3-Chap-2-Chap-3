@@ -437,10 +437,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-material">Background Material</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduled-pay-dates">Scheduled Pay Dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond Payment Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
 </ul>
             </nav>
         </div>
@@ -454,6 +456,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="calculating-bond-payment-dates-and-amounts">
 <h1>Calculating Bond Payment Dates And Amounts<a class="headerlink" href="#calculating-bond-payment-dates-and-amounts" title="Link to this heading">#</a></h1>
+<section id="background-material">
+<h2>Background Material<a class="headerlink" href="#background-material" title="Link to this heading">#</a></h2>
+<p>The examples and discussions in this chapter utilize the <strong>datetime</strong> and <strong>holidays</strong> Python libraries.</p>
+<ul class="simple">
+<li><p>The <strong>datetime</strong> library is introduced in the <em>Manipulating Dates</em> notebook of Chapter Two, and is further described in the introductory volume, <strong>Background Material: An Introduction to Python for Financial Python</strong>.</p>
+<ul>
+<li><p>A quick reference is available in: “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>”.</p></li>
+<li><p>The complete introductory volume is located at: “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html">Background Material: An Introduction to Python for Financial Python</a>”.</p></li>
+<li><p>Consult these cited materials for a more detailed discussion of Python concepts.</p></li>
+</ul>
+</li>
+<li><p>The <strong>holidays</strong> library, along with the <code class="docutils literal notranslate"><span class="pre">easter</span></code> function and determining weekends, is demonstrated in the notebook, <em>Accounting For Non Settlement Days: Holidays, Weekends, And Good Friday</em>.</p></li>
+</ul>
+</section>
 <section id="importing-libraries-modules-and-functions">
 <h2>Importing Libraries, Modules, And Functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h2>
 <p>As in Chapter One of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported. If necessary, The new module <font color='green'>holidays</font> is installed and then imported.</p>
@@ -703,9 +719,10 @@ except:
 <span class="s2">      </span><span class="se">\n</span><span class="s2">  ###    semi-annual assumed (2).&quot;</span><span class="p">))</span>
       <span class="n">freq</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-
   <span class="k">if</span> <span class="n">coupon</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">maturity</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">])</span>
+    <span class="c1">#Adjust maturity for nonsettlement day and return date and face value</span>
+    <span class="n">adjust_maturity</span><span class="o">=</span><span class="n">adjust_bond_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_maturity</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">])</span>
 
   <span class="c1">#get scheduled payment dates from helper function scheduled_pay_dates</span>
   <span class="n">dates</span><span class="o">=</span><span class="n">scheduled_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
@@ -732,25 +749,6 @@ except:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
-<span class="n">maturity</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">29</span><span class="p">)</span>
-<span class="n">coupon</span><span class="o">=</span><span class="mi">4</span>
-<span class="n">bond_pay_data</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">coupon</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([datetime.date(2025, 2, 28), datetime.date(2025, 9, 2),
-        datetime.date(2026, 3, 2), datetime.date(2026, 8, 31),
-        datetime.date(2027, 3, 1), datetime.date(2027, 8, 31),
-        datetime.date(2028, 2, 29)], dtype=object),
- array([  2.,   2.,   2.,   2.,   2.,   2., 102.]))
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="bond-payment-dates">
 <h2>Bond Payment Dates<a class="headerlink" href="#bond-payment-dates" title="Link to this heading">#</a></h2>
@@ -766,6 +764,62 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">bond_pay_data</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">bond_pay_data</span><span class="p">)</span>
+<span class="n">maturity</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">29</span><span class="p">)</span>
+<span class="n">settlement</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">coupon</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">bond_pay_data</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">coupon</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([datetime.date(2025, 2, 28), datetime.date(2025, 9, 2),
+        datetime.date(2026, 3, 2), datetime.date(2026, 8, 31),
+        datetime.date(2027, 3, 1), datetime.date(2027, 8, 31),
+        datetime.date(2028, 2, 29)], dtype=object),
+ array([  2.,   2.,   2.,   2.,   2.,   2., 102.]))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chapter-exercise">
+<h2><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span><a class="headerlink" href="#chapter-exercise" title="Link to this heading">#</a></h2>
+<p><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 0; margin-bottom: 0.5em; font-style: italic;"><big><font color='black'>Calculate The Payment Dates And Amounts For Five Bonds</big></font></span></p>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px"></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Maturity</p></th>
+<th class="head"><p>Coupon</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>   October 9<span class="math notranslate nohighlight">\(^{th}\)</span> 2028</p></td>
+<td><p>   1.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>   December 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2028</p></td>
+<td><p>   5.00</p></td>
+</tr>
+<tr class="row-even"><td><p>   November 28<span class="math notranslate nohighlight">\(^{th}\)</span> 2030</p></td>
+<td><p>   3.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>   October 10<span class="math notranslate nohighlight">\(^{th}\)</span> 2027</p></td>
+<td><p>   2.50</p></td>
+</tr>
+<tr class="row-even"><td><p>   February 18<span class="math notranslate nohighlight">\(^{th}\)</span> 2029</p></td>
+<td><p>    4.00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</span>
+<p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-numpy-array">Chapter One Hints: Create a NumPy Array</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-numpy-array">expected results here</a>.</p>
 </section>
 </section>
 
@@ -833,10 +887,12 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-material">Background Material</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduled-pay-dates">Scheduled Pay Dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond Payment Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
 </ul>
   </nav></div>
 

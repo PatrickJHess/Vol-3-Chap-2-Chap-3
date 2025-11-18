@@ -1,6 +1,6 @@
 # Bond Payment Data
 
-**Chapter Three of the Volume *Basic Concepts of Fixed Income**.
+**Chapter Three of the Volume Basic Concepts of Fixed Income**.
 
 
 **Key Topics Covered:**

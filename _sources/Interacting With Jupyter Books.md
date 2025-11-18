@@ -9,7 +9,7 @@ This and other chapters of *Basic Concepts Of Fixed Income*, contain two types o
    * HTML representatins of Jupyter notebooks
    * Can be downloaded as a notebook (*.ipynb*) or a PDF file (*.pdf*). 
    * Have interactive capabilities.  
-   * In a chapter like *Calculating And Graphing The Term Structure Of Interest Rates*, icons are available in the upper-right corner for launching and downloading the notebook.
+   * In a notebook like *Calculating And Graphing The Term Structure Of Interest Rates*, icons are available in the upper-right corner for launching and downloading the notebook.
 
 Notebook Launch Options
 
