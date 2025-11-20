@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Calculating Bond Payment Dates And Amounts &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+    <title>Calculating Bond Payment Dates And Amounts &#8212; Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data</title>
   
   
   
@@ -150,14 +150,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/Small_Logo.svg" class="logo__image only-light" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>
-    <script>document.write(`<img src="_static/Small_Logo.svg" class="logo__image only-dark" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>`);</script>
   
+    <p class="title logo__title">Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -183,19 +177,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Two</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Function Imported by Chapter Two.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Three</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
@@ -204,7 +199,7 @@
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two And Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two and Three</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
 </ul>
@@ -725,21 +720,14 @@ except:
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_maturity</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">])</span>
 
   <span class="c1">#get scheduled payment dates from helper function scheduled_pay_dates</span>
-  <span class="n">dates</span><span class="o">=</span><span class="n">scheduled_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
+  <span class="n">scheduled_dates</span><span class="o">=</span><span class="n">scheduled_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
 
-  <span class="c1">#pandas apply method to calculate adjusted pay dates</span>
-  <span class="c1">#Convert dates to pandas series</span>
-  <span class="n">dates_series</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
-
-  <span class="c1">#Use pandas apply to vectorize calculations</span>
-  <span class="n">adjusted_dates</span><span class="o">=</span><span class="n">dates_series</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">adjust_bond_pay_dates</span><span class="p">)</span>
-
-  <span class="c1">#Convert pandas series to numpy array</span>
-  <span class="n">pay_dates</span><span class="o">=</span><span class="n">adjusted_dates</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+  <span class="c1">#NumPy array of pay_dates: list comprehension with adjust_bond_pay_dates</span>
+  <span class="n">pay_dates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_bond_pay_dates</span><span class="p">[</span><span class="n">scheduled</span><span class="p">]</span> <span class="k">for</span> <span class="n">scheduled</span> <span class="ow">in</span> <span class="n">scheduled_dates</span><span class="p">])</span>
 
   <span class="c1">#calculate payments</span>
   <span class="c1">#coupon divided by freq at each date</span>
-  <span class="n">pay</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span><span class="n">coupon</span><span class="o">/</span><span class="n">freq</span><span class="p">)</span>
+  <span class="n">pay</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pay_dates</span><span class="p">),</span><span class="n">coupon</span><span class="o">/</span><span class="n">freq</span><span class="p">)</span>
 
   <span class="c1">#Add principal payment as last cash payment</span>
   <span class="n">pay</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="mi">100</span>
@@ -787,12 +775,7 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
 </section>
 <section id="chapter-exercise">
 <h2><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span><a class="headerlink" href="#chapter-exercise" title="Link to this heading">#</a></h2>
-<p><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 0; margin-bottom: 0.5em; font-style: italic;"><big><font color='black'>Calculate The Payment Dates And Amounts For Five Bonds</big></font></span></p>
-<p><span style="display:block;
-    border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    line-height: 1.5;
-    padding: 15px"></p>
+<p><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 0; margin-bottom: 0.5em; font-style: italic;"><big>Calculate The Payment Dates And Amounts For Five Bonds</big></font></span></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Maturity</p></th>
@@ -818,8 +801,7 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
 </tbody>
 </table>
 </div>
-</span>
-<p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-numpy-array">Chapter One Hints: Create a NumPy Array</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-numpy-array">expected results here</a>.</p>
+<p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Three_Hints.html#chapter-three-exercise">Chapter Three Hints: Calculate Bond Pay Data</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Three_Results.html#chapter-three-exercise">expected results here</a>.</p>
 </section>
 </section>
 
@@ -906,10 +888,6 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
   
   <div class="footer-item">
     
-<p class="component-author">
-By Financial Python
-</p>
-
   </div>
   
   <div class="footer-item">
@@ -917,7 +895,7 @@ By Financial Python
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA..
       <br/>
     
   </p>
