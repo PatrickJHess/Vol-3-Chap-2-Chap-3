@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Manipulating Dates &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+    <title>Manipulating Dates &#8212; Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Calculating Accrued Interest" href="Chapter_Two_Accrued_Interest.html" />
-    <link rel="prev" title="The Mechanics Of Bond Pricing" href="Machanics_Of_Bond_Pricces.html" />
+    <link rel="prev" title="The Mechanics of Bond Pricing" href="Machanics_Of_Bond_Pricces.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,14 +150,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/Small_Logo.svg" class="logo__image only-light" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>
-    <script>document.write(`<img src="_static/Small_Logo.svg" class="logo__image only-dark" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>`);</script>
   
+    <p class="title logo__title">Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -183,19 +177,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Two</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Function Imported by Chapter Two.</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Three</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
@@ -204,7 +199,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two And Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two and Three</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
 </ul>
@@ -437,7 +432,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-functions">Importing libraries and functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-values-to-settlement-date-and-maturity-date">Assign values to <font color="green">settlement_date</font> and <font color="green">maturity_date</font></a></li>
@@ -453,12 +447,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relativedelta-method-of-dateutil">The <font color="green">relativedelta</font> method of <font color="green">dateutil</font></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-add-six-months-to-a-date"><font color="green">Application: Add Six Months To A Date</font></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-next-and-last-payment-dates-for-bond-making-semi-annual-payments">Determine next and last payment dates for bond making semi-annual payments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#days-between-dates-next-payment-last-payment-and-settlement">Days between dates: next payment, last payment, and settlement</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-number-of-days-between-dates"><font color="green">Application: Calculate Number Of Days Between Dates</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-add-six-months-to-a-date"><font color="green">Application: Add Six Months To A Date</font></a></li>
 </ul>
             </nav>
         </div>
@@ -472,18 +461,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="manipulating-dates">
 <h1>Manipulating Dates<a class="headerlink" href="#manipulating-dates" title="Link to this heading">#</a></h1>
-<section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<p><strong>Background Information</strong>
-This chapter utilizes the Python libraries <strong>Pandas</strong>, <strong>NumPy</strong>, and <strong>datetime</strong>.</p>
-<p>The following notebooks from the introductory volume are referenced throughout this chapter:</p>
-<ul class="simple">
-<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html">A Quick Introduction to Pandas</a>” (Covers basic Pandas concepts)</p></li>
-<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to NumPy</a>” (Covers basic NumPy concepts)</p></li>
-<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>” (Covers the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module)</p></li>
-<li><p>*<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html#background-material-an-introduction-to-python-for-financial-python">Background Maerial</a></p></li>
-</ul>
-</section>
 <section id="preparing-the-notebook">
 <h2>Preparing the Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
 <section id="importing-libraries-and-functions">
@@ -573,10 +550,8 @@ except:
 </section>
 <section id="application-create-a-date">
 <h2><font color='green'>Application: Create a date</font><a class="headerlink" href="#application-create-a-date" title="Link to this heading">#</a></h2>
-<div style="background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    font-size: 17px;
     line-height: 1.5;
     padding: 15px">
 <br>
@@ -636,14 +611,12 @@ except:
 </section>
 <section id="application-get-the-last-day-of-the-month">
 <h2><font color='green'>Application: Get The Last Day Of The Month</font><a class="headerlink" href="#application-get-the-last-day-of-the-month" title="Link to this heading">#</a></h2>
-<div style="background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    font-size: 17px;
     line-height: 1.5;
     padding: 15px">
 <br>
-<p>Get the last day of the month for February 2024, June 2025, and December 2026. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#get-the-last-day-of-the-month">Chapter Two Hints: Get Last Day Of The Month</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#get-the-last-day-of-the-month">expected results here</a>.</p>
+<p>Get the last day of the month for February 2024. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#get-the-last-day-of-the-month">Chapter Two Hints: Get Last Day Of The Month</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#get-the-last-day-of-the-month">expected results here</a>.</p>
 <br>
 </div>
 <section id="the-relativedelta-method-of-dateutil">
@@ -654,7 +627,7 @@ except:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign delta_time the value returned by relativedelta: months=6</span>
 <span class="n">delta_time</span><span class="o">=</span><span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="c1"># Add six months tot the maturity_ date</span>
+<span class="c1"># Add six months to the maturity_ date</span>
 <span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Six Months After Maturity Date </span><span class="si">{</span><span class="n">maturity_date</span><span class="o">+</span><span class="n">delta_time</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="c1"># Subtract six months from the maturity_date</span>
 <span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Six Months Before Maturity Date </span><span class="si">{</span><span class="n">maturity_date</span><span class="o">-</span><span class="n">delta_time</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -674,99 +647,12 @@ except:
 </section>
 <section id="application-add-six-months-to-a-date">
 <h2><font color='green'>Application: Add Six Months To A Date</font><a class="headerlink" href="#application-add-six-months-to-a-date" title="Link to this heading">#</a></h2>
-<div style="background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    font-size: 17px;
     line-height: 1.5;
     padding: 15px">
 <br>
-<p>Add six months to the last day of June 2025. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#add-six-months-to-a-date">Chapter Two Hints: Add Sox Months To A Date</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#add-six-months-to-a-date">expected results here</a>.</p>
-<br>
-</div>
-<section id="determine-next-and-last-payment-dates-for-bond-making-semi-annual-payments">
-<h3>Determine next and last payment dates for bond making semi-annual payments<a class="headerlink" href="#determine-next-and-last-payment-dates-for-bond-making-semi-annual-payments" title="Link to this heading">#</a></h3>
-<p>The following code calculates the next and last semi-annual payment dates. Adjustments to these calculations would be necessary for different payment frequencies.</p>
-<ol class="arabic simple">
-<li><p><strong>If the <font color='green'>settlement_date</font> is less than or equal to the maturity month and day in the current year:</strong></p>
-<ul class="simple">
-<li><p>The next payment date is the maturity month and day in the current year.</p></li>
-<li><p>The last payment date is six months before the next payment date.</p></li>
-</ul>
-</li>
-<li><p><strong>If the <font color='green'>settlement_date</font> is greater than the maturity month and day in the current year:</strong></p>
-<ul class="simple">
-<li><p>The next payment date is six months after the maturity month and day in the current year.</p></li>
-<li><p>The last payment date is the maturity month and day in the current year.</p></li>
-</ul>
-</li>
-<li><p><strong>The <font color='green'>isLast</font> variable determines if either the next or last payment date falls at the end of a month.</strong></p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Is settlement date before or equal to maturity date in current year</span>
-<span class="n">settlementBefore</span><span class="o">=</span><span class="n">settlement_date</span><span class="o">&lt;=</span><span class="n">date</span><span class="p">(</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
-                                   <span class="n">maturity_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
-                                   <span class="n">maturity_date</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">settlementBefore</span><span class="p">:</span>
-  <span class="n">next_payment_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
-<span class="c1">#Last six months before...need to check for last day of month</span>
-  <span class="n">last_payment_date</span><span class="o">=</span><span class="n">next_payment_date</span><span class="o">-</span><span class="n">delta_time</span>
-<span class="c1"># Check for month-end</span>
-  <span class="k">if</span> <span class="n">isLast</span><span class="p">:</span>
-    <span class="n">_</span><span class="p">,</span><span class="n">last</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">last_payment_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">last_payment_date</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
-    <span class="n">last_payment_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="n">last_payment_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">last_payment_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">last</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-<span class="c1"># next six months after maturity date in current year</span>
-  <span class="n">next_payment_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">day</span><span class="p">)</span><span class="o">+</span><span class="n">add_months</span>
-  <span class="k">if</span> <span class="n">isLast</span><span class="p">:</span>
-    <span class="n">_</span><span class="p">,</span><span class="n">last</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">next_payment_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">next_payment_date</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
-    <span class="n">next_payment_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="n">next_payment_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">next_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">last</span><span class="p">)</span>
-<span class="c1"># last payment maturity date in current year (settlement_date.year)</span>
-    <span class="n">last_payment_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="n">settlement_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">maturity_date</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Next Payment Date </span><span class="si">{</span><span class="n">next_payment_date</span><span class="si">}</span><span class="s1"> last Payment Date </span><span class="si">{</span><span class="n">last_payment_date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Next Payment Date 2025-04-30 last Payment Date 2024-10-31&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>The code cell could be improved with a function. The Accrued interest notebook within this chapter does just that.</p>
-</section>
-<section id="days-between-dates-next-payment-last-payment-and-settlement">
-<h3>Days between dates: next payment, last payment, and settlement<a class="headerlink" href="#days-between-dates-next-payment-last-payment-and-settlement" title="Link to this heading">#</a></h3>
-<p>Calculating accrued interest requires determining the number of days between specific dates. A task easily achieved using date objects. The difference in days is an attribute derived from subtracting one date object from another. The following code cell calculates the number of days between the next and last coupon payment dates, and between the settlement date and the last coupon payment date.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the difference between dates</span>
-<span class="n">days_between</span><span class="o">=</span><span class="n">next_payment_date</span><span class="o">-</span><span class="n">last_payment_date</span>
-<span class="n">days_since_last</span><span class="o">=</span><span class="n">settlement_date</span><span class="o">-</span><span class="n">last_payment_date</span>
-<span class="c1">#Display the days attribute of the differences</span>
-<span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Days Between Coupons </span><span class="si">{</span><span class="n">days_between</span><span class="o">.</span><span class="n">days</span><span class="si">}</span><span class="s1"> Days Since Last Coupon </span><span class="si">{</span><span class="n">days_since_last</span><span class="o">.</span><span class="n">days</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Days Between Coupons 181 Days Since Last Coupon 82&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="application-calculate-number-of-days-between-dates">
-<h2><font color='green'>Application: Calculate Number Of Days Between Dates</font><a class="headerlink" href="#application-calculate-number-of-days-between-dates" title="Link to this heading">#</a></h2>
-<div style="background-color:LightGray;
-    border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    font-size: 17px;
-    line-height: 1.5;
-    padding: 15px">
-<br>
-<p>Calculate the number of days between last day of June 2025 and February 2028. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-number-of-days-between-dates">Chapter Two Hints:Calculate Number Of Days Beween Dates</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-number-of-days-between-dates">expected results here</a>.</p>
+<p>Add six months to the last day of June 2025. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#add-six-months-to-a-date">Chapter Two Hints: Add Six Months To A Date</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#add-six-months-to-a-date">expected results here</a>.</p>
 <br>
 </div>
 </section>
@@ -808,7 +694,7 @@ except:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Mechanics Of Bond Pricing</p>
+        <p class="prev-next-title">The Mechanics of Bond Pricing</p>
       </div>
     </a>
     <a class="right-next"
@@ -836,7 +722,6 @@ except:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-functions">Importing libraries and functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-values-to-settlement-date-and-maturity-date">Assign values to <font color="green">settlement_date</font> and <font color="green">maturity_date</font></a></li>
@@ -852,12 +737,7 @@ except:
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relativedelta-method-of-dateutil">The <font color="green">relativedelta</font> method of <font color="green">dateutil</font></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-add-six-months-to-a-date"><font color="green">Application: Add Six Months To A Date</font></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-next-and-last-payment-dates-for-bond-making-semi-annual-payments">Determine next and last payment dates for bond making semi-annual payments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#days-between-dates-next-payment-last-payment-and-settlement">Days between dates: next payment, last payment, and settlement</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-number-of-days-between-dates"><font color="green">Application: Calculate Number Of Days Between Dates</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-add-six-months-to-a-date"><font color="green">Application: Add Six Months To A Date</font></a></li>
 </ul>
   </nav></div>
 
@@ -871,10 +751,6 @@ except:
   
   <div class="footer-item">
     
-<p class="component-author">
-By Financial Python
-</p>
-
   </div>
   
   <div class="footer-item">
@@ -882,7 +758,7 @@ By Financial Python
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA..
       <br/>
     
   </p>

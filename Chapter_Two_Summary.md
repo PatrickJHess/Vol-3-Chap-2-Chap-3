@@ -1,4 +1,4 @@
-# Updating Quoted Bond Prices With Accrued Interest
+# Updating Quoted Bond Prices with Accrued Interest
 
 This chapter focused on the calculation and concept of accrued interest, utilizing the **datetime module** as the primary tool. The calculations were applied to the *bond_data* DataFrame, which contained information for 304 bonds. After successfully calculating and adding the accrued interest to the DataFrame, the data was then exported to an Excel workbook.
 

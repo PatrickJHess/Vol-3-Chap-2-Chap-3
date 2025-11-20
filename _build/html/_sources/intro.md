@@ -1,9 +1,10 @@
 # Financial Python
 
-## Basic Concepts of Fixed Income
+## **Volume: Basic Concepts of Fixed Income**
 
-### Chapters Two And Three
-Chapter One of *Basic Concepts Of Fixed Income* introduced the fundamentals of bond pricing and demonstrated how to calculate the term structure of interest rates using the prices of short-term U.S. Treasury Bills (those with a maturity of one year or less).
+### **Chapters Two and Three: Accrued Interest and Bond Pay Data**
+
+Chapter One of *Basic Concepts of Fixed Income* introduced the fundamentals of bond pricing and demonstrated how to calculate the term structure of interest rates using the prices of short-term U.S. Treasury Bills (those with a maturity of one year or less).
 
 To significantly expand our knowledge of the term structure—and, consequently, gain a deeper understanding of the financial markets—we must extend this analysis using coupon bonds, which often have much longer maturity dates. This process is known as bootstrapping the term structure of interest rates.
 

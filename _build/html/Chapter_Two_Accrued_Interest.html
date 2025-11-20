@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Calculating Accrued Interest &#8212; Basic Bond Concepts and the Term Structure of Interest Rates</title>
+    <title>Calculating Accrued Interest &#8212; Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter_Two_Accrued_Interest';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Updating Quoted Bond Prices With Accrued Interest" href="Chapter_Two_Summary.html" />
+    <link rel="next" title="Updating Quoted Bond Prices with Accrued Interest" href="Chapter_Two_Summary.html" />
     <link rel="prev" title="Manipulating Dates" href="Dealing_With_Dates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -150,14 +150,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/Small_Logo.svg" class="logo__image only-light" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>
-    <script>document.write(`<img src="_static/Small_Logo.svg" class="logo__image only-dark" alt="Basic Bond Concepts and the Term Structure of Interest Rates - Home"/>`);</script>
   
+    <p class="title logo__title">Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -183,19 +177,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working With Jupyter Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Two</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Two</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics Of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Calculating Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices With Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Function Imported by Chapter Two.</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps Of Fixed Income- Chapter Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Three</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
@@ -204,7 +199,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two And Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two and Three</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
 </ul>
@@ -437,16 +432,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing The Notebook</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-dataframe-bond-data">Creating The DataFrame bond_data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-dates-and-converting-datetime-to-date">Validating dates and converting <font color="green">datetime</font> to <font color="green">date</font>.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-accrued-interest-with-five-unique-maturity-dates">Illustrating Accrued Interest With Five Unique Maturity Dates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-access-bonds-with-specific-characteristics"><font color="green">Application:Access Bonds With Specific Characteristics</font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-dates-and-converting-datetime-to-date">Validating dates and converting <font color="green">datetime</font> to <font color="green">date</font>.</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-access-bonds-with-specific-characteristics"><font color="green">Application:Access Bonds With Specific Characteristics</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-settlement-or-maturity-date-is-month-end">Determine If Settlement Or Maturity Date Is Month End</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-day-month-function">last_day_month() function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-next-coupon-period">The Next Coupon Period</a></li>
@@ -463,7 +457,6 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-a-transaction-price"><font color="green">Application:Calculate A Transaction Price</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-workbook">Creating The Workbook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-path">The Default Path</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-an-excel-workbook"><font color="green">Application:Create An Excel Workbook</font></a></li>
@@ -481,18 +474,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="calculating-accrued-interest">
 <h1>Calculating Accrued Interest<a class="headerlink" href="#calculating-accrued-interest" title="Link to this heading">#</a></h1>
-<section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<p><strong>Background Information</strong>
-This chapter utilizes the Python libraries <strong>Pandas</strong>, <strong>NumPy</strong>, and <strong>datetime</strong>.</p>
-<p>The following notebooks from the introductory volume are referenced throughout this chapter:</p>
-<ul class="simple">
-<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html">A Quick Introduction to Pandas</a>” (Covers basic Pandas concepts)</p></li>
-<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to NumPy</a>” (Covers basic NumPy concepts)</p></li>
-<li><p>“<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html">A Quick Introduction to Manipulating Dates</a>” (Covers the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module)</p></li>
-<li><p>*<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/intro.html#background-material-an-introduction-to-python-for-financial-python">Background Maerial</a></p></li>
-</ul>
-</section>
 <section id="preparing-the-notebook">
 <h2>Preparing The Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
 <section id="importing-libraries-modules-and-functions">
@@ -584,7 +565,7 @@ except:
 </div>
 <ul class="simple">
 <li><p><font color='green'>accrured_interest()</font> <a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/accrued_interest.html#accrued-interest-is-a-helper-function-that-calculates-accrued-interest">view here</a>.</p></li>
-<li><p><font color='green'>create_workbook() <a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/create_workbook.html#create-workbook-is-a-helper-function-that-creates-excel-workbooks-from-dataframes-created-by-financial-python">view here</a></p></li>
+<li><p><font color='green'>create_workbook()</font> <a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/create_workbook.html#create-workbook-is-a-helper-function-that-creates-excel-workbooks-from-dataframes-created-by-financial-python">view here</a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -609,9 +590,7 @@ except:
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Failed to execute or import the module. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Now that &#39;basic_concepts_fixed_income&#39; exists in the notebook, import the specific functions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span><span class="p">(</span><span class="n">accrued_interest</span><span class="p">,</span>
-                                        <span class="n">create_workbook</span><span class="p">,</span>
-                                        <span class="n">validate_date</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span><span class="p">(</span><span class="n">create_workbook</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -620,7 +599,7 @@ except:
 </section>
 <section id="creating-the-dataframe-bond-data">
 <h2>Creating The DataFrame bond_data<a class="headerlink" href="#creating-the-dataframe-bond-data" title="Link to this heading">#</a></h2>
-<p><font color='black'> U.S. Treasury notes and bonds data, for settlement on January 21, 2025, was obtained from Fidelity. The Fidelity data, an Excel workbook, is downloaded from DropBox using the Panda’s <font color='green'>read_excel()</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
+<p>US Treasury notes and bonds data, for settlement on January 21, 2025, was obtained from Fidelity. The Fidelity data, an Excel workbook, is downloaded from DropBox using the Panda’s <font color='green'>read_excel()</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
 <p>Three arguments are passed to the method.</p>
 <ol class="arabic simple">
 <li><p>The URL address (<font color='green'>url</font>) is required.</p></li>
@@ -796,6 +775,55 @@ except:
 </div></div></div>
 </div>
 </section>
+<section id="validating-dates-and-converting-datetime-to-date">
+<h2>Validating dates and converting <font color='green'>datetime</font> to <font color='green'>date</font>.<a class="headerlink" href="#validating-dates-and-converting-datetime-to-date" title="Link to this heading">#</a></h2>
+<p>As discussed in the section  <em>Manipulating Dates</em>, the datetime library generates two distinct but related object types. For calculations of accrued interest or bond payment dates, <font color='green'>date</font> objects, with their year, month, and day attributes are preferred to <font color='green'>datetime</font> objects.</p>
+<p><font color='green'>datetime</font> objects include unnecessary attributes such as hour, second, and microsecond. These time-based attributes of <font color='green'>datetime</font> objects can impact comparisons between two dates that share the same month, day, and year. To prevent such issues, all <font color='green'>datetime</font> objects are converted to <font color='green'>date</font> objects.</p>
+<p>The function <font color='green'>validate_date</font> determines if the argument of the function is an instance of a <font color='green'>date</font> or <font color='green'>datetime</font> and converts <font color='green'>datetime</font> objects to <font color='green'>date</font> objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_date</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Validates input is a date/datetime and returns a date object.</span>
+
+<span class="sd">  This helper function checks if the input is either a</span>
+<span class="sd">  datetime.datetime or datetime.date object. If it&#39;s a</span>
+<span class="sd">  datetime.datetime, it converts it to a datetime.date.</span>
+<span class="sd">  It always returns a datetime.date object.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    datetime_obj (datetime.date or datetime.datetime):</span>
+<span class="sd">      The input to validate and convert.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    datetime.date: The resulting date object.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If the input is not a datetime.date or</span>
+<span class="sd">               datetime.datetime object.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+
+  <span class="c1">#Validation ---</span>
+
+  <span class="c1"># Check if the object is of the expected type (date or datetime)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">,</span> <span class="p">(</span><span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">)):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input must be a datetime or date object.&quot;</span><span class="p">)</span>
+
+  <span class="c1">#Standardization ---</span>
+
+  <span class="c1"># If the object is a datetime, convert it to a date.</span>
+  <span class="c1"># This makes the return type consistent.</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+    <span class="n">datetime_obj</span> <span class="o">=</span> <span class="n">datetime_obj</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+
+  <span class="c1"># Return the object, which is now guaranteed to be a date object.</span>
+  <span class="k">return</span> <span class="n">datetime_obj</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="illustrating-accrued-interest-with-five-unique-maturity-dates">
 <h2>Illustrating Accrued Interest With Five Unique Maturity Dates<a class="headerlink" href="#illustrating-accrued-interest-with-five-unique-maturity-dates" title="Link to this heading">#</a></h2>
 <p>The <font color='green'>loc</font> attribute is utilized to identify the bonds with the five maturity dates. The <font color='green'>sample_bonds</font> DataFrame includes several bonds with the same maturity date. The Pandas method <font color='green'>duplicated()</font> selects the the first instances of the bonds resulting in five bonds with unique maturity dates.<span class="math notranslate nohighlight">\(^{3}\)</span></p>
@@ -930,64 +958,13 @@ except:
 </section>
 <section id="application-access-bonds-with-specific-characteristics">
 <h2><font color='green'>Application:Access Bonds With Specific Characteristics</font><a class="headerlink" href="#application-access-bonds-with-specific-characteristics" title="Link to this heading">#</a></h2>
-<p><span style="display:block;background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
     line-height: 1.5;
     padding: 15px">
 <br>
-Access the bonds that mature at the end of April and October 2025. Create a DataFrame of the bonds with a coupon greater than 3.5. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#access-bonds-with-specific-characteristics">Chapter Two Hints:Access Bonds With Specific Characteristics</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#access-bonds-with-specific-characteristics">expected results here</a>.
+<p>Access the bonds that mature at the end of April and October 2025. Create a DataFrame of the bonds with a coupon greater than 3.5. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#access-bonds-with-specific-characteristics">Chapter Two Hints:Access Bonds With Specific Characteristics</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#access-bonds-with-specific-characteristics">expected results here</a>.</p>
 <br>
-<br>
-</span></p>
-</section>
-<section id="validating-dates-and-converting-datetime-to-date">
-<h2>Validating dates and converting <font color='green'>datetime</font> to <font color='green'>date</font>.<a class="headerlink" href="#validating-dates-and-converting-datetime-to-date" title="Link to this heading">#</a></h2>
-<p>As discussed in the section  <em>Manipulating Dates</em>, the datetime library generates two distinct but related object types. For calculations of accrued interest or bond payment dates, <font color='green'>date</font> objects, with their year, month, and day attributes are preferred to <font color='green'>datetime</font> objects.</p>
-<p><font color='green'>datetime</font> objects include unnecessary attributes such as hour, second, and microsecond. These time-based attributes of <font color='green'>datetime</font> objects can impact comparisons between two dates that share the same month, day, and year. To prevent such issues, all <font color='green'>datetime</font> objects are converted to <font color='green'>date</font> objects.</p>
-<p>The function <font color='green'>validate_date</font> determines if the argument of the function is an instance of a <font color='green'>date</font> or <font color='green'>datetime</font> and converts <font color='green'>datetime</font> objects to <font color='green'>date</font> objects.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_date</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Validates input is a date/datetime and returns a date object.</span>
-
-<span class="sd">  This helper function checks if the input is either a</span>
-<span class="sd">  datetime.datetime or datetime.date object. If it&#39;s a</span>
-<span class="sd">  datetime.datetime, it converts it to a datetime.date.</span>
-<span class="sd">  It always returns a datetime.date object.</span>
-
-<span class="sd">  Args:</span>
-<span class="sd">    datetime_obj (datetime.date or datetime.datetime):</span>
-<span class="sd">      The input to validate and convert.</span>
-
-<span class="sd">  Returns:</span>
-<span class="sd">    datetime.date: The resulting date object.</span>
-
-<span class="sd">  Raises:</span>
-<span class="sd">    TypeError: If the input is not a datetime.date or</span>
-<span class="sd">               datetime.datetime object.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
-
-  <span class="c1">#Validation ---</span>
-
-  <span class="c1"># Check if the object is of the expected type (date or datetime)</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">,</span> <span class="p">(</span><span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">)):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input must be a datetime or date object.&quot;</span><span class="p">)</span>
-
-  <span class="c1">#Standardization ---</span>
-
-  <span class="c1"># If the object is a datetime, convert it to a date.</span>
-  <span class="c1"># This makes the return type consistent.</span>
-  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
-    <span class="n">datetime_obj</span> <span class="o">=</span> <span class="n">datetime_obj</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
-
-  <span class="c1"># Return the object, which is now guaranteed to be a date object.</span>
-  <span class="k">return</span> <span class="n">datetime_obj</span>
-</pre></div>
-</div>
-</div>
 </div>
 <section id="determine-if-settlement-or-maturity-date-is-month-end">
 <h3>Determine If Settlement Or Maturity Date Is Month End<a class="headerlink" href="#determine-if-settlement-or-maturity-date-is-month-end" title="Link to this heading">#</a></h3>
@@ -1080,7 +1057,9 @@ Month-End Status Of Settlement Date False
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Semi-annual bonds so number of months is 6 (12/2 with floor division // )</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settlement_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+
+<span class="c1"># Semi-annual bonds so number of months is 6 (12/2 with floor division // )</span>
 <span class="n">num_months</span> <span class="o">=</span> <span class="mi">12</span><span class="o">//</span> <span class="mi">2</span>
 
 <span class="c1"># Set the starting point of our date range from the settlement date.</span>
@@ -1102,10 +1081,10 @@ Month-End Status Of Settlement Date False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2025-01-21 00:00:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2025, 1, 21)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2025-07-21 00:00:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.date(2025, 7, 21)
 </pre></div>
 </div>
 </div>
@@ -1346,17 +1325,14 @@ Month-End Status Of Settlement Date False
 </section>
 <section id="application-calculate-days-for-accrued-interest">
 <h2><font color='green'>Application:Calculate Days For Accrued Interest</font><a class="headerlink" href="#application-calculate-days-for-accrued-interest" title="Link to this heading">#</a></h2>
-<p><span style="display:block;background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
     line-height: 1.5;
     padding: 15px">
 <br>
-Assume a bond matures on January 15<span class="math notranslate nohighlight">\(^{th}\)</span> 2030 and the settlement date is May 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2024.  Calculate the number of days since the last coupon payment and the number of days between the last and next coupon payment. see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-days-between-coupon-payment-and-settlement-dates">Chapter Two Calculate Days For Accrued Interest</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-days-between-coupon-payment-and-settlement-dates">expected results here</a>.
+<p>Assume a bond matures on January 15<span class="math notranslate nohighlight">\(^{th}\)</span> 2030 and the settlement date is May 1<span class="math notranslate nohighlight">\(^{st}\)</span> 2024.  Calculate the number of days since the last coupon payment and the number of days between the last and next coupon payment. see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#calculate-days-between-coupon-payment-and-settlement-dates">Chapter Two Calculate Days For Accrued Interest</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#calculate-days-between-coupon-payment-and-settlement-dates">expected results here</a>.</p>
 <br>
-<br>
-</span></p>
-<section id="id1">
+</div><section id="id1">
 <h3>Calculating Accrued Interest<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>The <font color='green'>next_last_coupon_dates()</font> function determines the next and last coupon dates using the bond’s maturity and settlement dates as arguments.</p>
 <p>For government bonds, calculating the days since the last coupon payment and the interval between coupon dates is straightforward, involving a simple difference between date objects.</p>
@@ -1917,10 +1893,8 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </section>
 <section id="application-calculate-a-transaction-price">
 <h2><font color='green'>Application:Calculate A Transaction Price</font><a class="headerlink" href="#application-calculate-a-transaction-price" title="Link to this heading">#</a></h2>
-<div style="background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    font-size: 17px;
     line-height: 1.5;
     padding: 15px">
 <br>
@@ -1941,25 +1915,15 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>###<em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in Accrued Interest.xlsx</strong></em></p>
+<h3 class="rubric" id="successfully-wrote-and-formatted-sheet-basic-bond-data-in-accrued-interest-xlsx"><em><strong>✅ Successfully wrote and formatted sheet Basic Bond Data in Accrued Interest.xlsx</strong></em></h3>
 </div>
-</div>
-</section>
-<section id="the-default-path">
-<h3>The Default Path<a class="headerlink" href="#the-default-path" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="p">,</span><span class="n">folder</span><span class="p">,</span><span class="n">subfolder</span><span class="o">=</span><span class="n">parent_folder_subfolder</span><span class="p">()</span>
-<span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Fidelity Data&#39;</span>
-<span class="n">create_workbook</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">,</span><span class="n">bond_data</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-</pre></div>
 </div>
 </section>
 </section>
 <section id="application-create-an-excel-workbook">
 <h2><font color='green'>Application:Create An Excel Workbook</font><a class="headerlink" href="#application-create-an-excel-workbook" title="Link to this heading">#</a></h2>
-<div style="background-color:LightGray;
+<div style="
     border-left: 12px solid green;
-    font-family: 'Garamond', serif;
-    font-size: 17px;
     line-height: 1.5;
     padding: 15px">
 <br>
@@ -2034,7 +1998,7 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Updating Quoted Bond Prices With Accrued Interest</p>
+        <p class="prev-next-title">Updating Quoted Bond Prices with Accrued Interest</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2054,16 +2018,15 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing The Notebook</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-dataframe-bond-data">Creating The DataFrame bond_data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-dates-and-converting-datetime-to-date">Validating dates and converting <font color="green">datetime</font> to <font color="green">date</font>.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-accrued-interest-with-five-unique-maturity-dates">Illustrating Accrued Interest With Five Unique Maturity Dates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-access-bonds-with-specific-characteristics"><font color="green">Application:Access Bonds With Specific Characteristics</font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-dates-and-converting-datetime-to-date">Validating dates and converting <font color="green">datetime</font> to <font color="green">date</font>.</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-access-bonds-with-specific-characteristics"><font color="green">Application:Access Bonds With Specific Characteristics</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-settlement-or-maturity-date-is-month-end">Determine If Settlement Or Maturity Date Is Month End</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-day-month-function">last_day_month() function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-next-coupon-period">The Next Coupon Period</a></li>
@@ -2080,7 +2043,6 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-a-transaction-price"><font color="green">Application:Calculate A Transaction Price</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-workbook">Creating The Workbook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-default-path">The Default Path</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-an-excel-workbook"><font color="green">Application:Create An Excel Workbook</font></a></li>
@@ -2098,10 +2060,6 @@ Assume a bond matures on January 15<span class="math notranslate nohighlight">\(
   
   <div class="footer-item">
     
-<p class="component-author">
-By Financial Python
-</p>
-
   </div>
   
   <div class="footer-item">
@@ -2109,7 +2067,7 @@ By Financial Python
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA..
       <br/>
     
   </p>

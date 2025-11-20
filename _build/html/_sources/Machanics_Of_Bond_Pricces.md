@@ -1,18 +1,13 @@
 
-
-
-# The Mechanics Of Bond Pricing
-
-
+# The Mechanics of Bond Pricing
 
 This chapter focuses on essential date manipulation skills for finance professionals, introducing several new functions. The most significant is <font color='green'>accrued_interest()</font>.   Accrued interest calculations are often complex, but understanding the concepts is crucial. Although bonds are quoted 'clean' (without accrued interest), they trade 'dirty' (with accrued interest). The purpose here is to thoroughly demonstrate the concepts and calculations, but not to require memorizing every detail.
 
-
-## Bond Prices And Accrued Interest
+## Bond Prices and Accrued Interest
 
 The transaction price (or dirty price) of a coupon bond is the sum of its quoted (or clean) price and accrued interest. Accrued interest is the allocation of a coupon payment between payment dates. It's worth noting that accrued interest determines how taxable interest income is allocated between purchasers and sellers of a bond.
 
-### Illustrating Accrued Interest With Five Maturity Dates
+### Illustrating Accrued Interest with Five Maturity Dates
 
 Two time periods are required to calculate accrued interest:
 
@@ -21,10 +16,10 @@ Two time periods are required to calculate accrued interest:
 
 Until it matures, a coupon bond has a scheduled payment every year on the anniversary of its maturity date. If the maturity date is a month-end, all payments are as well.  Consider a bond maturing on April 30$^{th}$ making semi-annual coupon payments. Before April 30$^{th}$ of the current year, the next scheduled payment is April 30$^{th}$ in the current year and the previous scheduled payment is October 31$^{st}$ of the previous year. After April 30$^{th}$ and before October 31$^{st}$ of the current year, the next scheduled payment is October 31$^{st}$.
 
-Because the purchaser of a bond owns it on the settlement date, the accrued interest does not include the settlement date. Five bonds paying semi-annual coupon payments are used to illustrate the concepts. The maturity dates of the bonds are:
+Because the purchaser of a bond owns it on the settlement date, the accrued interest excludes the settlement date. Five bonds paying semi-annual coupon payments are used to illustrate the concepts. The maturity dates of the bonds are:
 
 * February 28$^{th}$ 2025  
-* July 15$^{th}$ 2025  
+* July 15$^{th}$ 2025 
 * August 31$^{st}$ 2025  
 * January 15$^{th}$ 2026  
 * February 29$^{th}$ 2028
@@ -32,7 +27,6 @@ Because the purchaser of a bond owns it on the settlement date, the accrued inte
 #### The Next Coupon Period
 
 The end of the next coupon period is determined by adding the number of months between payments to the settlement date.  In these examples the bonds pay semi-annually and the number of months between payments is six. The settlement date is assumed to be January 21$^{st}$ 2025 . The next scheduled payment date of any semi-annual bond  is no later than  July 21$^{st}$ 2025\. If the maturity month and day of the bond is before July 21$^{st}$, the next scheduled payment is in the maturity month. For example, the bond maturing on February 29$^{th}$ 2028 follows the month-end rule, and the next scheduled payment is the last day of February 2025- the 28$^{th}$.
-
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vS1L8ZT3QiCyUdLd8kddTgsgqGHUp7u8d1nUDZ4KhiIMTuHrPq1Jc3dpfmSmgbaI6bd4EPLnTqEKJj4/pub?w=960&h=720'>
 
 #### Calculating Accrued Interest
@@ -41,8 +35,8 @@ Accrued interest for Government bonds is calculated by determining the ratio of 
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vR6XvDjt0b_IiI23LnhIthZ1uMpS4dMOX9LH0gW5wMK_7DnpkaFiu1lkP3T8otpurLPU5jI9y8f18ea/pub?w=960&h=720'>
 
 Other securities use different day-count conventions; '30/360' is used for non-government bonds, 'Actual/360' is used for non-coupon bonds, and 'Actual/ 365' is used for some derivatives and international bonds and currency markets.  The Table *Day-Count Convention Rules* describes the four conventions.
-' 
-#### Day-Count Convention Rules
+ 
+#### Day-Count Convention Rules.
 | Convention | Security Type | Amount | Accrued Day Ratio |
 | :---- | :---- | :---- | :---- |
 | **Actual/Actual** | Government Bonds. | Next Coupon | Numerator settlement less last payment date minus  1.Denominator actual number of days between next and last coupon payment dates,  |

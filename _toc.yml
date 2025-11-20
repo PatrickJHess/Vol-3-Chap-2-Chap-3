@@ -7,7 +7,7 @@ parts:
     chapters:
     - file: Interacting With Jupyter Books
 
-  - caption: Basic Concetps Of Fixed Income- Chapter Two
+  - caption: "Basic Concetps of Fixed Income: Chapter Two"
     chapters:
     - file: Chapter_Two_Highlights
       sections:
@@ -15,15 +15,16 @@ parts:
       - file: Dealing_With_Dates
       - file: Chapter_Two_Accrued_Interest
       - file: Chapter_Two_Summary
+      - file: imported_functions
 
-  - caption: Basic Concetps Of Fixed Income- Chapter Three
+  - caption: "Basic Concetps of Fixed Income: Chapter Three"
     chapters:
     - file: Chapter_Three_Highlights
-      sections: # <-- Make sure this is indented correctly
+      sections: 
       - file: Actual_Payment_Dates
       - file: Non_Settlement_Days
       - file: Bond_Pay_Dates
 
-  - caption: Summarizing Chapters Two And Three
+  - caption: Summarizing Chapters Two and Three
     chapters:
     - file: Chapter_Two__Three_Summary # <-- Make sure no spaces are here
