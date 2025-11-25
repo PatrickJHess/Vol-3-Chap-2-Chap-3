@@ -27,14 +27,16 @@ The examples and discussions in this chapter utilize the **datetime** and **holi
 
 **Chapter Structure:**
 
-The chapter is divided into the following four sections:
+**The chapter includes five  sections:**
 
-1. *Actual Versus Scheduled Payment Dates*.  
-2. The Jupyter notebook *Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday*.  
-3. The Jupyter notebook *Calculating Bond Payment Dates And Amounts*.  
-4. *Summary*, which reviews the financial concepts and outcomes.
-
-*Note: The functions imported by the notebooks Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday and Calculating Bond Payment Dates And Amounts are also detailed.*
-
+1. *Actual Versus Scheduled Payment Dates* discuss the difference between scheduled and actual bond payment dates.  
+2. The  Jupyter notebook *Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday* use the **holidays** and **datetime** libraries as well the dateutil.easter module to develop the adjust_bond_pay_dates function.  
+3. The  Jupyter notebook *Calculating Bond Payment Dates and Amounts* converts scheduled payment dates to amounts:
+   * uses the validate_date and scheduled_pay_dates functions of Chapter Two  
+   * Use adjut_bond_pay_dates function of the notebook *Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday*  
+   * Develops the function bond_pay_data that returns actual payment dates from a bond's maturity, coupon, annual frequency of payment, and the settlement date. 
+   * an exercise asking you to calculate the payment dates and amounts for five bonds.
+4. *Calculating Actual Payment Dates and Amounts*  summarizes the financial concepts and results.  
+5. *Functions Imported by Accrued Interest*  describes the function imported from DropBox (*module\_basic\_concepts\_fixed\_income*).
 ```{tableofcontents}
 ```

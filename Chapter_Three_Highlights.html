@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -204,7 +204,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Transaction_Prices_Paayment_Data.html">Getting Accrued Interest And Actual Payment Dates And Amounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transaction_Prices_Paayment_Data.html">Getting Bomd Transaction Prices and Actual Payment Dates and Amounts</a></li>
 </ul>
 
     </div>
@@ -404,14 +404,21 @@ document.write(`
 <li><p>The <strong>holidays</strong> library, along with the <code class="docutils literal notranslate"><span class="pre">easter</span></code> function and determining weekends, is demonstrated in the notebook, <em>Accounting For Non Settlement Days: Holidays, Weekends, And Good Friday</em>.</p></li>
 </ul>
 <p><strong>Chapter Structure:</strong></p>
-<p>The chapter is divided into the following four sections:</p>
+<p><strong>The chapter includes five  sections:</strong></p>
 <ol class="arabic simple">
-<li><p><em>Actual Versus Scheduled Payment Dates</em>.</p></li>
-<li><p>The Jupyter notebook <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em>.</p></li>
-<li><p>The Jupyter notebook <em>Calculating Bond Payment Dates And Amounts</em>.</p></li>
-<li><p><em>Summary</em>, which reviews the financial concepts and outcomes.</p></li>
+<li><p><em>Actual Versus Scheduled Payment Dates</em> discuss the difference between scheduled and actual bond payment dates.</p></li>
+<li><p>The  Jupyter notebook <em>Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday</em> use the <strong>holidays</strong> and <strong>datetime</strong> libraries as well the dateutil.easter module to develop the adjust_bond_pay_dates function.</p></li>
+<li><p>The  Jupyter notebook <em>Calculating Bond Payment Dates and Amounts</em> converts scheduled payment dates to amounts:</p>
+<ul class="simple">
+<li><p>uses the validate_date and scheduled_pay_dates functions of Chapter Two</p></li>
+<li><p>Use adjut_bond_pay_dates function of the notebook <em>Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday</em></p></li>
+<li><p>Develops the function bond_pay_data that returns actual payment dates from a bond’s maturity, coupon, annual frequency of payment, and the settlement date.</p></li>
+<li><p>an exercise asking you to calculate the payment dates and amounts for five bonds.</p></li>
+</ul>
+</li>
+<li><p><em>Calculating Actual Payment Dates and Amounts</em>  summarizes the financial concepts and results.</p></li>
+<li><p><em>Functions Imported by Accrued Interest</em>  describes the function imported from DropBox (<em>module_basic_concepts_fixed_income</em>).</p></li>
 </ol>
-<p><em>Note: The functions imported by the notebooks Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday and Calculating Bond Payment Dates And Amounts are also detailed.</em></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
