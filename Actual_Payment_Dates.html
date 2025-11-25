@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Actual_Payment_Dates';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday" href="Non_Settlement_Days.html" />
+    <link rel="next" title="Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday" href="Non_Settlement_Days.html" />
     <link rel="prev" title="Bond Payment Data" href="Chapter_Three_Highlights.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,29 +177,32 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Two</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Two</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Function Imported by Chapter Two.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions_Two.html">Function Imported by Chapter Two.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Three</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Actual Versus Scheduled Payment Dates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Non_Settlement_Days.html">Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bond_Pay_Dates.html">Calculating Bond Payment Dates and Amounts</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Three_Summary.html">Calculating Actual Payment Dates and Amounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions_Three.html">Function Imported by Chapter Three.</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two and Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transaction_Prices_Paayment_Data.html">Getting Accrued Interest And Actual Payment Dates And Amounts</a></li>
 </ul>
 
     </div>
@@ -370,8 +373,8 @@ document.write(`
 <p>A bond’s accrued interest is calculated based on scheduled payment amounts and dates, but its present value relies on the actual amounts and dates. Although the payment amounts are fixed, the actual payment dates often deviate from the scheduled ones.</p>
 <p>Actual payment dates correspond to settlement dates, while scheduled payments are determined relative to the bond’s maturity date. Since settlement days exclude weekends, holidays, and Good Friday, any payments scheduled for these days are advanced to the next available settlement day.</p>
 <p>The notebook <em>Non Settlement Days</em> introduces the <font color='green'>adust_bond_pay_dates()</font> function. This function takes a date object and returns a settlement date, utilizing the <strong>holidays</strong> library, the <code class="docutils literal notranslate"><span class="pre">easter</span></code> function from the <strong>datetutil</strong> module, and the <font color='green'>validate_date()</font> function developed in the <em>Calculating Accrued Interest</em> notebook.</p>
-<p>The <em>Bond Pay Data</em> notebook then uses <font color='green'>adust_bond_pay_dates()</font> to convert scheduled payment dates to actual payment dates. Scheduled payment dates are first generated by counting backward from the maturity date and are stored in a Pandas Series. The Pandas <font color='green'>apply()</font> method is then used with <font color='green'>adust_bond_pay_dates()</font>  to convert these scheduled dates into the actual payment dates.</p>
-<p>A two-dimensional NumPy array is created from the actual dates and the payment amounts.</p>
+<p>Subsequently, the <em>Calculating Bond Payment Dates and Amounts</em> notebook utilizes <font color='green'>adust_bond_pay_dates</font> to convert scheduled payment dates into actual payment dates. The scheduled dates themselves are generated using the <font color='green'>scheduled_pay_dates</font> helper function, developed in Chapter Two’s <em>Calculating Accrued Interest</em> notebook. The function, <font color='green'>bond_pay_data</font>, returns two NumPy arrays: one for the payment dates and one for the corresponding payment amounts.</p>
+<p>Both the <font color='green'>bond_pay_data</font> and <font color='green'>accrued_interest</font> functions are essential for financial calculations presented in the later chapters of the <em>Basic Concepts Of Fixed Income</em> volume.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -418,7 +421,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</p>
+        <p class="prev-next-title">Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -437,6 +440,10 @@ document.write(`
   
   <div class="footer-item">
     
+<p class="component-author">
+By Financial Python
+</p>
+
   </div>
   
   <div class="footer-item">
