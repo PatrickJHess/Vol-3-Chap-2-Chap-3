@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Bond_Pay_Dates';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Summarizing Chapters Two And Three" href="Chapter_Two__Three_Summary.html" />
-    <link rel="prev" title="Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday" href="Non_Settlement_Days.html" />
+    <link rel="next" title="Calculating Actual Payment Dates and Amounts" href="Chapter_Three_Summary.html" />
+    <link rel="prev" title="Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday" href="Non_Settlement_Days.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,29 +179,32 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Two</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Two</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Function Imported by Chapter Two.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions_Two.html">Function Imported by Chapter Two.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concetps of Fixed Income: Chapter Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Three</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Three_Highlights.html">Bond Payment Data</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Actual_Payment_Dates.html">Actual Versus Scheduled Payment Dates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Non_Settlement_Days.html">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Non_Settlement_Days.html">Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Calculating Bond Payment Dates and Amounts</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Three_Summary.html">Calculating Actual Payment Dates and Amounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions_Three.html">Function Imported by Chapter Three.</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing Chapters Two and Three</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Chapter_Two__Three_Summary.html">Summarizing Chapters Two And Three</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transaction_Prices_Paayment_Data.html">Getting Accrued Interest And Actual Payment Dates And Amounts</a></li>
 </ul>
 
     </div>
@@ -432,12 +435,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Calculating Bond Payment Dates and Amounts</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#new-section">New Section</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bond-pay-data-function-calculates-actual-bond-payment-dates-and-amounts">The <font color="green">bond_pay_data</font> function calculates actual bond payment dates and amounts.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond Payment Dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-bond-pay-date-helper-function">adjust_bond__pay_date helper function</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -455,7 +466,7 @@ document.write(`
 <p>As in Chapter One of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported. If necessary, The new module <font color='green'>holidays</font> is installed and then imported.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import sys
 import requests
-from datetime import datetime, date,
+from datetime import datetime, date
 from types import ModuleType
 import calendar
 
@@ -463,7 +474,7 @@ try:
     from IPython.display import Markdown, display
 except:
     !pip -q install IPython
-    from IPython.display import Markdown, displayr
+    from IPython.display import Markdown, display
 
 try:
     import numpy as np
@@ -503,7 +514,7 @@ except:
     <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>IPython
-    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">displayr</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
 
 <span class="c1"># Pandas not builtin, install if  necessary with quiet flag (-q)</span>
 <span class="k">try</span><span class="p">:</span>
@@ -573,6 +584,9 @@ except:
 </div>
 </div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="new-section">
+<h1>New Section<a class="headerlink" href="#new-section" title="Link to this heading">#</a></h1>
 <section id="the-bond-pay-data-function-calculates-actual-bond-payment-dates-and-amounts">
 <h2>The <font color='green'>bond_pay_data</font> function calculates actual bond payment dates and amounts.<a class="headerlink" href="#the-bond-pay-data-function-calculates-actual-bond-payment-dates-and-amounts" title="Link to this heading">#</a></h2>
 <p>The <font color='green'>bond_pay_data()</font> function orchestrates bond payment calculations using three key helper functions:</p>
@@ -668,7 +682,7 @@ except:
       <span class="n">freq</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
   <span class="k">if</span> <span class="n">coupon</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="c1">#Adjust maturity for nonsettlement day and return date and face value</span>
+    <span class="c1">#Adjust maturity for non-settlement day and return date and face value</span>
     <span class="n">adjust_maturity</span><span class="o">=</span><span class="n">adjust_bond_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_maturity</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">])</span>
 
@@ -747,6 +761,18 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
 </div>
 <p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Three_Hints.html#chapter-three-exercise">Chapter Three Hints: Calculate Bond Pay Data</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Three_Results.html#chapter-three-exercise">expected results here</a>.</p>
 </section>
+<section id="adjust-bond-pay-date-helper-function">
+<h2>adjust_bond__pay_date helper function<a class="headerlink" href="#adjust-bond-pay-date-helper-function" title="Link to this heading">#</a></h2>
+<p><strong>Purpose:</strong></p>
+<p>Converts scheduled payment dates to actual payment dates by checking for settlement dates.</p>
+<p><strong>Behavior:</strong></p>
+<ul class="simple">
+<li><p><strong>Input Validation:</strong> Ensures the integrity of scheduled payment dates using the <code class="docutils literal notranslate"><span class="pre">validate_date</span></code> function.</p></li>
+<li><p><strong>Error Handling:</strong> Raises an exception if the scheduled date is not a date or datetime object.</p></li>
+<li><p><strong>Calculations:</strong> Determines the settlement day using the <code class="docutils literal notranslate"><span class="pre">holiday</span></code> library, the <code class="docutils literal notranslate"><span class="pre">easter</span></code> function from <code class="docutils literal notranslate"><span class="pre">relativedelt.easter</span></code>, and the <code class="docutils literal notranslate"><span class="pre">weekday()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object.</p></li>
+<li><p><strong>Output:</strong> Returns the actual payment date, adjusting the scheduled date to a settlement day if necessary.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -785,15 +811,15 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</p>
+        <p class="prev-next-title">Accounting for Non-Settlement Days: Holidays, Weekends, and Good Friday</p>
       </div>
     </a>
     <a class="right-next"
-       href="Chapter_Two__Three_Summary.html"
+       href="Chapter_Three_Summary.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Summarizing Chapters Two And Three</p>
+        <p class="prev-next-title">Calculating Actual Payment Dates and Amounts</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -813,12 +839,20 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Calculating Bond Payment Dates and Amounts</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing Libraries, Modules, And Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding A Custom Module And Importing Functions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#new-section">New Section</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bond-pay-data-function-calculates-actual-bond-payment-dates-and-amounts">The <font color="green">bond_pay_data</font> function calculates actual bond payment dates and amounts.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond Payment Dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-bond-pay-date-helper-function">adjust_bond__pay_date helper function</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -831,6 +865,10 @@ February 29<span class="math notranslate nohighlight">\(^{th}\)</span> 2028 4.0 
   
   <div class="footer-item">
     
+<p class="component-author">
+By Financial Python
+</p>
+
   </div>
   
   <div class="footer-item">

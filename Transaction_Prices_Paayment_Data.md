@@ -1,4 +1,4 @@
-# Summarizing Chapters Two And Three
+# Getting Bomd Transaction Prices and Actual Payment Dates and Amounts
 
 Chapters Two and Three introduce skills that allow us to expand our knowledge of the term structure of interest rates. These chapters develop two key functions that are included in the custom module *module\_basic\_concepts\_fixed\_income.py* module (referred to as *basic\_concepts\_fixed\_income*), that is available from Dropbox:
 
