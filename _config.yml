@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: "Basic Bond Concepts of Fixed Icome: Accrued Interest and Bond Payment Data"
+title: "Basic Concepts of Fixed Income: Accrued Interest and Bond Payment Data"
 author: 'Financial Python'
 copyright: "2025 by the University of Virginia Darden School Foundation, Charlottesville, VA." # This will appear in the footer
 logo: 
