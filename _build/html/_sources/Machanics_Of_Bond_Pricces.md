@@ -1,61 +1,53 @@
 
-# The Mechanics of Bond Pricing
 
-This chapter focuses on essential date manipulation skills for finance professionals, introducing several new functions. The most significant is <font color='green'>accrued_interest()</font>.   Accrued interest calculations are often complex, but understanding the concepts is crucial. Although bonds are quoted 'clean' (without accrued interest), they trade 'dirty' (with accrued interest). The purpose here is to thoroughly demonstrate the concepts and calculations, but not to require memorizing every detail.
 
-## Bond Prices and Accrued Interest
+## <span style="font-family:Franklin Gothic Medium', sans-serif;">The Mechanics Of Bond Pricing</span>
+
+
+
+This chapter introduces essential date manipulation skills for finance professionals. Several new functions are developed. The most important of these is accrued\_interest().  Bonds are quoted without accrued interest ('clean') but trade with accrued interest ('dirty').  It's fair to characterize the calculation of accrued interest as messy.  Here we demonstrate the concepts and calculations.  No need to memorize the details: the goal is a thorough understanding of concepts.  accrued\_interest()  calculates accrued interest for government and non-government bonds (e.g. corporate and agencies). Some of the mess is the difference in the calculations for government and non-government bonds.  The function handles this and other details.
+
+### Bond Prices And Accrued Interest
 
 The transaction price (or dirty price) of a coupon bond is the sum of its quoted (or clean) price and accrued interest. Accrued interest is the allocation of a coupon payment between payment dates. It's worth noting that accrued interest determines how taxable interest income is allocated between purchasers and sellers of a bond.
 
-### Illustrating Accrued Interest with Five Maturity Dates
+For government notes and bonds, accrued interest is calculated based on the actual number of days from the last coupon payment relative to the total days between payments: the so-called actual/actual rule. For non-government bonds, a 30-day month is assumed for accrued interest calculations: the so-called 30/360 rule.
+
+### Illustrating Accrued Interest With Five Maturity Dates
 
 Two time periods are required to calculate accrued interest:
 
-1. the time since the last scheduled payment,  
-2. the time between the next and previous scheduled payments.
+1. the time remaining until the next payment,  
+2. the time between the next and previous payments.
 
-Until it matures, a coupon bond has a scheduled payment every year on the anniversary of its maturity date. If the maturity date is a month-end, all payments are as well.  Consider a bond maturing on April 30$^{th}$ making semi-annual coupon payments. Before April 30$^{th}$ of the current year, the next scheduled payment is April 30$^{th}$ in the current year and the previous scheduled payment is October 31$^{st}$ of the previous year. After April 30$^{th}$ and before October 31$^{st}$ of the current year, the next scheduled payment is October 31$^{st}$.
+Until it matures, a coupon bond makes a payment every year on the anniversary of its maturity date. If the maturity date is a month-end, all payments are as well.  Consider a bond maturing on April 30$^{th}$ making semi-annual coupon payments. Before April 30$^{th}$ of the current year, the next payment date will be April 30$^{th}$ in the current year and the previous payment date is October 31$^{st}$ of the previous year .After April 30$^{th}$ and before October 31$^{st}$ of the current year, the next payment occurs on October 31$^{st}$.
 
-Because the purchaser of a bond owns it on the settlement date, the accrued interest excludes the settlement date. Five bonds paying semi-annual coupon payments are used to illustrate the concepts. The maturity dates of the bonds are:
+Since May of 2024 bond trades settle one business day following the trade date.  Accrued interest is calculated relative to the settlement date.   The module datetime is part of the standard Python library and manipulates dates.  We use it extensively in this and other chapters.  Two other modules are also needed.: dateutil and  the built-in module calendar.  The next section of the chapter, the notebooks *Dealing With Dates*, illustrates the uses of datetime, dateutil,  and calendar.  A more general discussion is provided in [A Quick Introduction To Manipulating Dates](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Manipulating_Dates.html#a-quick-introduction-to-manipulating-dates). 
+
+Five maturity dates are selected to illustrate the calculations. The fifth bond matures on February 29$^{th}$ in a leap year.  The current settlement date is January 21$^{st}$ 2025 and February 29$^{th}$ doesn't exist in 2025\.  Controlling for month-end, however, will automatically adjust the coupon payment date to February 28 in 2025\.
 
 * February 28$^{th}$ 2025  
-* July 15$^{th}$ 2025 
+* July 15$^{th}$ 2025  
 * August 31$^{st}$ 2025  
 * January 15$^{th}$ 2026  
 * February 29$^{th}$ 2028
+### The Next Coupon Period
 
-#### The Next Coupon Period
+The end of the next coupon period is determined by adding the number of months between payments to the settlement date.  In these examples the bonds pay semi-annually and the number of months between payments is six
 
-The end of the next coupon period is determined by adding the number of months between payments to the settlement date.  In these examples the bonds pay semi-annually and the number of months between payments is six. The settlement date is assumed to be January 21$^{st}$ 2025 . The next scheduled payment date of any semi-annual bond  is no later than  July 21$^{st}$ 2025\. If the maturity month and day of the bond is before July 21$^{st}$, the next scheduled payment is in the maturity month. For example, the bond maturing on February 29$^{th}$ 2028 follows the month-end rule, and the next scheduled payment is the last day of February 2025- the 28$^{th}$.
+### Determining The Next Coupon Date
+
+Government notes and bonds make semi-annual payments.  When a coupon bond is purchased, the next coupon payment date will be within six months of the settlement date.  
+In this example the settlement date is January 21$^{st}$ 2025 making the next coupon date falling between January 21$^{st}$ 2025 and July 21$^{st}$ 2025\. If the maturity month and day of the security is between January 21$^{st}$ and July 21$^{st}$, the next coupon payment date will be the maturity month and day in 2025\. The exception to this is the bond that matures on February 29$^{th}$ 2028\. Because of the month-end maturity, its next coupon date is adjusted to February 28$^{th}$ 2025\.
+
+
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vS1L8ZT3QiCyUdLd8kddTgsgqGHUp7u8d1nUDZ4KhiIMTuHrPq1Jc3dpfmSmgbaI6bd4EPLnTqEKJj4/pub?w=960&h=720'>
 
-#### Calculating Accrued Interest
-Accrued interest for Government bonds is calculated by determining the ratio of days since the last scheduled payment to the total days between the last and the next scheduled payments. The example below uses the so-called 'Actual/Actual' day-count convention of Government bonds.  
+. 
+
+### Calculating Accrued Interest
+
+Accrued interest for Government bonds is calculated by determining the ratio of days since the last coupon payment to the total days between coupon payments. This calculation uses the settlement date, next coupon date, and last coupon date. For Corporate and other bonds, accrued interest is calculated based on a 30-day month and 360-day year.  Using the settlement date of January  21$^{st}$ 2025, the diagram highlights the calculations for the five Government bonds paying a coupon on February 28$^{th}$ 2025 or July 15$^{th}$ 2025\.
 
 <img src='https://docs.google.com/drawings/d/e/2PACX-1vR6XvDjt0b_IiI23LnhIthZ1uMpS4dMOX9LH0gW5wMK_7DnpkaFiu1lkP3T8otpurLPU5jI9y8f18ea/pub?w=960&h=720'>
-
-Other securities use different day-count conventions; '30/360' is used for non-government bonds, 'Actual/360' is used for non-coupon bonds, and 'Actual/ 365' is used for some derivatives and international bonds and currency markets.  The Table *Day-Count Convention Rules* describes the four conventions.
- 
-#### Day-Count Convention Rules.
-| Convention | Security Type | Amount | Accrued Day Ratio |
-| :---- | :---- | :---- | :---- |
-| **Actual/Actual** | Government Bonds. | Next Coupon | Numerator settlement less last payment date minus  1.Denominator actual number of days between next and last coupon payment dates,  |
-| **30/360** | Corporate Bonds, Agency Bonds, and Mortgage-Backed Securities | Annual Coupon  | Numerator settlement less last payment date adjusting each month for 30 days minus  1\.  Denominator  360\. |
-| **Actual/360** | Corporate loans, money-market, floating-rate notes. | Annual Coupon  | Numerator settlement less the last payment date minus  1\.   Denominator  360 |
-| **Actual/365** | SWAPS and international bonds, and currency | Annual Coupont | Numerator settlement less the last payment date minus  1\.   Denominator is 365 |
-
-The accrued interest formulas of each convention are shown in the Table *Day-Count Counvention Formulas*.
-#### Day-Count Convention Formulas
-|Day Count Convention | Accrued-Interest Formula |
-| :---- | :---- |
-| **Actual/Actual** |$Coupon\ Payment\times\large\frac{Actual\ Days\ Since\ Last\ Coupon\ Payment-1}{Actual\ Days\ Between\ Next\ And\ Last\ Coupon Payments}$|
-| **30/360** | $Annual\ Coupon\ Payment\times\large\frac{(30/360)\ Days\ Since\ Last\ Coupon\ Payment-1}{360}$ |
-| **Actual/360** |$Annual\ Coupon\ Payment\times\large\frac{Actual\ Days\ Since\ Last\ Coupon\ Payment-1}{360}$|
-| **Actual/365** |$Annual\ Coupon\ Payment\times\large\frac{Actual\ Days\ Since\ Last\ Coupon\ Payment-1}{365}$|
-
-
-
-### Bond Prices And Accrued Interest
-The function <font color='green'>accrued_interest()</font> is developed in the notebook *Calculating Accrued Interest* of this chapter, and accounts for the four day-count conventions. As you undoubtedly surmised, the calculation requires the manipulation of dates. Several new Python libraries or modules are introduced that allows us to make calculations with dates.  If this is a new or somewhat unfamiliar subject, you should take a look at the notebook *Manipulating Dates* in this chapter as well as the notebook in the [background material](https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Manipulating_Dates.html).
-
 

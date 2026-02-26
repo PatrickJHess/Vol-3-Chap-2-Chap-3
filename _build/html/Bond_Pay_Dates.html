@@ -32,9 +32,10 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b47fed4d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -60,6 +62,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Bond_Pay_Dates';</script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Calculating Actual Payment Dates and Amounts" href="Chapter_Three_Summary.html" />
@@ -182,10 +185,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Two</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html"><span style="font-family:Franklin Gothic Medium', sans-serif;">The Mechanics Of Bond Pricing</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Accrued_Interest.html">Calculating Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html"><span style="text-align:center;font-family:Franklin Gothic Medium', sans-serif;margin-top: 1.0em;margin-bottom: 0.5em;ont-style: italic;">Python, Pandas, NumPy, and Financial Insights</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="imported_functions_Two.html">Function Imported by Chapter Two.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
@@ -201,9 +204,14 @@
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hub &amp; Other Chapters Of Basic Concepts Of Fixed Income</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Transaction_Prices_Paayment_Data.html">Getting Bomd Transaction Prices and Actual Payment Dates and Amounts</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Volume-Three-Hub/">Hub For Basic Concepts Of Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-1/">Chapter One: Basic Bond Concepts and the Term Structure of Interest Rates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-4/">Chapters Four: Bootstrapping The Term Structure With Coupon Bonds</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-5/">Chapter Five: Par Yields</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-6/">Chapter Six: Yield To Maturity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-7/">Chapter Seven: Measuring Interest Rate Risk With Duration</a></li>
 </ul>
 
     </div>
@@ -434,11 +442,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing libraries, modules, and functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-functions">Importing libraries and functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bond-pay-data-function">The <font color="green">bond_pay_data</font> function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond payment dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -452,8 +468,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="calculating-bond-payment-dates-and-amounts">
 <h1>Calculating Bond Payment Dates and Amounts<a class="headerlink" href="#calculating-bond-payment-dates-and-amounts" title="Link to this heading">#</a></h1>
-<section id="importing-libraries-modules-and-functions">
-<h2>Importing libraries, modules, and functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h2>
+<section id="preparing-the-notebook">
+<h2>Preparing the Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
+<section id="importing-libraries-and-functions">
+<h3>Importing libraries and functions<a class="headerlink" href="#importing-libraries-and-functions" title="Link to this heading">#</a></h3>
 <p>As in Chapter One of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported. The new module <font color='green'>holidays</font> is installed and then imported.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import sys
 import requests
@@ -534,19 +552,34 @@ except:
 </div>
 </section>
 <section id="adding-a-custom-module-and-importing-functions">
-<h2>Adding a custom module and importing functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h2>
-<p>Similar to Chapter One, this chapter accesses the custom module <em>basic_concepts_fixed_income</em> from Dropbox. Three functions are imported from this module: <font color='green'>validate_date</font> and <font color='green'>schedule_pay_dates</font> (developed in the previous chapter’s notebook, <em>Calculating Accrued Interest</em>), and <font color='green'>adjust_bond_pay_dates</font> (from this chapter’s notebook, <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em>).</p>
+<h3>Adding a custom module and importing functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h3>
+<p>Similar to Chapter One, this notebook utilizes the custom module, <strong>module_basic_concepts_fixed_income</strong>, sourced from Dropbox and named <strong>basic_concepts_fixed_income</strong>. The module provides three core functions to streamline the focus on financial concepts:</p>
+<ul class="simple">
+<li><p><strong>validate_dates</strong> (<a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/Chapter_Two_Accrued_Interest.html#id1">Chapter Two</a>) Checks for datetime or date objects and converts datetime objects to date objects.</p>
+<ul>
+<li><p><a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/validate_date.html#validate-date-helper-function">View Details</a></p></li>
+</ul>
+</li>
+<li><p><strong>schedule_pay_dates</strong> (<a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/Chapter_Two_Accrued_Interest.html#the-next-and-previous-scheduled-payment-dates">Chapter Two</a>) Generates all the bond’s scheduled payment dates.</p>
+<ul>
+<li><p><a class="reference external" href="https://https://patrickjhess.github.io/Imported-Functions/scheduled_pay_dates.html#scheduled-pay-dates">View Details</a></p></li>
+</ul>
+</li>
+<li><p><strong>adjust_bond_pay_dates</strong> (<a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/Non_Settlement_Days.html#adjust-bond-pay-dates-function">This chapter’s notebook, <em>Accounting For Non-Settlement Days: Holidays, Weekends, And Good Friday</em>)</a>) Converts scheduled payment dates to actual payment dates.</p>
+<ul>
+<li><p><a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/adjust_bond_pay_dates.html#adjust-bond-pay-dates">View Details</a></p></li>
+</ul>
+</li>
+</ul>
 <p>The practice of developing and adding functions to this custom module for use in subsequent chapters is a recurring feature of the volume, <em>Basic Concepts Of Fixed Income</em>.</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">validate_date</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">validate_date</span><span class="p">,</span>
                                          <span class="n">scheduled_pay_dates</span><span class="p">,</span>
                                          <span class="n">adjust_bond_pay_dates</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
-<span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
 <span class="c1"># The &#39;dl=1&#39; parameter in the URL forces a direct download of the file content.</span>
 <span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
 <span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=87sztshr&amp;dl=1&#39;</span>
@@ -575,9 +608,10 @@ except:
 </div>
 </div>
 </section>
+</section>
 <section id="the-bond-pay-data-function">
 <h2>The <font color='green'>bond_pay_data</font> function<a class="headerlink" href="#the-bond-pay-data-function" title="Link to this heading">#</a></h2>
-<p>The <font color='green'>bond_pay_data()</font> function orchestrates bond payment calculations using three key helper functions:</p>
+<p>The <font color='green'>bond_pay_data</font> function orchestrates bond payment calculations using three key helper functions:</p>
 <ol class="arabic simple">
 <li><p><font color='green'>validate_date</font>: Confirms the validity of the maturity and settlement dates.</p></li>
 <li><p><font color='green'>scheduled_pay_dates</font>: Generates all the bond’s scheduled payment dates.</p></li>
@@ -600,7 +634,7 @@ except:
 <ul class="simple">
 <li><p><strong>If the coupon is zero:</strong> The function immediately returns a NumPy array containing only the adjusted maturity date and a NumPy array with the par value of 100.</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>   <span class="n">adjust_maturity</span><span class="o">=</span><span class="n">adjust_bond_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">adjust_maturity</span><span class="o">=</span><span class="n">adjust_bond_pay_dates</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_maturity</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">])</span>
 
 </pre></div>
@@ -613,11 +647,11 @@ except:
 </ol>
 </li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">pay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pay_dates</span><span class="p">),</span> <span class="n">coupon</span> <span class="o">/</span> <span class="n">freq</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pay_dates</span><span class="p">),</span> <span class="n">coupon</span> <span class="o">/</span> <span class="n">freq</span><span class="p">)</span>
 <span class="n">pay</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">100</span>
 </pre></div>
 </div>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">pay_dates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_bond_pay_dates</span><span class="p">[</span><span class="n">scheduled</span><span class="p">]</span> <span class="k">for</span> <span class="n">scheduled</span> <span class="ow">in</span> <span class="n">scheduled_dates</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pay_dates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">adjust_bond_pay_dates</span><span class="p">[</span><span class="n">scheduled</span><span class="p">]</span> <span class="k">for</span> <span class="n">scheduled</span> <span class="ow">in</span> <span class="n">scheduled_dates</span><span class="p">])</span>
 
 </pre></div>
 </div>
@@ -753,6 +787,21 @@ The diagram shows the correct pattern of pay dates and payments of the bond.</p>
 </div>
 <p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Three_Hints.html#chapter-three-exercise">Chapter Three Hints: Calculate Bond Pay Data</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Three_Results.html#chapter-three-exercise">expected results here</a>.</p>
 </section>
+<section id="take-a-deeper-dive-with-gemini">
+<h2><font color='green'>Take a deeper dive with Gemini</font><a class="headerlink" href="#take-a-deeper-dive-with-gemini" title="Link to this heading">#</a></h2>
+<section id="some-suggestions-to-get-you-started">
+<h3>Some suggestions to get you started.<a class="headerlink" href="#some-suggestions-to-get-you-started" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How do settlement days affect the present value of a bond?</strong></p></li>
+<li><p><strong>Should I include accrued interest in calculation of a bond’s present value?</strong></p></li>
+<li><p><strong>What’s the relation between accrued interest, the scheduled payment date, and the actual payment date?</strong></p></li>
+<li><p><strong>Do settlement or scheduled pay dates affect the riskiness of bonds?</strong></p></li>
+</ol>
+</section>
+<section id="here-is-the-link-where-you-can-copy-and-paste-the-questions">
+<h3><a class="reference external" href="https://gemini.google.com">Here is the link where you can copy and paste the questions</a><a class="headerlink" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions" title="Link to this heading">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -819,11 +868,19 @@ The diagram shows the correct pattern of pay dates and payments of the bond.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing libraries, modules, and functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-functions">Importing libraries and functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bond-pay-data-function">The <font color="green">bond_pay_data</font> function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-payment-dates">Bond payment dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

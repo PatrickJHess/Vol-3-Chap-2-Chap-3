@@ -32,9 +32,10 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b47fed4d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -60,9 +62,10 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter_Two_Accrued_Interest';</script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Updating Quoted Bond Prices with Accrued Interest" href="Chapter_Two_Summary.html" />
+    <link rel="next" title="Python, Pandas, NumPy, and Financial Insights" href="Chapter_Two_Summary.html" />
     <link rel="prev" title="Manipulating Dates" href="Dealing_With_Dates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,10 +185,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Two</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Two_Highlights.html">Accrued Interest</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html">The Mechanics of Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Machanics_Of_Bond_Pricces.html"><span style="font-family:Franklin Gothic Medium', sans-serif;">The Mechanics Of Bond Pricing</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Dealing_With_Dates.html">Manipulating Dates</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Calculating Accrued Interest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html">Updating Quoted Bond Prices with Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Two_Summary.html"><span style="text-align:center;font-family:Franklin Gothic Medium', sans-serif;margin-top: 1.0em;margin-bottom: 0.5em;ont-style: italic;">Python, Pandas, NumPy, and Financial Insights</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="imported_functions_Two.html">Function Imported by Chapter Two.</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
@@ -201,9 +204,14 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summarizing</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hub &amp; Other Chapters Of Basic Concepts Of Fixed Income</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Transaction_Prices_Paayment_Data.html">Getting Bomd Transaction Prices and Actual Payment Dates and Amounts</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Volume-Three-Hub/">Hub For Basic Concepts Of Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-1/">Chapter One: Basic Bond Concepts and the Term Structure of Interest Rates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-4/">Chapters Four: Bootstrapping The Term Structure With Coupon Bonds</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-5/">Chapter Five: Par Yields</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-6/">Chapter Six: Yield To Maturity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-7/">Chapter Seven: Measuring Interest Rate Risk With Duration</a></li>
 </ul>
 
     </div>
@@ -456,6 +464,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-workbook">Creating the workbook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-an-excel-workbook"><font color="green">Application: Create an Excel workbook</font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -553,12 +566,17 @@ except:
 </section>
 <section id="adding-a-custom-module-and-importing-functions">
 <h3>Adding a custom module and importing functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h3>
-<p>Like Chapter One the custom module <font color='green'>module_basic_concepts_fixed_income</font> custom module  is accessed from Dropbox and named <font color='green'>basic_concepts_fixed_income</font>.  As a reminder, the module is accessible in the notebook’s memory, but is not added to a drive.  One function, <font color='green'>create_workbook</font>, is added to the notebook. Any functions that are included in the module are available to <font color='green'>create_workbook</font>.</p>
+<p>Similar to Chapter One, this notebook utilizes the custom module, <strong>module_basic_concepts_fixed_income</strong>, sourced from Dropbox and named <strong>basic_concepts_fixed_income</strong>. As a reminder, the module is accessible in the notebook’s memory, but is not added to a drive.</p>
+<p>The <font color='green'>create_workbook</font> function is added to the notebook. Any functions that are included in the module are available to <font color='green'>create_workbook</font>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_income_module</span><span class="p">(</span><span class="n">create_workbook</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><font color='green'>create_workbook()</font> <a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/create_workbook.html#create-workbook-is-a-helper-function-that-creates-excel-workbooks-from-dataframes-created-by-financial-python">view here</a></p></li>
+<li><p><strong>create_workbook</strong> ([This chapter] Transforms the bond_data DataFrame into an Excel workbook.</p>
+<ul>
+<li><p><a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/create_workbook.html#create-workbook-is-a-helper-function-that-creates-excel-workbooks-from-dataframes-created-by-financial-python">View Details</a></p></li>
+</ul>
+</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,14 +610,14 @@ except:
 </section>
 <section id="creating-the-dataframe-bond-data">
 <h2>Creating the DataFrame bond_data<a class="headerlink" href="#creating-the-dataframe-bond-data" title="Link to this heading">#</a></h2>
-<p>US Treasury notes and bonds data, for settlement on January 21, 2025,  obtained from Fidelity, an Excel workbook, is downloaded from DropBox using the Panda’s <font color='green'>read_excel()</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
+<p>US Treasury notes and bonds data, for settlement on January 21, 2025,  obtained from Fidelity, an Excel workbook, is downloaded from DropBox using the Panda’s <font color='green'>read_excel</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
 <p>Three arguments are passed to the method.</p>
 <ol class="arabic simple">
 <li><p>The URL address (<font color='green'>url</font>) is required.</p></li>
 <li><p>Assigning the index column is optional. The maturity dates, located in the first column, are set as the index of the DataFrame  (<font color='green'>index_col=’Maturity Date’</font>).</p></li>
 <li><p>The worksheet name defaults to the first worksheet. The worksheet’s name, ‘Fidelity Data’, is the assigned sheet (<font color='green'>sheet_name=’Fidelity Data’</font>)</p></li>
 </ol>
-<p>The <font color='green'>display()</font>  function shows the first and last five rows confirming that data has been successfully accessed.</p>
+<p>The <font color='green'>display</font>  function shows the first and last five rows confirming that data has been successfully accessed.</p>
 <hr class="docutils" />
 <p><span class="math notranslate nohighlight">\(^{2}\)</span> <a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#dataframes-csv-and-excel-files'>Pandas method read_excel</a></p>
 <div class="cell docutils container">
@@ -820,7 +838,7 @@ except:
 </section>
 <section id="illustrating-accrued-interest-with-five-unique-maturity-dates">
 <h2>Illustrating accrued interest with five unique maturity dates<a class="headerlink" href="#illustrating-accrued-interest-with-five-unique-maturity-dates" title="Link to this heading">#</a></h2>
-<p>The <font color='green'>loc</font> attribute is used to select bonds based on the five maturity dates. Because the <font color='green'>sample_bonds</font> DataFrame contains multiple bonds with the same maturity date, the Pandas <font color='green'>duplicated</font> method is employed to obtain five unique bonds, each corresponding to a distinct maturity date. When <font color='green'>keep</font> is set to ‘first’, <code class="docutils literal notranslate"><span class="pre">True</span></code> is assigned to the first occurrence of a duplicated value and <code class="docutils literal notranslate"><span class="pre">False</span></code> to subsequent duplicates. Consequently, <font color='green'>loc</font> only returns the rows where <font color='green'>duplicated()</font> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, yielding the five bonds with unique maturity dates.<span class="math notranslate nohighlight">\(^{3}\)</span></p>
+<p>The <font color='green'>loc</font> attribute is used to select bonds based on the five maturity dates. Because the <font color='green'>sample_bonds</font> DataFrame contains multiple bonds with the same maturity date, the Pandas <font color='green'>duplicated</font> method is employed to obtain five unique bonds, each corresponding to a distinct maturity date. When <font color='green'>keep</font> is set to ‘first’, <code class="docutils literal notranslate"><span class="pre">True</span></code> is assigned to the first occurrence of a duplicated value and <code class="docutils literal notranslate"><span class="pre">False</span></code> to subsequent duplicates. Consequently, <font color='green'>loc</font> only returns the rows where <font color='green'>duplicated</font> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, yielding the five bonds with unique maturity dates.<span class="math notranslate nohighlight">\(^{3}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maturity_dates</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
     <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
@@ -1302,19 +1320,19 @@ except:
 <td><p>August 31, 2030</p></td>
 <td><p>N/A</p></td>
 <td><p>N/A</p></td>
-<td><p>Too far in the future; generates excessive data.</p></td>
+<td><p>Too far in the future;</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Settlement Date</strong></p></td>
 <td><p>N/A</p></td>
 <td><p>January 21, 2025</p></td>
 <td><p>N/A</p></td>
-<td><p>Defines the starting point for the search.</p></td>
+<td><p>Starting point for the search.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Date Argument Passed to Function</strong></p></td>
 <td><p>N/A</p></td>
 <td><p>N/A</p></td>
 <td><p><strong>August 31, 2026</strong></p></td>
-<td><p>This date is guaranteed to fall after the next one or two coupon payment dates (depending on frequency) without generating the full schedule up to 2030.</p></td>
+<td><p>2nd Coupon</p></td>
 </tr>
 </tbody>
 </table>
@@ -1904,6 +1922,21 @@ except:
     padding: 15px">
 <br><big>For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Hints.html#chapter-two-exercise">Chapter Two Hints</a>. For expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Two_Results.html#chapter-two-exercise">Chapter Two Expected Results</a>.</big></p>
 </span></section>
+<section id="take-a-deeper-dive-with-gemini">
+<h2><font color='green'>Take a deeper dive with Gemini</font><a class="headerlink" href="#take-a-deeper-dive-with-gemini" title="Link to this heading">#</a></h2>
+<section id="some-suggestions-to-get-you-started">
+<h3>Some suggestions to get you started.<a class="headerlink" href="#some-suggestions-to-get-you-started" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How is accrued interest related to the present value of a bond?</strong></p></li>
+<li><p><strong>Are there tax implications related to accrued interest?</strong></p></li>
+<li><p><strong>Does accrued interest affect the riskiness of bonds?</strong></p></li>
+<li><p><strong>If I buy one day before it is coupon payment, do I get the cash flow and avoid the taxable income?</strong></p></li>
+</ol>
+</section>
+<section id="here-is-the-link-where-you-can-copy-and-paste-the-questions">
+<h3><a class="reference external" href="https://gemini.google.com">Here is the link where you can copy and paste the questions</a><a class="headerlink" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions" title="Link to this heading">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1950,7 +1983,7 @@ except:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Updating Quoted Bond Prices with Accrued Interest</p>
+        <p class="prev-next-title"><span style="text-align:center;font-family:Franklin Gothic Medium', sans-serif;margin-top: 1.0em;margin-bottom: 0.5em;ont-style: italic;">Python, Pandas, NumPy, and Financial Insights</span></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1992,6 +2025,11 @@ except:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-workbook">Creating the workbook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-an-excel-workbook"><font color="green">Application: Create an Excel workbook</font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
