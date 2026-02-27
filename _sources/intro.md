@@ -1,8 +1,8 @@
 # Financial Python
 
-## **Volume: Basic Concepts of Fixed Income**
+## Volume: Basic Concepts of Fixed Income
 
-### **Chapters Two and Three: Accrued Interest and Bond Pay Data**
+### Chapters Two and Three: Accrued Interest and Bond Pay Data
 
 Chapter One of *Basic Concepts of Fixed Income* introduced the fundamentals of bond pricing and demonstrated how to calculate the term structure of interest rates using the prices of short-term U.S. Treasury Bills (those with a maturity of one year or less).
 
