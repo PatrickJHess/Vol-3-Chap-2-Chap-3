@@ -29,29 +29,37 @@ repository:
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
-html:
-  use_issues_button: true
+
 launch_buttons:
   thebe: true
   colab_url: "https://colab.research.google.com"
   binderhub_url: "https://mybinder.org"
 
+html:
+  baseurl: "https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/"
+  use_issues_button: true
+
 sphinx:
   extra_extensions:
-    - sphinx_sitemap    
+    - sphinx_design
+    - sphinx_sitemap
   config:
+    # This must point to the Chapter URL
+    html_baseurl: "https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/"
+    sitemap_url_scheme: "{link}"
     html_static_path: ['_static']
     html_js_files:
       # The 'priority: 200' helps move this script above the Thebe injection
       - ['open_new_tab.js', {priority: 200}]
     html_css_files:
       - custom.css
-    html_baseurl: "https://patrickjhess.github.io/Vol-3-Chap-1/" # Change per repo
-    sitemap_url_scheme: "{link}" # Recommended for cleaner URLs
     html_extra_path:
       - google6c5f2d11d0c13eff.html 
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
+    thebe_config:
+      selector: ".thebe,.cell"
+      repository_url: "https://github.com/patrickjhess/Vol-3-Chap-2-Chap-3"
+      repository_branch: "master"
 parse:
   myst_enable_extensions:
     - dollarmath
