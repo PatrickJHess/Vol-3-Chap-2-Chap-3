@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>NumPy and Pandas &#8212; Basic Concepts Of Fixed Income: Basic Bond Concepts and the Term Structure of Interest Rates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b47fed4d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Numpy_And_Pandas';</script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
+    <link rel="canonical" href="https://patrickjhess.github.io/Vol-3-Chap-1/Numpy_And_Pandas.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculating and Graphing the Term Structure of Interest Rates" href="Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.html" />
+    <link rel="prev" title="Introduction to Bond Pricing" href="Bond%20Pricing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basic Concepts Of Fixed Income: Basic Bond Concepts and the Term Structure of Interest Rates</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter One</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Highlights.html">Basic Bond Concepts and the Term Structure of Interest Rates</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bond%20Pricing.html">Introduction to Bond Pricing</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">NumPy and Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.html">Calculating and Graphing the Term Structure of Interest Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Summary.html">Python, Pandas, NumPy, and Financial Insights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Functions Imported by the Chapter.</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hub &amp; Other Chapters Of Basic Concepts Of Fixed Income</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Volume-Three-Hub/">Hub For Basic Concepts Of Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/">Chapters Two and Three: Accrued Interest and Bond Pay Data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-4/">Chapters Four: Bootstrapping The Term Structure With Coupon Bonds</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-5/">Chapter Five: Par Yields</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-6/">Chapter Six: Yield To Maturity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-7/">Chapter Seven: Measuring Interest Rate Risk With Duration</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-1/master?urlpath=tree/Numpy_And_Pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-1/blob/master/Numpy_And_Pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-1/issues/new?title=Issue%20on%20page%20%2FNumpy_And_Pandas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Numpy_And_Pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NumPy and Pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-functions">Importing libraries and functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-calculations">NumPy Calculations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-a-numpy-array"><font color="green">Application: Create a NumPy Array</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensional-numpy-arrays">Two-Dimensional NumPy arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-manipulate-a-two-dimensional-array"><font color="green">Application: Manipulate a Two-Dimensional Array</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pandas-dataframe-from-numpy-arrays">Creating a Pandas DataFrame from NumPy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-a-dataframe-from-a-two-dimensional-array"><font color="green">Application:Create a DataFrame from a Two-Dimensional Array</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-rows-into-columns-and-labeling-the-columns">Making rows into columns and labeling the columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-set-index-method">The set_index() method</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numpy-and-pandas">
+<h1>NumPy and Pandas<a class="headerlink" href="#numpy-and-pandas" title="Link to this heading">#</a></h1>
+<section id="preparing-the-notebook">
+<h2>Preparing the Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
+<section id="importing-libraries-and-functions">
+<h3>Importing libraries and functions<a class="headerlink" href="#importing-libraries-and-functions" title="Link to this heading">#</a></h3>
+<p>It’s good practice to import all required libraries and modules in the first code cell of a Notebook. Unless a new function or module is being introduced, this chapter follows the practice. If a library is already installed, it’s imported to the Notebook. If a library isn’t installed, it’s installed and then imported.</p>
+<p>The standard Python installation includes five module imports: <font color='green'>os</font>, <font color='green'>sys</font>, <font color='green'>requests</font>, <font color='green'>types</font>, and <font color='green'>datetime</font>. The imports <font color='green'>os</font> and <font color='green'>sys</font> facilitate interaction with the operating system. The <font color='green'>requests</font> module enables sending and retrieving data from external URLs; in this notebook, the module is specifically used to access files from Dropbox. The <font color='green'>types</font> module lets us create the module from the Python code accessed from Dropbox. Finally, <font color='green'>datetime</font> allows for the creation and manipulation of date objects.</p>
+<p>The below code imports these modules, and specifically accesses <font color='green'>types</font> and <font color='green'>datetime</font> to import <font color='green'>ModuleType</font> and <font color='green'>date</font>, respectively. <font color='green'>ModuleType</font> will allow us to <em>instantiate</em> new modules, and we’ll use <font color='green'>date</font> for our date calculations later.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+</pre></div>
+</div>
+<p>NumPy and Pandas, though not standard Python libraries, are often preinstalled in Jupyter Notebooks as well as included in Notebook environments like Google Colaboratory (Colab). To ensure library availability, a <font color='green'>try</font> and <font color='green'>except</font> block is used to import NumPy and Pandas in the code below. The <font color='green'>try</font> and <font color='green'>except</font> block is used to resolve instances where the import fails: If the attempted import within the <font color='green'>try</font> segment fails, the <font color='green'>except</font> portion will install the libraries using <font color='green'>pip</font>, a package installer for Python. The exclamation mark preceding <font color='green'>pip</font> indicates that <font color='green'>pip</font> is running through the machine’s console rather than within the Notebook. Upon successful import, NumPy and Pandas are <em>aliased as</em> (or assigned the names of) <font color='green'>np</font> and <font color='green'>pd</font>, respectively.<span class="math notranslate nohighlight">\(^{1}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>try:
+    import numpy as np
+except:
+    !pip install numpy
+    import numpy as np
+try:
+    import pandas as pd
+except:
+    !pip install pandas
+    import pandas as pd
+</pre></div>
+</div>
+<p>The following cell shows our completed code cell for imports.</p>
+<p><span class="math notranslate nohighlight">\(^{1}\)</span> For more information on <font color='green'>try</font> and <font color='green'>except</font> statements, see “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Control_Statements.html#the-try-and-except'>Control Statements</a>.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="numpy-arrays">
+<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
+<p>The NumPy library offers efficient numerical procedures that simplify complex calculations.<span class="math notranslate nohighlight">\(^{2}\)</span> The fundamental object in this library is the NumPy array. An array is simply a data structure in which elements are arranged and accessed. It can be formed from a single value or from an iterable data type like a list, which holds a series of values.<span class="math notranslate nohighlight">\(^{3}\)</span> NumPy must be imported before use; recall that in this Notebook, it was imported and aliased as <font color='green'>np</font> in the first code cell. The <font color='green'>array()</font> method is used to convert variables into NumPy arrays.<span class="math notranslate nohighlight">\(^{4}\)</span> The following code creates an array from the list <font color='green'>[3%, 5%, 7%]</font> (lists are stylized with square brackets) and assigns that array to <font color='green'>interest_rates</font>. This is then passed to <font color='green'>display()</font>, which simply displays the contents of <font color='green'>interest_rates</font>.</p>
+<p><span class="math notranslate nohighlight">\(^{2}\)</span> For more information on NumPy, see “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_NumPy.html#numpy'>A Quick Introduction To NumPy</a>.”</p>
+<p><span class="math notranslate nohighlight">\(^{3}\)</span> For more information on list objects, see “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/A_First_Look_At_Lists.html#a-first-look-at-lists'>A First Look at Lists</a>.”</p>
+<p><span class="math notranslate nohighlight">\(^{4}\)</span> Like other libraries, the alias <font color='green'>np</font> must be appended to the method, as in <font color='green'>np.array</font> instead of</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interest_rates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.07</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">interest_rates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.03, 0.05, 0.07])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy-calculations">
+<h2>NumPy Calculations<a class="headerlink" href="#numpy-calculations" title="Link to this heading">#</a></h2>
+<p>Now that we’ve created an array and assigned it to <font color='green'>interest_rates</font>, we can perform calculations on that array. NumPy calculates array elements individually. For instance, the <font color='green'>exp()</font> method used below raises Euler’s number, <span class="math notranslate nohighlight">\(e\)</span>, to the power of each element of <font color='green'>interest_rates</font> resulting in future value factors. This approach is faster and more convenient than iterating through the rates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">interest_rates</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.03045453, 1.0512711 , 1.07250818])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-create-a-numpy-array">
+<h2><font color='green'>Application: Create a NumPy Array</font><a class="headerlink" href="#application-create-a-numpy-array" title="Link to this heading">#</a></h2>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    padding: 15px">
+<br>
+Create a NumPy array of the present-value factors for the rates of <font color='green'>interest_rates</font>. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-numpy-array">Chapter One Hints: Create a NumPy Array</a>, and for expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-numpy-array">Chapter One Expected Results: Create a NumPy Array</a>.
+<br>
+<br>
+</span></p>
+</section>
+<section id="two-dimensional-numpy-arrays">
+<h2>Two-Dimensional NumPy arrays<a class="headerlink" href="#two-dimensional-numpy-arrays" title="Link to this heading">#</a></h2>
+<p>The <font color='green'>pv_rates</font> array in the code below is a <em>two-dimensional</em> NumPy array (or matrix). It’s created by combining two one-dimensional arrays—<font color='green'>interest_rates</font> and <font color='green'>pv_factors</font>—within the <font color='green'>array()</font> method. To access the rows of this two-dimensional array, we’ll use the corresponding row <em>index</em> value. (The index value is simply an element’s sequential position in the array. Remember that in programming, sequences begin at position 0, not 1). Finally, both the interest rates and present-value factors are displayed below using <em>f-strings</em>. These are like strings, but begin with an “f” and are used to include variables and expressions within a string. The variable must be enclosed in curly brackets (i.e., { }), and the indexed value must be enclosed in square brackets ([ ]).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#A calculation is make for each element of a numpy array</span>
+<span class="n">pv_factors</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">interest_rates</span><span class="p">)</span>
+<span class="n">pv_rates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">interest_rates</span><span class="p">,</span><span class="n">pv_factors</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pv_rates</span><span class="p">)</span>
+<span class="c1">#Create an f string for each row.</span>
+<span class="c1">#Each row must also be encapsulated in curly brackets</span>
+<span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Interest Rates </span><span class="si">{</span><span class="n">pv_rates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Present Value Factors </span><span class="si">{</span><span class="n">pv_rates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.03      , 0.05      , 0.07      ],
+       [0.97044553, 0.95122942, 0.93239382]])
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Interest Rates [0.03 0.05 0.07]&#39;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Present Value Factors [0.97044553 0.95122942 0.93239382]&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-manipulate-a-two-dimensional-array">
+<h2><font color='green'>Application: Manipulate a Two-Dimensional Array</font><a class="headerlink" href="#application-manipulate-a-two-dimensional-array" title="Link to this heading">#</a></h2>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    padding: 15px">
+<br>
+Create a two-dimensional array by raising the interest-rate row to Euler’s number and multiplying the results by the present value factors. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#manipulate-two-dimensional-array">Chapter One Hints: Manipulate a Two-Dimensional Array</a>, and for expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#manipulate-two-dimensional-array">Chapter One Expected Results: Manipulate a Two-Dimensional Array</a>.</p>
+<br>
+<br>
+</span>
+</section>
+<section id="creating-a-pandas-dataframe-from-numpy-arrays">
+<h2>Creating a Pandas DataFrame from NumPy Arrays<a class="headerlink" href="#creating-a-pandas-dataframe-from-numpy-arrays" title="Link to this heading">#</a></h2>
+<section id="a-simple-example">
+<h3>A simple example<a class="headerlink" href="#a-simple-example" title="Link to this heading">#</a></h3>
+<p>The Pandas library is a powerful resource for data analysis. Recall that like NumPy, we imported Pandas in our earlier code cell. For this section, we’ll be using Pandas to access a structure called a <em>DataFrame</em>. A Pandas DataFrame organizes data into rows and columns, much like an Excel spreadsheet or a NumPy array. It can be created from a two-dimensional array, such as our newly created <font color='green'>pv_rates</font>. The simplest DataFrames automatically assign row and column index values; a more functional approach allows for the explicit naming of both. In the simple example below, the <font color='green'>DataFrame()</font> method of Pandas uses three arrays as arguments, generating a row for each array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataframe created with DataFrame() method</span>
+<span class="n">simple_example</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="n">interest_rates</span><span class="p">,</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">interest_rates</span><span class="p">),</span>
+              <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">interest_rates</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">simple_example</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.030000</td>
+      <td>0.050000</td>
+      <td>0.070000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.030455</td>
+      <td>1.051271</td>
+      <td>1.072508</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.970446</td>
+      <td>0.951229</td>
+      <td>0.932394</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="application-create-a-dataframe-from-a-two-dimensional-array">
+<h2><font color='green'>Application:Create a DataFrame from a Two-Dimensional Array</font><a class="headerlink" href="#application-create-a-dataframe-from-a-two-dimensional-array" title="Link to this heading">#</a></h2>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    padding: 15px">
+<br>
+Create a DataFrame with the two-dimensional array <font color='green'>pv_rates</font>. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#create-a-dataframe-from-a-two-dimensional-array">Chapter One Hints: Create A DataFrame From A Two-Dimensional Array</a>, for expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#create-a-dataframe-from-a-two-dimensional-array">Chapter One Expected Results: Create A DataFrame From A Two-Dimensional Array</a>.</p>
+<br>
+<br>
+</span>
+</section>
+<section id="making-rows-into-columns-and-labeling-the-columns">
+<h2>Making rows into columns and labeling the columns<a class="headerlink" href="#making-rows-into-columns-and-labeling-the-columns" title="Link to this heading">#</a></h2>
+<p>In the below code, rows are converted to columns by using the <font color='green'>transpose()</font> method on our earlier DataFrame, <font color='green'>simple_example</font>. This method changes the rows into columns.<span class="math notranslate nohighlight">\(^{5}\)</span> The transposed result is then assigned to <font color='green'>rows_to_columns</font>, and the columns are then assigned the elements of a list (<font color='green'>[‘Rates’, ‘Future Value’, ‘Present Value’]</font>).  Transposing the DataFrame makes <font color='green'>’Rates’</font>, <font color='green'>’Future Value’</font>, and <font color='green'>’Present Value’</font> the variables and makes the rows the observations of those variables.</p>
+<p><span class="math notranslate nohighlight">\(^{5}\)</span> The method can also be applied as simply <font color='green'>T</font>. See “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#the-transpose'>A Quick Introduction To Pandas</a>.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#transpose the simple_example dataframe and call it rows_to_columns</span>
+<span class="n">rows_to_columns</span><span class="o">=</span><span class="n">simple_example</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="c1">#(the transpose method can also be written as simple_example.T)</span>
+<span class="n">rows_to_columns</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Rates&#39;</span><span class="p">,</span><span class="s1">&#39;Future Value&#39;</span><span class="p">,</span><span class="s1">&#39;Present Value&#39;</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rates</th>
+      <th>Future Value</th>
+      <th>Present Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.03</td>
+      <td>1.030455</td>
+      <td>0.970446</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.05</td>
+      <td>1.051271</td>
+      <td>0.951229</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.07</td>
+      <td>1.072508</td>
+      <td>0.932394</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="the-set-index-method">
+<h2>The set_index() method<a class="headerlink" href="#the-set-index-method" title="Link to this heading">#</a></h2>
+<p>Once the DataFrame has been transposed, the next step is to make the <font color='green'>Rates</font> column the index.  Why? The reason is that the values of <font color='green'>Rates</font> determine the values of the columns <font color='green'>Future Value</font> and <font color='green'>Pesent Value</font>. This change isn’t necessary, but it draws our eye to a natural connection. Instead of an index that points only to a row number, the new index points to the rate that results in the future and present values.</p>
+<p>The method <font color='green'>set_index()</font> takes a column name and removes the column from the DataFrame. Pandas has a built-in <em>fail-safe-switch</em>. By default, this change (and others we’ll encounter later) doesn’t permanently alter the DataFrame. This might seem a bit strange, but this characteristic prevents mistakes that are difficult to fix. To make the change permanent, you can do the following:<span class="math notranslate nohighlight">\(^{6}\)</span></p>
+<ol class="arabic">
+<li><p>Assign the transposed value of the DataFrame to another DataFrame
+*</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">name_index_set_index</span><span class="o">=</span><span class="n">rows_to_columns</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Rates&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">name_index_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Change the default value of the <font color='green'>inplace</font> argument of <font color='green'>set_index</font>  to True
+*</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rows_to_columns</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Rates&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{6}\)</span>See <a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#making-a-column-the-index'>A Quick Introduction To Pandas</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_index_set_index</span><span class="o">=</span><span class="n">rows_to_columns</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Rates&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">name_index_set_index</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+<span class="n">rows_to_columns</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Rates&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rows_to_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Future Value</th>
+      <th>Present Value</th>
+    </tr>
+    <tr>
+      <th>Rates</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.03</th>
+      <td>1.030455</td>
+      <td>0.970446</td>
+    </tr>
+    <tr>
+      <th>0.05</th>
+      <td>1.051271</td>
+      <td>0.951229</td>
+    </tr>
+    <tr>
+      <th>0.07</th>
+      <td>1.072508</td>
+      <td>0.932394</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rates</th>
+      <th>Future Value</th>
+      <th>Present Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.03</td>
+      <td>1.030455</td>
+      <td>0.970446</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.05</td>
+      <td>1.051271</td>
+      <td>0.951229</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.07</td>
+      <td>1.072508</td>
+      <td>0.932394</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Future Value</th>
+      <th>Present Value</th>
+    </tr>
+    <tr>
+      <th>Rates</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.03</th>
+      <td>1.030455</td>
+      <td>0.970446</td>
+    </tr>
+    <tr>
+      <th>0.05</th>
+      <td>1.051271</td>
+      <td>0.951229</td>
+    </tr>
+    <tr>
+      <th>0.07</th>
+      <td>1.072508</td>
+      <td>0.932394</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "patrickjhess/Vol-3-Chap-1",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Bond%20Pricing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Bond Pricing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculating and Graphing the Term Structure of Interest Rates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-functions">Importing libraries and functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-calculations">NumPy Calculations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-a-numpy-array"><font color="green">Application: Create a NumPy Array</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensional-numpy-arrays">Two-Dimensional NumPy arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-manipulate-a-two-dimensional-array"><font color="green">Application: Manipulate a Two-Dimensional Array</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pandas-dataframe-from-numpy-arrays">Creating a Pandas DataFrame from NumPy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-create-a-dataframe-from-a-two-dimensional-array"><font color="green">Application:Create a DataFrame from a Two-Dimensional Array</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-rows-into-columns-and-labeling-the-columns">Making rows into columns and labeling the columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-set-index-method">The set_index() method</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

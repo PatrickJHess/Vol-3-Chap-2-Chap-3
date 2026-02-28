@@ -1,0 +1,2167 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Calculating and Graphing the Term Structure of Interest Rates &#8212; Basic Concepts Of Fixed Income: Basic Bond Concepts and the Term Structure of Interest Rates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b47fed4d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates';</script>
+    <script src="_static/open_new_tab.js?v=9fade34f"></script>
+    <link rel="canonical" href="https://patrickjhess.github.io/Vol-3-Chap-1/Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python, Pandas, NumPy, and Financial Insights" href="Chapter_Summary.html" />
+    <link rel="prev" title="NumPy and Pandas" href="Numpy_And_Pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basic Concepts Of Fixed Income: Basic Bond Concepts and the Term Structure of Interest Rates</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter One</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Highlights.html">Basic Bond Concepts and the Term Structure of Interest Rates</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bond%20Pricing.html">Introduction to Bond Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Numpy_And_Pandas.html">NumPy and Pandas</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Calculating and Graphing the Term Structure of Interest Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Summary.html">Python, Pandas, NumPy, and Financial Insights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions.html">Functions Imported by the Chapter.</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hub &amp; Other Chapters Of Basic Concepts Of Fixed Income</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Volume-Three-Hub/">Hub For Basic Concepts Of Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/">Chapters Two and Three: Accrued Interest and Bond Pay Data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-4/">Chapters Four: Bootstrapping The Term Structure With Coupon Bonds</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-5/">Chapter Five: Par Yields</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-6/">Chapter Six: Yield To Maturity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-7/">Chapter Seven: Measuring Interest Rate Risk With Duration</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-1/master?urlpath=tree/Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-1/blob/master/Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-1/issues/new?title=Issue%20on%20page%20%2FCalculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Calculating_And_Graphing_The_Term_Structure_Of_Interest_Rates.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calculating and Graphing the Term Structure of Interest Rates</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing libraries, modules, and functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-structure-putting-numpy-and-pandas-to-work">Term Structure: Putting NumPy and Pandas to Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-term-structure">Calculating term structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-rates-of-interest">Spot rates of interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-rates-of-interest">Forward rates of interest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-term-structure-of-interest-rates-with-treasury-bills">Calculating the Term Structure of Interest Rates with Treasury Bills</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-finance-in-action">Python and finance in action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-t-bill-data">Getting T-bill data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-from-an-excel-file">Creating a DataFrame from an Excel file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-rows-of-a-pandas-dataframe">Accessing rows of a Pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-term-structure-a-return">Calculating the Term Structure: A Return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-bond-prices-with-bank-discounts">Calculating bond prices with bank discounts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-bankers-discounts-to-zero-prices">Going from bankers’ discounts to zero prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-rates">Spot rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-rates">Forward rates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-results">Saving Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-the-spot-and-forward-rates-for-september-15-2022">Graphing the spot and forward rates for September 15, 2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-t-bill-data-directly-from-the-treasury">Accessing T-Bill Data Directly from the Treasury</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-link-to-the-daily-treasury-bill-rates-on-the-treasury-site">The link to the Daily Treasury Bill Rates on the Treasury Site</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-url-and-using-the-pandas-method-read-csv">Changing the URL and using the Pandas method <font color="green">read_csv</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-downloading-treasury-data"><font color="green">Application: Downloading Treasury Data</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-csv-file-to-calculate-term-structure">Using the CSV file to calculate term structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Going from bankers’ discounts to zero prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Spot rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Forward rates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-the-term-structure-again">Graphing the Term Structure (Again)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-the-spot-and-forward-rates-for-september-30-2025">Graphing the spot and forward rates for September 30, 2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-and-graphing-the-term-structure-of-interest-rates">
+<h1>Calculating and Graphing the Term Structure of Interest Rates<a class="headerlink" href="#calculating-and-graphing-the-term-structure-of-interest-rates" title="Link to this heading">#</a></h1>
+<section id="preparing-the-notebook">
+<h2>Preparing the Notebook<a class="headerlink" href="#preparing-the-notebook" title="Link to this heading">#</a></h2>
+<section id="importing-libraries-modules-and-functions">
+<h3>Importing libraries, modules, and functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h3>
+<p>It’s good practice to import all required libraries and modules in the first code cell of a Notebook. Unless a new function or module is being introduced, this chapter follows this practice. If a library is already installed, it’s imported to the Notebook. If a library isn’t installed, it’s installed and then imported.</p>
+<p>The standard Python installation includes five module imports: <font color='green'>os</font>, <font color='green'>sys</font>, <font color='green'>requests</font>, <font color='green'>types</font>, and <font color='green'>datetime</font>. The imports <font color='green'>os</font> and <font color='green'>sys</font> facilitate interaction with the operating system. The <font color='green'>requests</font> module enables sending and retrieving data from external URLs; in this notebook, the module is specifically used to access files from Dropbox. The <font color='green'>types</font> module lets us create the module from the Python code accessed from Dropbox. Finally, <font color='green'>datetime</font> allows for the creation and manipulation of date objects.</p>
+<p>The below code imports these modules, and specifically accesses <font color='green'>types</font> and <font color='green'>datetime</font> to import <font color='green'>ModuleType</font> and <font color='green'>date</font>, respectively. <font color='green'>ModuleType</font> will allow us to <em>instantiate</em> new modules, and we’ll use <font color='green'>date</font> for our date calculations later.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+</pre></div>
+</div>
+<p>NumPy and Pandas, though not standard Python libraries, are often preinstalled in Jupyter Notebooks as well as included in Notebook environments like Google Colaboratory (Colab). To ensure library availability, a <font color='green'>try</font> and <font color='green'>except</font> block is used to import NumPy and Pandas in the code below. The <font color='green'>try</font> and <font color='green'>except</font> block is used to resolve instances where the import fails: If the attempted import within the <font color='green'>try</font> segment fails, the <font color='green'>except</font> portion will install the libraries using <font color='green'>pip</font>, a package installer for Python. The exclamation mark preceding <font color='green'>pip</font> indicates that <font color='green'>pip</font> is running through the machine’s console rather than within the Notebook. Upon successful import, NumPy and Pandas are <em>aliased as</em> (or assigned the names of) <font color='green'>np</font> and <font color='green'>pd</font>, respectively.<span class="math notranslate nohighlight">\(^{1}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>try:
+    import numpy as np
+except:
+    !pip install numpy
+    import numpy as np
+try:
+    import pandas as pd
+except:
+    !pip install pandas
+    import pandas as pd
+</pre></div>
+</div>
+<p>The following cell shows our completed code cell for imports.</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{1}\)</span>For more information on <font color='green'>try</font> and <font color='green'>except</font> statements, see “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Control_Statements.html#the-try-and-except'>Control Statements</a>.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-a-custom-module-and-importing-functions">
+<h3>Adding a custom module and importing functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h3>
+<p>Now that we’ve imported our main modules and libraries, we’ll access a custom module for our more specific functions. In the below code, the custom module <font color='green'>module_basic_concepts_fixed_income</font> contains functions utilized by this notebook and others in the volume <em>Basic Concepts of Fixed Income</em>. This module is accessed from Dropbox using <font color='green'>requests.get()</font></p>
+<p>You have the flexibility to choose the module name; in this instance, <font color='green'>module_basic_concepts_fixed_income</font> is assigned to <font color='green'>module_name</font>. Dropbox provides the URL for access. The module is instantiated with <font color='green'>ModuleType</font> (which we imported earlier) using the chosen <font color='green'>module_name</font>. Once created, the module becomes accessible in the Notebook’s memory, though it is not added to a drive.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
+<span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=stuou11h&amp;dl=1&#39;</span>
+<span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;module_basic_concepts_fixed_income&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">response</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">module</span><span class="o">=</span><span class="n">ModuleType</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <font color='green'>exec()</font> function below executes the Python code returned by <font color='green'>requests.get()</font>. It assigns functions and variables to <font color='green'>sys.module[module_name]</font>. This makes the module available for use in the Notebook.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">module</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">=</span><span class="n">module</span>
+</pre></div>
+</div>
+<p>We’ll then import the function <font color='green'>one_y_axis</font> from the module. The function plots calculation results and can be <a href='https://patrickjhess.github.io/Imported-Functions/one_y_axis.html#one-y-axis-is-a-helper-function-for-plotting-graphs-created-by-financial-python'>viewed here</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span><span class="p">(</span><span class="n">one_y_axis</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Our now-complete code is shown in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
+<span class="c1"># The &#39;dl=1&#39; parameter in the URL forces a direct download of the file content.</span>
+<span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
+<span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=stuou11h&amp;dl=1&#39;</span>
+<span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;basic_concepts_fixed_income&#39;</span>
+<span class="c1"># Send an HTTP GET request to the URL and store the server&#39;s response.</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">response</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="c1"># Raise an exception for bad status codes (like 404 Not Found)</span>
+  <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+  <span class="n">module</span><span class="o">=</span> <span class="n">ModuleType</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+  <span class="c1">#Code contained in response.text executed</span>
+  <span class="n">exec</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+  <span class="c1"># Module added to sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">=</span><span class="n">module</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Could not fetch module from URL. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Failed to execute or import the module. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now that &#39;basic_conepts_fixed_income&#39; exists in the notebook, import the specific functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span><span class="p">(</span><span class="n">one_y_axis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="term-structure-putting-numpy-and-pandas-to-work">
+<h2>Term Structure: Putting NumPy and Pandas to Work<a class="headerlink" href="#term-structure-putting-numpy-and-pandas-to-work" title="Link to this heading">#</a></h2>
+<p>The <em>term structure of interest rates</em> (term structure) describes how interest rates vary over time. It’s a critical financial metric reflected in the pricing or valuation of almost all assets.</p>
+<p>NumPy and Pandas are powerful tools that greatly simplify the manipulation and calculation of extensive and complex financial data. In this section, we’ll explore their application in calculating the term structure on various dates, a process that requires accessing large datasets and performing numerous calculations.</p>
+<section id="calculating-term-structure">
+<h3>Calculating term structure<a class="headerlink" href="#calculating-term-structure" title="Link to this heading">#</a></h3>
+<p>The earlier discussion of bond pricing described the price of a zero-coupon bond as its maturity value multiplied by the present-value factor. A NumPy array and a Pandas DataFrame included interest rates, future values, and present-value factors. These same concepts are used to calculate term structure.</p>
+</section>
+<section id="spot-rates-of-interest">
+<h3>Spot rates of interest<a class="headerlink" href="#spot-rates-of-interest" title="Link to this heading">#</a></h3>
+<p>Put simply, term structure is the relation between the annualized interest rates of zero-coupon bonds, or the <em>spot rate</em> of interest, and the bonds’ maturities. The price of a zero-coupon bond with a maturity of <span class="math notranslate nohighlight">\(t\)</span> and a principal of $1 is</p>
+<div class="math notranslate nohighlight">
+\[\normalsize P(t) = e^{ -r_t\times t}\]</div>
+<p>The annualized continuously-compounded interest rate of the <span class="math notranslate nohighlight">\(t\)</span>-period zero-coupon bond is:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize r_t = \frac{-ln(P(t))}{t}\]</div>
+<p>with <span class="math notranslate nohighlight">\(r_t\)</span> representing the spot rate of interest for <span class="math notranslate nohighlight">\(t\)</span> periods. As such, if a zero-coupon bond pays $1 in six months and has a price of $0.9753, the spot rate of interest is:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize 5\% = \frac{-ln(0.9753)}{0.5}\]</div>
+<p>The spot rate reflects a return that begins immediately for a specific period of time. To consider future periods, we turn to <em>forward rates</em>.</p>
+</section>
+<section id="forward-rates-of-interest">
+<h3>Forward rates of interest<a class="headerlink" href="#forward-rates-of-interest" title="Link to this heading">#</a></h3>
+<p>The forward rate of interest represents the additional return gained by extending an investment’s duration—or the extra earnings from investing for two months instead of one, for example. When two bonds offer an identical single payment at maturity, the forward rate between the shorter and longer maturities is determined by the ratio of their respective prices.</p>
+<p>For zero-coupon bonds with a principal of $1, the calculation of one plus the forward rate between <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+\Delta t\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\large\frac{\frac{1}{P(t+\Delta t)}}{\frac{1}{P(t)}}= e^{f(t,t+\Delta t)\times\Delta t}\]</div>
+<p>simplified to</p>
+<div class="math notranslate nohighlight">
+\[\normalsize\frac{P(t)}{P(t+\Delta t)}= e^{f(t,t+\Delta t)\times\Delta t}\]</div>
+<p>The continuously-compounded annualized forward rate between <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+\Delta t\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize f(t,t+\Delta t) = \frac{ln(P(t)) - ln(P(t+\Delta t))}{\Delta t}\]</div>
+<p>The forward rates can be locked in by purchasing a zero-coupon bond that matures in <span class="math notranslate nohighlight">\(\large t+\Delta t\)</span> periods and for <span class="math notranslate nohighlight">\(t\)</span> periods, borrowing <span class="math notranslate nohighlight">\(P(t+\Delta t)\)</span> today at the rate <span class="math notranslate nohighlight">\(P(t)^{-1}.\)</span> At <span class="math notranslate nohighlight">\(t\)</span>, the borrowing is repaid, and at <span class="math notranslate nohighlight">\(t +\Delta t\)</span>, the zero-coupon bond matures and pays $1. The borrowing, repayment, and locked-in rate-of-return calculations are shown below.</p>
+<div class="math notranslate nohighlight">
+\[\normalsize Amount\,Borrowed =P(t+\Delta t)\]</div>
+<div class="math notranslate nohighlight">
+\[\normalsize Repayment = P(t+\Delta t)\times\frac{1}{P(t)}\]</div>
+<div class="math notranslate nohighlight">
+\[\normalsize Locked\,In\,Rate\,of\,Return = \frac{1}{\frac{P(t+\Delta t)}{P(t)}}-1 =\frac{P(t)}{P(t+\Delta t)}-1\]</div>
+<p>The continuously-compounded annualized locked-in rate of return equals:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize\frac{ln(P(t)) -ln(P(t+\Delta t))}{\Delta t}\]</div>
+<p>This value is the same as the continuously-compounded forward rate of interest between <span class="math notranslate nohighlight">\(t\)</span> and  <span class="math notranslate nohighlight">\(\ t+\Delta t\)</span>.</p>
+<p>Although it might seem obvious that the locked-in rate of return and the forward rate are equal, this result is significant. Imagine an investor who intends to invest at the future date <span class="math notranslate nohighlight">\(t\)</span> for <span class="math notranslate nohighlight">\(\Delta t\)</span> periods. The investor can</p>
+<ol class="arabic simple">
+<li><p>wait until <span class="math notranslate nohighlight">\(t\)</span> to invest at the unknown spot rate <span class="math notranslate nohighlight">\(\ r(t,t+\Delta t)\)</span>, or</p></li>
+<li><p>lock in a rate of return today that equals the current forward rate <span class="math notranslate nohighlight">\(\ f(t,t+\Delta t)\)</span></p></li>
+</ol>
+<p>In a state of equilibrium, the prices of zero-coupon bonds ensure that investors are indifferent to either securing a spot rate immediately or deferring investment until a future, unknown spot rate. The choice between rolling over a short-term investment and making a long-term one essentially hinges on expectations for future interest rates. Similar to the odds in a sports wager, the forward rate represents a fair-bet value for these future unknown spot rates, thereby making investors indifferent to their investment duration. Although forward rates forecast future spot rates, the forecasts might not be the expected values.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
+<br>
+<hr>
+<p><span class="math notranslate nohighlight">\(^{2}\)</span> This statement presumes that future spot rates are uncertain. If future spot rates are known, forward rates will equal future spot rates.</p>
+</section>
+</section>
+<section id="calculating-the-term-structure-of-interest-rates-with-treasury-bills">
+<h2>Calculating the Term Structure of Interest Rates with Treasury Bills<a class="headerlink" href="#calculating-the-term-structure-of-interest-rates-with-treasury-bills" title="Link to this heading">#</a></h2>
+<p>Treasury bills, or T-bills, mature in a year or less and make a single principal payment at maturity. In this section, we’ll apply the Python concepts we’ve learned so far to T-bill data, using the bills to demonstrate the term structure between one month and one year. Because the bills make a single payment, their prices are determined by the single spot rate of interest at maturity.</p>
+</section>
+<section id="python-and-finance-in-action">
+<h2>Python and finance in action<a class="headerlink" href="#python-and-finance-in-action" title="Link to this heading">#</a></h2>
+<p>This example will outline two Python concepts integral to financial calculations. First, it will demonstrate how to leverage the Pandas library to access Excel workbooks from a URL and convert them into DataFrames—a highly effective skill given Excel’s widespread use in the finance world. The Pandas method we’ll use is <font color='green'>read_excel</font><span class="math notranslate nohighlight">\(^{3}\)</span> Second, this example will illustrate the valuable data manipulation techniques available through Pandas, specifically focusing on how the attributes <font color='green'>loc</font> and <font color='green'>iloc</font> and the method <font color='green'>get_indexer</font> are used to retrieve the necessary data for calculations.<span class="math notranslate nohighlight">\(^{4}\)</span></p>
+<p>Measuring the term structure is a key financial skill. The term structure of interest rates is a critical indicator of financial market conditions. Its explanation, along with the concepts necessary for its calculation, represents the most significant aspect of this example. The relationships between past, present,and future market conditions are all expressed by measuring the term structure.</p>
+</section>
+<section id="getting-t-bill-data">
+<h2>Getting T-bill data<a class="headerlink" href="#getting-t-bill-data" title="Link to this heading">#</a></h2>
+<p>T-bill data is available from the US Department of the Treasury (Treasury) at the department’s <a href='https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates&field_tdr_date_value_month=202409'>Daily Treasury Bill Rate page</a>. The data used in this example is for September 2022 and was uploaded to the authors’ Dropbox as an Excel workbook.</p>
+<section id="accessing-the-data">
+<h3>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Link to this heading">#</a></h3>
+<p>The Pandas magic used to read an Excel workbook from a URL is <font color='green'>read_excel()</font>. The arguments of the method are:</p>
+<ol class="arabic simple">
+<li><p>The website address, or <font color='green'>url</font>. This argument is a required item</p></li>
+<li><p>The columns used as the index, or <font color='green'>index_col</font>. This argument is optional and is assigned to the <font color='green'>Date</font> column.</p></li>
+</ol>
+<p>The below code assigns the Dropbox URL to <font color='green'>url</font> and sets <font color='green'>index_col</font> to <font color='green'>Date</font>, then passes both through our <font color='green'>read_excel()</font> method to give us <font color='green'>Tbill_data_excel</font>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.dropbox.com/scl/fi/wdb24k0dddkpq7qry5sl8/</span><span class="se">\</span>
+<span class="s1">daily-treasury-rates-9-22.xlsx?rlkey=qxoo8vpa4iziu5kvi27u6c41l&amp;dl=1&#39;</span>
+<span class="n">Tbill_data_excel</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-a-dataframe-from-an-excel-file">
+<h2>Creating a DataFrame from an Excel file<a class="headerlink" href="#creating-a-dataframe-from-an-excel-file" title="Link to this heading">#</a></h2>
+<p>Let’s now turn this snippet into useable code. In the following code cell, an Excel workbook is accessed from Dropbox, which provides the URL. The Pandas method <font color='green'>read_excel()</font> is used to read and assign the data to <font color='green'>Tbill_data_excel</font>. The <font color='green'>Date</font> column is assigned as the index. Notice here that <font color='green'>try</font> and <font color='green'>except</font> are used to alert us if the file is not available.</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{3}\)</span> More on Pandas methods and Excel files can be found at “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#dataframes-csv-and-excel-files'>A Quick Introduction To Pandas</a>.”</p>
+<p><span class="math notranslate nohighlight">\(^{4}\)</span><font color='green'>loc</font> and <font color='green'>iloc</font> are covered in greater depth in “<a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#the-loc-and-iloc-attributes'>A Quick Introduction To Pandas</a>.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The full file path.</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.dropbox.com/scl/fi/wdb24k0dddkpq7qry5sl8/</span><span class="se">\</span>
+<span class="s1">daily-treasury-rates-9-22.xlsx?rlkey=qxoo8vpa4iziu5kvi27u6c41l&amp;dl=1&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to load data from: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#Load the data from Excel, using the Date column as the index.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">Tbill_data_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Display the loaded DataFrame to verify it worked.</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ERROR: File not found.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check that the &#39;URL&#39; address&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to load data from: https://www.dropbox.com/scl/fi/wdb24k0dddkpq7qry5sl8/daily-treasury-rates-9-22.xlsx?rlkey=qxoo8vpa4iziu5kvi27u6c41l&amp;dl=1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>4 WEEKS BANK DISCOUNT</th>
+      <th>4 WEEKS COUPON EQUIVALENT</th>
+      <th>8 WEEKS BANK DISCOUNT</th>
+      <th>8 WEEKS COUPON EQUIVALENT</th>
+      <th>13 WEEKS BANK DISCOUNT</th>
+      <th>13 WEEKS COUPON EQUIVALENT</th>
+      <th>26 WEEKS BANK DISCOUNT</th>
+      <th>26 WEEKS COUPON EQUIVALENT</th>
+      <th>52 WEEKS BANK DISCOUNT</th>
+      <th>52 WEEKS COUPON EQUIVALENT</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-09-30</th>
+      <td>2.70</td>
+      <td>2.74</td>
+      <td>3.07</td>
+      <td>3.13</td>
+      <td>3.22</td>
+      <td>3.29</td>
+      <td>3.82</td>
+      <td>3.95</td>
+      <td>3.87</td>
+      <td>4.03</td>
+    </tr>
+    <tr>
+      <th>2022-09-29</th>
+      <td>2.68</td>
+      <td>2.72</td>
+      <td>3.08</td>
+      <td>3.14</td>
+      <td>3.26</td>
+      <td>3.33</td>
+      <td>3.78</td>
+      <td>3.91</td>
+      <td>3.80</td>
+      <td>3.96</td>
+    </tr>
+    <tr>
+      <th>2022-09-28</th>
+      <td>2.50</td>
+      <td>2.54</td>
+      <td>2.96</td>
+      <td>3.01</td>
+      <td>3.29</td>
+      <td>3.36</td>
+      <td>3.78</td>
+      <td>3.91</td>
+      <td>3.81</td>
+      <td>3.97</td>
+    </tr>
+    <tr>
+      <th>2022-09-27</th>
+      <td>2.60</td>
+      <td>2.64</td>
+      <td>2.99</td>
+      <td>3.05</td>
+      <td>3.26</td>
+      <td>3.33</td>
+      <td>3.83</td>
+      <td>3.96</td>
+      <td>3.97</td>
+      <td>4.14</td>
+    </tr>
+    <tr>
+      <th>2022-09-26</th>
+      <td>2.64</td>
+      <td>2.68</td>
+      <td>2.99</td>
+      <td>3.05</td>
+      <td>3.30</td>
+      <td>3.37</td>
+      <td>3.87</td>
+      <td>4.00</td>
+      <td>3.98</td>
+      <td>4.15</td>
+    </tr>
+    <tr>
+      <th>2022-09-23</th>
+      <td>2.59</td>
+      <td>2.63</td>
+      <td>2.95</td>
+      <td>3.00</td>
+      <td>3.12</td>
+      <td>3.19</td>
+      <td>3.76</td>
+      <td>3.88</td>
+      <td>3.97</td>
+      <td>4.14</td>
+    </tr>
+    <tr>
+      <th>2022-09-22</th>
+      <td>2.65</td>
+      <td>2.69</td>
+      <td>2.98</td>
+      <td>3.04</td>
+      <td>3.19</td>
+      <td>3.26</td>
+      <td>3.78</td>
+      <td>3.91</td>
+      <td>3.90</td>
+      <td>4.07</td>
+    </tr>
+    <tr>
+      <th>2022-09-21</th>
+      <td>2.46</td>
+      <td>2.50</td>
+      <td>2.89</td>
+      <td>2.94</td>
+      <td>3.21</td>
+      <td>3.28</td>
+      <td>3.77</td>
+      <td>3.90</td>
+      <td>3.90</td>
+      <td>4.07</td>
+    </tr>
+    <tr>
+      <th>2022-09-20</th>
+      <td>2.47</td>
+      <td>2.51</td>
+      <td>2.88</td>
+      <td>2.93</td>
+      <td>3.26</td>
+      <td>3.33</td>
+      <td>3.77</td>
+      <td>3.90</td>
+      <td>3.87</td>
+      <td>4.04</td>
+    </tr>
+    <tr>
+      <th>2022-09-19</th>
+      <td>2.53</td>
+      <td>2.57</td>
+      <td>2.87</td>
+      <td>2.92</td>
+      <td>3.29</td>
+      <td>3.36</td>
+      <td>3.78</td>
+      <td>3.91</td>
+      <td>3.88</td>
+      <td>4.05</td>
+    </tr>
+    <tr>
+      <th>2022-09-16</th>
+      <td>2.60</td>
+      <td>2.64</td>
+      <td>2.89</td>
+      <td>2.94</td>
+      <td>3.10</td>
+      <td>3.17</td>
+      <td>3.68</td>
+      <td>3.80</td>
+      <td>3.80</td>
+      <td>3.96</td>
+    </tr>
+    <tr>
+      <th>2022-09-15</th>
+      <td>2.68</td>
+      <td>2.72</td>
+      <td>2.92</td>
+      <td>2.97</td>
+      <td>3.12</td>
+      <td>3.19</td>
+      <td>3.69</td>
+      <td>3.81</td>
+      <td>3.83</td>
+      <td>4.00</td>
+    </tr>
+    <tr>
+      <th>2022-09-14</th>
+      <td>2.43</td>
+      <td>2.47</td>
+      <td>2.78</td>
+      <td>2.83</td>
+      <td>3.14</td>
+      <td>3.21</td>
+      <td>3.68</td>
+      <td>3.80</td>
+      <td>3.79</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>2022-09-13</th>
+      <td>2.45</td>
+      <td>2.49</td>
+      <td>2.79</td>
+      <td>2.84</td>
+      <td>3.19</td>
+      <td>3.26</td>
+      <td>3.67</td>
+      <td>3.79</td>
+      <td>3.76</td>
+      <td>3.92</td>
+    </tr>
+    <tr>
+      <th>2022-09-12</th>
+      <td>2.54</td>
+      <td>2.58</td>
+      <td>2.79</td>
+      <td>2.84</td>
+      <td>3.09</td>
+      <td>3.16</td>
+      <td>3.48</td>
+      <td>3.59</td>
+      <td>3.55</td>
+      <td>3.70</td>
+    </tr>
+    <tr>
+      <th>2022-09-09</th>
+      <td>2.50</td>
+      <td>2.54</td>
+      <td>2.77</td>
+      <td>2.82</td>
+      <td>2.98</td>
+      <td>3.04</td>
+      <td>3.44</td>
+      <td>3.55</td>
+      <td>3.52</td>
+      <td>3.67</td>
+    </tr>
+    <tr>
+      <th>2022-09-08</th>
+      <td>2.50</td>
+      <td>2.54</td>
+      <td>2.76</td>
+      <td>2.81</td>
+      <td>2.97</td>
+      <td>3.03</td>
+      <td>3.37</td>
+      <td>3.48</td>
+      <td>3.46</td>
+      <td>3.60</td>
+    </tr>
+    <tr>
+      <th>2022-09-07</th>
+      <td>2.18</td>
+      <td>2.21</td>
+      <td>2.63</td>
+      <td>2.68</td>
+      <td>2.98</td>
+      <td>3.04</td>
+      <td>3.34</td>
+      <td>3.44</td>
+      <td>3.46</td>
+      <td>3.60</td>
+    </tr>
+    <tr>
+      <th>2022-09-06</th>
+      <td>2.34</td>
+      <td>2.38</td>
+      <td>2.68</td>
+      <td>2.73</td>
+      <td>2.96</td>
+      <td>3.02</td>
+      <td>3.33</td>
+      <td>3.43</td>
+      <td>3.47</td>
+      <td>3.61</td>
+    </tr>
+    <tr>
+      <th>2022-09-02</th>
+      <td>2.42</td>
+      <td>2.46</td>
+      <td>2.69</td>
+      <td>2.74</td>
+      <td>2.85</td>
+      <td>2.91</td>
+      <td>3.26</td>
+      <td>3.36</td>
+      <td>3.35</td>
+      <td>3.48</td>
+    </tr>
+    <tr>
+      <th>2022-09-01</th>
+      <td>2.46</td>
+      <td>2.50</td>
+      <td>2.70</td>
+      <td>2.75</td>
+      <td>2.88</td>
+      <td>2.94</td>
+      <td>3.27</td>
+      <td>3.37</td>
+      <td>3.38</td>
+      <td>3.51</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="accessing-rows-of-a-pandas-dataframe">
+<h2>Accessing rows of a Pandas DataFrame<a class="headerlink" href="#accessing-rows-of-a-pandas-dataframe" title="Link to this heading">#</a></h2>
+<p>We’ve now created a DataFrame, but we still need to access its contents. Three common ways of accessing the rows of a DataFrame are the attributes <font color='green'>loc</font> (as in “location”) and <font color='green'>iloc</font> (as in “integer location”) and the method <font color='green'>get_indexer()</font>. All three ways access rows by the value of the index.</p>
+<p>The <font color='green'>loc</font> attribute of a DataFrame accesses a row by using its index value. In the below code, the specific value of the index <font color='green'>’09/15/2022’</font> is accessed. If the value is not in the index, an error is returned via <font color='green'>except</font>. There are only 30 days in September, so <font color='green'>’09/31/2022’</font> fails and the message <font color='green'>’Value Not in Index’</font> is displayed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;09/15/2022&#39;</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;09/31/2022&#39;</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;09/15/2022&#39;</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;09/31/2022&#39;</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>4 WEEKS BANK DISCOUNT</th>
+      <th>4 WEEKS COUPON EQUIVALENT</th>
+      <th>8 WEEKS BANK DISCOUNT</th>
+      <th>8 WEEKS COUPON EQUIVALENT</th>
+      <th>13 WEEKS BANK DISCOUNT</th>
+      <th>13 WEEKS COUPON EQUIVALENT</th>
+      <th>26 WEEKS BANK DISCOUNT</th>
+      <th>26 WEEKS COUPON EQUIVALENT</th>
+      <th>52 WEEKS BANK DISCOUNT</th>
+      <th>52 WEEKS COUPON EQUIVALENT</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-09-15</th>
+      <td>2.68</td>
+      <td>2.72</td>
+      <td>2.92</td>
+      <td>2.97</td>
+      <td>3.12</td>
+      <td>3.19</td>
+      <td>3.69</td>
+      <td>3.81</td>
+      <td>3.83</td>
+      <td>4.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Value Not in Index&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<hr><p>The <font color='green'>iloc</font> attribute accesses a row by its indexed integer value. In this case, the <font color='green'>Date</font> column “09/15/2022” has an index value of 11. If the integer value is not present, an error is returned, as in the earlier code. The DataFrame has 21 rows, and so the index value of 45 fails, as shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">45</span><span class="s1">&#39;])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">45</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Value Not in Index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 WEEKS BANK DISCOUNT         2.68
+4 WEEKS COUPON EQUIVALENT     2.72
+8 WEEKS BANK DISCOUNT         2.92
+8 WEEKS COUPON EQUIVALENT     2.97
+13 WEEKS BANK DISCOUNT        3.12
+13 WEEKS COUPON EQUIVALENT    3.19
+26 WEEKS BANK DISCOUNT        3.69
+26 WEEKS COUPON EQUIVALENT    3.81
+52 WEEKS BANK DISCOUNT        3.83
+52 WEEKS COUPON EQUIVALENT    4.00
+Name: 2022-09-15 00:00:00, dtype: float64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Value Not in Index&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<hr><p>Rounding out our Pandas tools, the method <font color='green'>get_indexer()</font> returns the indexed integer values for a specific value of the index as an array. In the below example, an array with a single value is returned. For the Date “09/15/2022” the value 11 is returned. The <font color='green'>get_indexer()</font> method returns −1 for missing values, which avoids interrupting the code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">displayT</span><span class="p">(</span><span class="n">bill_data_excel</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="s1">&#39;09/15/2022&#39;</span><span class="p">])</span>
+<span class="n">displayT</span><span class="p">(</span><span class="n">bill_data_excel</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="s1">&#39;09/31/2022&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#return row number for date &#39;09/15/2022&#39;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="s1">&#39;09/15/2022&#39;</span><span class="p">]))</span>
+<span class="c1">#September has only 30 days, value of -1 returned</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="s1">&#39;09/31/2022&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([11])
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-the-term-structure-a-return">
+<h2>Calculating the Term Structure: A Return<a class="headerlink" href="#calculating-the-term-structure-a-return" title="Link to this heading">#</a></h2>
+<p>Having gathered the bond data, we can return to calculating the term structure. Recall that the price of a T-bill (a zero-coupon bond) is its principal discounted back at the annualized continuous spot rate of interest. The forward rate of interest is the difference of the natural logs of the prices of a shorter maturity and a longer maturity zero-coupon bond. To calculate the term structure, we need to first calculate the prices of the T-bills (the zero-coupon prices).</p>
+<p>T-bills are quoted as bank discounts or coupon-equivalent yields.</p>
+<div class="math notranslate nohighlight">
+\[\normalsize Bill\,Price = 100 - bank\,discount\times\frac{Maturity\,In\,Days}{360}\]</div>
+<p>The bank discount of the four-week bill on September 15th is 2.68%, which implies a bill price of:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize 99.792 = 100 - 2.68\times\frac{28}{360}\]</div>
+<p>The coupon equivalent is the annualized rate of return that is calculated with the convention of <em>365 days</em> per year. The calculation is the actual rate of return (the gain on the bill divided by the bill price) multiplied by 365 divided by the maturity of the bill in days. A four-week bill matures in 28 days, and its coupon equivalent is:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize Coupon\,Equivalent =\frac{100 - Bill\,Price}{Bill\,Price}\times\frac{365}{28}\]</div>
+<p>And a coupon equivalent of:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize 2.72\% =\frac{100 - 99.792}{99.79}\times\frac{365}{28}\]</div>
+</section>
+<section id="calculating-bond-prices-with-bank-discounts">
+<h2>Calculating bond prices with bank discounts<a class="headerlink" href="#calculating-bond-prices-with-bank-discounts" title="Link to this heading">#</a></h2>
+<p>In the <font color='green'>Tbill_data_excel</font> DataFrame, columns are either <font color='green'><em>BANK DISCOUNT</em></font> or <font color='green'><em>COUPON EQUIVALENT</em></font>. We’ll construct a NumPy array <font color='green'>bank_discount</font> from the <font color='green'><em>BANK DISCOUNT</em></font> columns. In the following code, the list <font color='green'>desired_columns</font> is created with list comprehension from the columns attribute of <font color='green'>Tbill_data_excel</font>. If the string <font color='green'>’BANK’</font> is in the column name, that column name is added to the list <font color='green'>desired_columns.</font><span class="math notranslate nohighlight">\(^{5}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">desired_columns</span><span class="o">=</span><span class="p">[</span><span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;BANK&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The column is only added when the <font color='green'>if</font> statement is true. The <font color='green'>df_bankers_discount</font> DataFrame is created by including the <font color='green'>desired_column</font> lists as the columns of the <font color='green'>Tbill_data_excel</font> DataFrame, as shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_bankers_discount</span><span class="o">=</span><span class="n">Tbill_data_excel</span><span class="p">[</span><span class="n">desired_columns</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_bankers_discount</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Having the bank discount in NumPy arrays will allow for an easy conversion to bill prices. We can convert <font color='green'>df_bankers_discount</font> into a two-dimensional NumPy array <font color='green'>bankers_discount</font> with the Pandas method <font color='green'>to_numpy()</font>. The first five rows of the array are shown below.<span class="math notranslate nohighlight">\(^{6}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bankers_discount</span><span class="o">=</span><span class="n">df_bankers_discount</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">bankers_discount</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{5}\)</span> As shown in the following code, the desired columns could be selected with a <font color='green'>for</font> loop. For greater discussion of list comprehension as well as <font color='green'>for</font> loops, see “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/A_First_Look_At_Lists.html#create-a-list-by-iterating-through-a-string-list-comprehension-for-loop">A First Look at Lists</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">desired_columns</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+  <span class="k">if</span> <span class="s1">&#39;BANK&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span><span class="n">desired_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(^{6}\)</span> See “<a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#pandas-to-numpy">A Quick Introduction to Pandas</a>” for discussion of converting Pandas to NumPy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a list called &#39;desired_columns&#39; using a list comprehension.</span>
+<span class="n">desired_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;BANK&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span>
+
+<span class="c1"># Create a DataFrame named &#39;df_bankers_discount&#39; and &#39;bankers_discont&#39;.</span>
+<span class="n">df_bankers_discount</span> <span class="o">=</span> <span class="n">Tbill_data_excel</span><span class="p">[</span><span class="n">desired_columns</span><span class="p">]</span>
+<span class="n">bankers_discount</span><span class="o">=</span><span class="n">df_bankers_discount</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="c1"># Display the first 5 rows of the newly created &#39;df_bankers_discount&#39; DataFrame.</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_bankers_discount</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">bankers_discount</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>4 WEEKS BANK DISCOUNT</th>
+      <th>8 WEEKS BANK DISCOUNT</th>
+      <th>13 WEEKS BANK DISCOUNT</th>
+      <th>26 WEEKS BANK DISCOUNT</th>
+      <th>52 WEEKS BANK DISCOUNT</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-09-30</th>
+      <td>2.70</td>
+      <td>3.07</td>
+      <td>3.22</td>
+      <td>3.82</td>
+      <td>3.87</td>
+    </tr>
+    <tr>
+      <th>2022-09-29</th>
+      <td>2.68</td>
+      <td>3.08</td>
+      <td>3.26</td>
+      <td>3.78</td>
+      <td>3.80</td>
+    </tr>
+    <tr>
+      <th>2022-09-28</th>
+      <td>2.50</td>
+      <td>2.96</td>
+      <td>3.29</td>
+      <td>3.78</td>
+      <td>3.81</td>
+    </tr>
+    <tr>
+      <th>2022-09-27</th>
+      <td>2.60</td>
+      <td>2.99</td>
+      <td>3.26</td>
+      <td>3.83</td>
+      <td>3.97</td>
+    </tr>
+    <tr>
+      <th>2022-09-26</th>
+      <td>2.64</td>
+      <td>2.99</td>
+      <td>3.30</td>
+      <td>3.87</td>
+      <td>3.98</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.7 , 3.07, 3.22, 3.82, 3.87],
+       [2.68, 3.08, 3.26, 3.78, 3.8 ],
+       [2.5 , 2.96, 3.29, 3.78, 3.81],
+       [2.6 , 2.99, 3.26, 3.83, 3.97],
+       [2.64, 2.99, 3.3 , 3.87, 3.98]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="going-from-bankers-discounts-to-zero-prices">
+<h3>Going from bankers’ discounts to zero prices<a class="headerlink" href="#going-from-bankers-discounts-to-zero-prices" title="Link to this heading">#</a></h3>
+<p>As noted earlier, the price of a bill with a $100 par value is:</p>
+<div class="math notranslate nohighlight">
+\[\large Bill\,Price = 100 - bank\,discount\times\frac{Maturity\,In\,Days}{360}\]</div>
+<p>The price of one dollar, or the the zero price, is:</p>
+<div class="math notranslate nohighlight">
+\[\large\frac{100-bank\,discount\times\frac{Maturity\,In\,Days}{360}}{100}\]</div>
+<p>The maturity of the bills are 4, 8, 13, 26, and 52 weeks. In the following code, the NumPy array <font color='green'>maturity_days</font> is created by multiplying the number of weeks by seven. The <font color='green'>zero_price_one</font> array is calculated by multiplying <font color='green'>bankers_discount</font> by <font color='green'>maturity_days</font>, annualized with 360 days per year. We then divide by 100 to convert the value to a one dollar zero price.</p>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maturity_days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">13</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">26</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">52</span><span class="o">*</span><span class="mi">7</span><span class="p">])</span> <span class="c1">#Maturity in days calculated</span>
+<span class="c1">#The price formula divides maturity days by 360 to annualize</span>
+<span class="c1">#Then divides by to convert to a bill paying one dollar.</span>
+<span class="n">zero_prices_one</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="o">-</span><span class="n">bankers_discount</span><span class="o">*</span><span class="n">maturity_days</span><span class="o">/</span><span class="mi">360</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span>
+<span class="c1">#NumPy performs element by element calculations: a calculation for each</span>
+<span class="c1">#value of maturity_days with the corresponding value of bankers_discount</span>
+<span class="n">zero_prices_one</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>   <span class="c1">#Display first 5 rows (each row is a trading day for Sept 2022)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.9979    , 0.99522444, 0.99186056, 0.98068778, 0.96087   ],
+       [0.99791556, 0.99520889, 0.99175944, 0.98089   , 0.96157778],
+       [0.99805556, 0.99539556, 0.99168361, 0.98089   , 0.96147667],
+       [0.99797778, 0.99534889, 0.99175944, 0.98063722, 0.95985889],
+       [0.99794667, 0.99534889, 0.99165833, 0.980435  , 0.95975778]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spot-rates">
+<h3>Spot rates<a class="headerlink" href="#spot-rates" title="Link to this heading">#</a></h3>
+<p>Recall that the spot rates are the annualized rates calculated from the T-bill data. Spot rates are equal to:</p>
+<div class="math notranslate nohighlight">
+\[\normalsize Spot\ Rate(T) = \frac{ln(zero\ price)}{\frac{T}{365}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the number of days. In the following code, the array <font color='green'>spot_rates</font> is calculated from the <font color='green'>zero_prices_one</font> array. The first five rows of the array are then displayed.</p>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spot_rates</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_prices_one</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">maturity_days</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span> <span class="c1">#Maturity_days divided by 365</span>
+<span class="n">spot_rates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">#Display first 5 rows (last 5 trading days of Sept 2022)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.02740378, 0.03120095, 0.03278081, 0.03910943, 0.04002581],
+       [0.02720058, 0.03130283, 0.03318972, 0.03869593, 0.03928746],
+       [0.0253719 , 0.03008042, 0.03349642, 0.03869593, 0.03939291],
+       [0.0263878 , 0.030386  , 0.03318972, 0.03921282, 0.04108155],
+       [0.02679418, 0.030386  , 0.03359866, 0.03962642, 0.04118718]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="forward-rates">
+<h3>Forward rates<a class="headerlink" href="#forward-rates" title="Link to this heading">#</a></h3>
+<p>The forward rates are calculated with differences in the natural logs of zero prices and assigned to the matrix <font color='green'>forward_rates</font> in the below code. The NumPy method <font color='green'>diff()</font> is used to calculate the difference between the zero prices for adjacent maturities. The arguments of <font color='green'>diff()</font> are the array name and the number of lags between differences. The default value for lags between differences is 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forward_rates</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_price_one</span><span class="p">))</span><span class="o">*</span><span class="mi">365</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">maturity_days</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above line of code warrants a bit of explanation. The <font color='green'>diff()</font> method subtracts the lower indexed value from the higher—in this example, the maturity of four weeks from eight weeks and eight weeks from thirteen and so on. The calculation of forward rates is the reverse (or the negative) value of the <font color='green'>diff()</font> method. This negative value is assigned to the <font color='green'>forward_rates</font> array. The <font color='green'>diff()</font> function returns four values (there is no forward rate for the first month). To align the spot and forward rates on the graph, a dummy value, <font color='green'>nan</font>, is inserted in the forward-rate array. The NumPy method <font color='green'>insert()</font> is used to add a column with <font color='green'>nan</font> as the first column of the <font color='green'>forward_rates</font> array. As you might have guessed, <font color='green'>nan</font> stands for “not a number,” and it’s ignored in calculations. The arguments of <font color='green'>insert()</font> are the array, position, value, and axis. The rows are <font color='green'>axis 0</font>, and the columns are <font color='green'>axis 1</font>. This means that a position of 0 and an axis of 1 inserts the values as the first column.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forward_rates</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">forward_rates</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first five values of the <font color='green'>forward_rates</font> array are shown below.</p>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forward_rates</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_prices_one</span><span class="p">))</span><span class="o">*</span><span class="mi">365</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">maturity_days</span><span class="p">)</span> <span class="c1">#Sign switched</span>
+<span class="n">forward_rates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">forward_rates</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#NumPy nan inserted for first month</span>
+<span class="n">forward_rates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">#Display first five dates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[       nan, 0.03499811, 0.03530859, 0.04543804, 0.0409422 ],
+       [       nan, 0.03540507, 0.03620874, 0.04420214, 0.039879  ],
+       [       nan, 0.03478894, 0.03896203, 0.04389543, 0.04008989],
+       [       nan, 0.03438419, 0.03767567, 0.04523591, 0.04295028],
+       [       nan, 0.03397781, 0.03873893, 0.04565418, 0.04274794]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="saving-results">
+<h2>Saving Results<a class="headerlink" href="#saving-results" title="Link to this heading">#</a></h2>
+<p>We suggest saving files (graphs, spreadsheets, and so forth) generated by notebooks. To that end, a parameter of the <font color='green'>one_y_axis</font> function is the dictionary <font color='green'>save_config</font>. The keys of the dictionary are assumed to be:</p>
+<ul class="simple">
+<li><p><font color='green'>volume</font></p></li>
+<li><p><font color='green'>chapter</font></p></li>
+<li><p><font color='green'>file_name</font></p></li>
+</ul>
+<p>If values are assigned to at least one of the keys, the graph will be saved.  If you change the name of the keys, the value will be ignored. In this example the dictionary is created with the constructor <font color='green'>dict</font> with the keys:<span class="math notranslate nohighlight">\(^{7,8}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;Term Structure September 15 2022.pdf&#39;</span><span class="p">,</span>
+                 <span class="n">volume</span><span class="o">=</span><span class="s1">&#39;Basic Concepts Fixed Income&#39;</span><span class="p">,</span>
+                 <span class="n">chapter</span><span class="o">=</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{7}\)</span> For background on Python dictionaries, see <a class="reference external" href="https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/Dictionaries.html#an-introduction-to-dictionaries">A Quick Introduction to Dictionaries</a>.</p>
+<p><span class="math notranslate nohighlight">\(^{8}\)</span> Dictionaries can be created with curly brackets- <font color='green'><strong>{ }</strong></font>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save_config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;file_name&#39;</span><span class="p">:</span><span class="s1">&#39;Term Structure September 15 2022.pdf&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;volume&#39;</span><span class="p">:</span><span class="s1">&#39;Basic Concepts Fixed Income&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;chapter&#39;</span><span class="p">:</span> <span class="s1">&#39;One&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;Term Structure September 15 2022.pdf&#39;</span><span class="p">,</span>
+                 <span class="n">volume</span><span class="o">=</span><span class="s1">&#39;Basic Concepts Fixed Income&#39;</span><span class="p">,</span>
+                 <span class="n">chapter</span><span class="o">=</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graphing-the-spot-and-forward-rates-for-september-15-2022">
+<h2>Graphing the spot and forward rates for September 15, 2022<a class="headerlink" href="#graphing-the-spot-and-forward-rates-for-september-15-2022" title="Link to this heading">#</a></h2>
+<p>In the following code, the <em>x</em>-axis is set at the five maturities of the bills in months. Forward and spot rates are calculated for the month of September 2022, and the data for September 15, 2022, is plotted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xaxis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span><span class="s1">&#39;Two&#39;</span><span class="p">,</span><span class="s1">&#39;Three&#39;</span><span class="p">,</span><span class="s1">&#39;Six&#39;</span><span class="p">,</span><span class="s1">&#39;Twelve&#39;</span><span class="p">]</span>
+<span class="n">string_date</span><span class="o">=</span><span class="s1">&#39;09/15/2022&#39;</span>
+</pre></div>
+</div>
+<p>Since they lack index columns, the correct rows of the NumPy arrays <font color='green'>spot_rates</font> and <font color='green'>forward_rates</font> cannot be determined from the value of <font color='green'>string_date</font>. Because the rows of the arrays correspond to the rows of the DataFrame, the correct row is determined with our now familiar Pandas method <font color='green'>get_indexer()</font>. The method returns an array with index values corresponding to the argument. The spot- and forward-rate rows for September 15, 2022, are then multiplied by 100 and assigned to the list <font color='green'>data</font>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span><span class="o">=</span><span class="n">Tbill_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">string_date</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">spot_rates</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="n">forward_rates</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The plot title is assigned whatever value is assigned to <font color='green'>save_config[‘File Name’]</font> (minus the PDF extension). If no title, it’s assigned “Add A Title.”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>                    
+  <span class="n">title</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">save_config</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">])</span>              
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Add A Title&#39;</span>
+</pre></div>
+</div>
+<p>Series names, labels, and markers are then assigned.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spot Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Forward Rate&#39;</span><span class="p">]</span>
+<span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Continuous Compounded Annualized % Rates&#39;</span>
+<span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Maturity In Months&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="s1">&#39;&gt;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="o">+</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The upper limit of the <em>y</em>-axis is assigned to <font color='green'>upper</font> and calculated from the maximum value of the spot and forward rates. The NumPy method <font color='green'>nanmax()</font> ignores <font color='green'>nan</font> values. The maximum of <font color='green'>nanmax()</font> of spot rates (<font color='green'>data[0]</font>) and forward rates (<font color='green'>data[1]</font>) plus 0.5% are assigned to <font color='green'>upper </font>. The lower limit is set to 0, and the size and colors of the lines are set as seven inches wide and five inches tall (7,5) and red and blue, respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">]</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  
+<span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Finally, the graph is generated and saved with <font color='green'>one_y_axis</font>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">one_y_axis</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span>
+           <span class="n">save_config</span><span class="o">=</span><span class="n">save_config</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;Term Structure September 15 2022.pdf&#39;</span><span class="p">,</span>
+                 <span class="n">volume</span><span class="o">=</span><span class="s1">&#39;Basic Concepts Fixed Income&#39;</span><span class="p">,</span>
+                 <span class="n">chapter</span><span class="o">=</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+<span class="c1"># Define the labels for the x-axis, representing different maturities.</span>
+<span class="n">xaxis</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">,</span> <span class="s1">&#39;Six&#39;</span><span class="p">,</span> <span class="s1">&#39;Twelve&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define the specific date for which the term structure will be plotted.</span>
+<span class="n">string_date</span> <span class="o">=</span> <span class="s1">&#39;09/15/2022&#39;</span>
+
+<span class="c1"># Get the integer location (row index) of the specified &#39;string_date&#39; in the DataFrame&#39;s index..</span>
+<span class="n">loc</span> <span class="o">=</span> <span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">string_date</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Prepare the data to be plotted on the y-axis (as %).</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">spot_rates</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">forward_rates</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># Attempt to extract the plot title from the file name.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">save_config</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#&#39;file_name key not found set a default title.</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;September 15, 2022&#39;</span>
+
+<span class="c1"># Define the names for the data series that will appear in the plot&#39;s legend.</span>
+<span class="n">series</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spot Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Forward Rate&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define the label for the y-axis.</span>
+<span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Continuous Compounded Annualized % Rates&#39;</span>
+
+<span class="c1"># Define the label for the x-axis.</span>
+<span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Maturity In Months&#39;</span>
+
+<span class="c1">#&#39;data&#39; contains two series (spot and forward rates).</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Define markers for the plot.</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="s1">&#39;&gt;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="o">%</span><span class="k">2</span>+0.001)
+
+<span class="c1"># Define the lower bound for the y-axis.</span>
+<span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Define the upper bound for the y-axis.</span>
+<span class="c1"># considering NaN values (not a number) and adds a small buffer (0.5) for padding.</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span>
+
+<span class="c1"># Define the y-axis limits (minimum and maximum values).</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">]</span>
+
+<span class="c1"># Define the size of the plot (width, height) in inches.</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Define colors as red and blue</span>
+<span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="c1"># This function generates and possibly saves a plot.</span>
+<span class="n">one_y_axis</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span>
+           <span class="n">save_config</span><span class="o">=</span><span class="n">save_config</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7e3d835bd78e30be35c45023690ed8f59beb73752e1682b1fd90b92a88b15e9c.png" src="_images/7e3d835bd78e30be35c45023690ed8f59beb73752e1682b1fd90b92a88b15e9c.png" />
+</div>
+</div>
+</section>
+<section id="accessing-t-bill-data-directly-from-the-treasury">
+<h2>Accessing T-Bill Data Directly from the Treasury<a class="headerlink" href="#accessing-t-bill-data-directly-from-the-treasury" title="Link to this heading">#</a></h2>
+<p><strong>Figure 1</strong> shows a screenshot of the Treasury page and its data tool, <a class="reference external" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates">found here</a>. The time period selected determines the URL for the “Download CSV” link. In our example, the year is set to 2025 and the month is September. As we will see below, the URL includes the string of a four-digit year and a two-digit month (<font color='green'>’202509’</font>).</p>
+<section id="the-link-to-the-daily-treasury-bill-rates-on-the-treasury-site">
+<h3>The link to the <a class="reference external" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates">Daily Treasury Bill Rates on the Treasury Site</a><a class="headerlink" href="#the-link-to-the-daily-treasury-bill-rates-on-the-treasury-site" title="Link to this heading">#</a></h3>
+<br>
+<p>            Figure 1. Accessing T-bill rates</p>
+<p><img  src='https://docs.google.com/drawings/d/e/2PACX-1vTiHivEYXBe1dqoYji4_KM859JuQ5eyt5zeOOq59grAnhoJFY-Cg-7q610W0YZvPJ9cL7Vi22uC-5me/pub?w=960&h=720'><img>
+Source: “Daily Treasury Bill Rates,” US Department of the Treasury, 2025 (accessed Sept. 24, 2025)</p>
+</section>
+</section>
+<section id="changing-the-url-and-using-the-pandas-method-read-csv">
+<h2>Changing the URL and using the Pandas method <font color='green'>read_csv</font><a class="headerlink" href="#changing-the-url-and-using-the-pandas-method-read-csv" title="Link to this heading">#</a></h2>
+<p>The data is accessed directly from the Treasury as a CSV file, and the code below displays the data row for September 30, 2025. With the exception of the URL value and the <font color='green'>read_csv()</font> versus <font color='green'>read_excel()</font> methods, the code is identical to what we used to create <font color='green'>Tbill_data_excel</font>. In this example, the URL points to a Treasury site instead of Dropbox. The URL is copied by right-clicking the “Download CSV” link on the Treasury website. The URL for a particular year and month is shown below, and <font color='green'>data_date</font> is assigned the string <font color='green'>’202509’</font>. You can assign it any year and month after 2022.<span class="math notranslate nohighlight">\(^{9}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_date</span><span class="o">=</span><span class="s1">&#39;202509&#39;</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://home.treasury.gov/resource-center/data-chart-center/</span><span class="se">\</span>
+<span class="s1">interest-rates/daily-treasury-rates.csv/all/&#39;</span><span class="o">+</span><span class="n">data_date</span><span class="o">+</span><span class="s1">&#39;?</span><span class="se">\</span>
+<span class="s1">type=daily_treasury_bill_rates&amp;field_tdr_date_value_month=+&#39;</span><span class="n">data_date</span><span class="s1">&#39;+&amp;page&amp;_format=csv&#39;</span>
+</pre></div>
+</div>
+<p>The CSV file is in descending order of the dates. The first row is for September 30 and is displayed with <font color='green'>iloc[0]</font>.</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{9}\)</span>As of November 3, 2025, dates prior to 2022 will be moved to a historical page, according to the Treasury. See <a class="reference external" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates&amp;amp;field_tdr_date_value=2025">US Treasury Data Chart Center</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the csv file from the U.S. Treasury website</span>
+<span class="c1">#Construct the full file path.</span>
+<span class="n">data_date</span><span class="o">=</span><span class="s1">&#39;202509&#39;</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://home.treasury.gov/resource-center/data-chart-center/</span><span class="se">\</span>
+<span class="s1">interest-rates/daily-treasury-rates.csv/all/&#39;</span><span class="o">+</span><span class="n">data_date</span><span class="o">+</span><span class="s1">&#39;?</span><span class="se">\</span>
+<span class="s1">type=daily_treasury_bill_rates&amp;field_tdr_date_value_month=&#39;</span><span class="o">+</span><span class="n">data_date</span><span class="o">+</span><span class="s1">&#39;&amp;page&amp;_format=csv&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to load data from </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#Load the data from csv, using the Date column as the index.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">Tbill_data_site</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="c1"># display September 30, 2025 data</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Tbill_data_site</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ERROR: File not found.&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="s2">&quot;Please check that the &#39;URL&#39; address&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to load data from https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/all/202509?type=daily_treasury_bill_rates&amp;field_tdr_date_value_month=202509&amp;page&amp;_format=csv
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 WEEKS BANK DISCOUNT         4.05
+4 WEEKS COUPON EQUIVALENT     4.12
+6 WEEKS BANK DISCOUNT         4.02
+6 WEEKS COUPON EQUIVALENT     4.10
+8 WEEKS BANK DISCOUNT         4.00
+8 WEEKS COUPON EQUIVALENT     4.08
+13 WEEKS BANK DISCOUNT        3.86
+13 WEEKS COUPON EQUIVALENT    3.95
+17 WEEKS BANK DISCOUNT        3.83
+17 WEEKS COUPON EQUIVALENT    3.93
+26 WEEKS BANK DISCOUNT        3.72
+26 WEEKS COUPON EQUIVALENT    3.84
+52 WEEKS BANK DISCOUNT        3.53
+52 WEEKS COUPON EQUIVALENT    3.68
+Name: 09/30/2025, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this date, the U.S. Treasury returns T-Bill rates for seven dates.  In September of 2022, rates are returned for five dates.</p>
+</section>
+<section id="application-downloading-treasury-data">
+<h2><font color='green'>Application: Downloading Treasury Data</font><a class="headerlink" href="#application-downloading-treasury-data" title="Link to this heading">#</a></h2>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    padding: 15px">
+<br>
+Access the T-bill data for September 2024 from the US Treasury and display the values for September 12, 2024. For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#download-data-for-september-2024-from-the-u-s-treasury-and-display-the-values-for-september-12-2024">Chapter One Hints: Download US Treasury Data September 2024</a>, and for expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#download-data-for-september-2024-from-the-u-s-treasury-and-display-the-values-for-september-12-2024">Chapter One expected Results: Download US Treasury Data September 2024</a>.
+<br>
+<br>
+</span></p>
+</section>
+<section id="using-the-csv-file-to-calculate-term-structure">
+<h2>Using the CSV file to calculate term structure<a class="headerlink" href="#using-the-csv-file-to-calculate-term-structure" title="Link to this heading">#</a></h2>
+<p>The following sections proceed much the same as our earlier process for calculating the term structure and thus need little explanation. We’ll convert banks’ discounts to zero prices, calculate spot and forward rates, and prepare the Notebook for graphing the term structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a list called &#39;desired_columns&#39; using a list comprehension.</span>
+<span class="n">desired_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">Tbill_data_site</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;BANK&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span>
+
+<span class="c1"># Create a DataFrame named &#39;df_bankers_discount&#39;.</span>
+<span class="n">df_bankers_discount</span> <span class="o">=</span> <span class="n">Tbill_data_site</span><span class="p">[</span><span class="n">desired_columns</span><span class="p">]</span>
+
+<span class="c1"># Display the first 5 rows of the newly created &#39;df_bankers_discount&#39; DataFrame.</span>
+<span class="n">df_bankers_discount</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>4 WEEKS BANK DISCOUNT</th>
+      <th>6 WEEKS BANK DISCOUNT</th>
+      <th>8 WEEKS BANK DISCOUNT</th>
+      <th>13 WEEKS BANK DISCOUNT</th>
+      <th>17 WEEKS BANK DISCOUNT</th>
+      <th>26 WEEKS BANK DISCOUNT</th>
+      <th>52 WEEKS BANK DISCOUNT</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>09/30/2025</th>
+      <td>4.05</td>
+      <td>4.02</td>
+      <td>4.00</td>
+      <td>3.86</td>
+      <td>3.83</td>
+      <td>3.72</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <th>09/29/2025</th>
+      <td>4.06</td>
+      <td>4.03</td>
+      <td>4.00</td>
+      <td>3.86</td>
+      <td>3.83</td>
+      <td>3.73</td>
+      <td>3.52</td>
+    </tr>
+    <tr>
+      <th>09/26/2025</th>
+      <td>4.07</td>
+      <td>4.03</td>
+      <td>4.00</td>
+      <td>3.87</td>
+      <td>3.83</td>
+      <td>3.74</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <th>09/25/2025</th>
+      <td>4.08</td>
+      <td>4.03</td>
+      <td>4.01</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>3.75</td>
+      <td>3.54</td>
+    </tr>
+    <tr>
+      <th>09/24/2025</th>
+      <td>4.02</td>
+      <td>4.02</td>
+      <td>3.98</td>
+      <td>3.87</td>
+      <td>3.81</td>
+      <td>3.72</td>
+      <td>3.49</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The .to_numpy() method strips away the pandas Index and column headers,</span>
+<span class="c1"># leaving only the raw data values in a highly efficient array format.</span>
+<span class="n">bankers_discount</span><span class="o">=</span><span class="n">df_bankers_discount</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="c1"># --- Verification Step: Display the First 5 Rows of the New Array ---</span>
+<span class="c1"># After a data type conversion, it is good practice to inspect the result.</span>
+<span class="n">bankers_discount</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.05, 4.02, 4.  , 3.86, 3.83, 3.72, 3.53],
+       [4.06, 4.03, 4.  , 3.86, 3.83, 3.73, 3.52],
+       [4.07, 4.03, 4.  , 3.87, 3.83, 3.74, 3.53],
+       [4.08, 4.03, 4.01, 3.89, 3.84, 3.75, 3.54],
+       [4.02, 4.02, 3.98, 3.87, 3.81, 3.72, 3.49]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3>Going from bankers’ discounts to zero prices<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maturity_days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">13</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">17</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">26</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">52</span><span class="o">*</span><span class="mi">7</span><span class="p">])</span> <span class="c1">#Maturity in days calculated</span>
+<span class="c1">#The price formula divides maturity days by 360 to annualize</span>
+<span class="c1">#Then divides by 100 to convert to a bill paying one dollar.</span>
+<span class="n">zero_prices_one</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="o">-</span><span class="n">bankers_discount</span><span class="o">*</span><span class="n">maturity_days</span><span class="o">/</span><span class="mi">360</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span>
+<span class="c1">#NumPy performs element by element calculations: a calculation for each</span>
+<span class="c1">#value of maturity_days with the corresponding value of bankers_discount</span>
+<span class="n">zero_prices_one</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>   <span class="c1">#Display first 5 rows (each row is a trading day for Sept 2025)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.99685   , 0.99531   , 0.99377778, 0.99024278, 0.98733972,
+        0.98119333, 0.96430778],
+       [0.99684222, 0.99529833, 0.99377778, 0.99024278, 0.98733972,
+        0.98114278, 0.96440889],
+       [0.99683444, 0.99529833, 0.99377778, 0.9902175 , 0.98733972,
+        0.98109222, 0.96430778],
+       [0.99682667, 0.99529833, 0.99376222, 0.99016694, 0.98730667,
+        0.98104167, 0.96420667],
+       [0.99687333, 0.99531   , 0.99380889, 0.9902175 , 0.98740583,
+        0.98119333, 0.96471222]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Spot rates<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spot_rates</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_prices_one</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">maturity_days</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span> <span class="c1">#Maturity_days divided by 365</span>
+<span class="n">spot_rates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">#Display first 5 rows (last 5 trading days of Sept 2025)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.04112731, 0.04085421, 0.04068225, 0.03932829, 0.03907985,
+        0.03807584, 0.03644461],
+       [0.04122902, 0.04095608, 0.04068225, 0.03932829, 0.03907985,
+        0.03817917, 0.03633948],
+       [0.04133073, 0.04095608, 0.04068225, 0.03943068, 0.03907985,
+        0.03828251, 0.03644461],
+       [0.04143244, 0.04095608, 0.04078428, 0.03963547, 0.03918254,
+        0.03838586, 0.03654976],
+       [0.04082219, 0.04085421, 0.04047821, 0.03943068, 0.03887448,
+        0.03807584, 0.03602413]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Forward rates<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forward_rates</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_prices_one</span><span class="p">))</span><span class="o">*</span><span class="mi">365</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">maturity_days</span><span class="p">)</span> <span class="c1">#Sign switched</span>
+<span class="n">forward_rates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">forward_rates</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#NumPy nan inserted for first month</span>
+<span class="n">forward_rates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[       nan, 0.04030802, 0.04016638, 0.03716195, 0.03827242,
+        0.03617937, 0.03481338],
+       [       nan, 0.0404102 , 0.03986078, 0.03716195, 0.03827242,
+        0.0364779 , 0.03449978],
+       [       nan, 0.04020678, 0.03986078, 0.03742816, 0.03793965,
+        0.03677644, 0.03460671],
+       [       nan, 0.04000335, 0.04026888, 0.03779737, 0.03771053,
+        0.03688102, 0.03471366],
+       [       nan, 0.04091826, 0.03935021, 0.03775464, 0.03706682,
+        0.0365673 , 0.03397243]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="graphing-the-term-structure-again">
+<h2>Graphing the Term Structure (Again)<a class="headerlink" href="#graphing-the-term-structure-again" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;Term Structure September 30 2025.pdf&#39;</span><span class="p">,</span>
+                 <span class="n">volume</span><span class="o">=</span><span class="s1">&#39;Basic Concepts Fixed Income&#39;</span><span class="p">,</span>
+                 <span class="n">chapter</span><span class="o">=</span> <span class="s1">&#39;One&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graphing-the-spot-and-forward-rates-for-september-30-2025">
+<h2>Graphing the spot and forward rates for September 30, 2025<a class="headerlink" href="#graphing-the-spot-and-forward-rates-for-september-30-2025" title="Link to this heading">#</a></h2>
+<p>In the following code, the <em>x</em>-axis is set at the bills’ seven maturities in months. Forward and spot rates are calculated for the month of September 2025, and the data for September 30, 2025, is plotted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xaxis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span><span class="s1">&#39;One &amp; Half&#39;</span><span class="p">,</span><span class="s1">&#39;Two&#39;</span><span class="p">,</span><span class="s1">&#39;Three&#39;</span><span class="p">,</span><span class="s1">&#39;Four&#39;</span><span class="p">,</span><span class="s1">&#39;Six&#39;</span><span class="p">,</span><span class="s1">&#39;Twelve&#39;</span><span class="p">]</span>
+<span class="n">string_date</span><span class="o">=</span><span class="s1">&#39;09/15/2022&#39;</span>
+</pre></div>
+</div>
+<p>The first row of <font color='green'>spot_rates</font> and <font color='green'>forward_rates</font> correspond to September 30. The spot- and forward-rate rows for September 30, 2025, are then multiplied by 100 and assigned to the list <font color='green'>data</font>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">spot_rates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="n">forward_rates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The plot title is assigned whatever value is assigned to <font color='green'>save_config[‘File Name’]</font> (minus the PDF extension).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>                    
+  <span class="n">title</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">save_config</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">])</span>              
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">title</span><span class="o">=</span><span class="s1">&#39;September 30, 2025&#39;</span>
+</pre></div>
+</div>
+<p>Series names, labels, and markers are then assigned.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spot Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Forward Rate&#39;</span><span class="p">]</span>
+<span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Continuous Compounded Annualized % Rates&#39;</span>
+<span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Maturity In Months&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="s1">&#39;&gt;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="o">+</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The upper limit of the <em>y</em>-axis is assigned to <font color='green'>upper</font> and calculated from the maximum value of the spot and forward rates. As before, the NumPy method <font color='green'>nanmax()</font> ignores <font color='green'>nan</font> values. The maximum of <font color='green'>nanmax()</font> of spot rates (<font color='green'>data[0]</font>) and forward rates (<font color='green'>data[1]</font>) plus 0.5% are assigned to <font color='green'>upper </font>. The lower limit is set to 0, and the size and colors of the lines are once again set as 10 inches wide and 6 inches tall (10,6) and red and blue, respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">]</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Finally, the graph is generated and saved with <font color='green'>one_y_axis()</font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">one_y_axis</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span>
+           <span class="n">save_config</span><span class="o">=</span><span class="n">save_config</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the labels for the x-axis, representing different maturities.</span>
+<span class="n">xaxis</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span><span class="s1">&#39;One &amp; Half&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">,</span><span class="s1">&#39;Four&#39;</span><span class="p">,</span> <span class="s1">&#39;Six&#39;</span><span class="p">,</span> <span class="s1">&#39;Twelve&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define the specific date for which the term structure will be plotted.</span>
+<span class="n">string_date</span> <span class="o">=</span> <span class="s1">&#39;09/30/2025&#39;</span>
+
+<span class="c1"># Get the integer location (row index) of the specified &#39;string_date&#39; in the DataFrame&#39;s index..</span>
+<span class="n">loc</span> <span class="o">=</span> <span class="n">Tbill_data_excel</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">string_date</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Prepare the data to be plotted on the y-axis (as %).</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">spot_rates</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">forward_rates</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># Attempt to extract the plot title from the file name.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">save_config</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#&#39;file_name key not found set a default title.</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;September 30, 2025&#39;</span>
+
+<span class="c1"># Define the names for the data series that will appear in the plot&#39;s legend.</span>
+<span class="n">series</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spot Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Forward Rate&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define the label for the y-axis.</span>
+<span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Continuous Compounded Annualized % Rates&#39;</span>
+
+<span class="c1"># Define the label for the x-axis.</span>
+<span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Maturity In Months&#39;</span>
+
+<span class="c1">#&#39;data&#39; contains two series (spot and forward rates).</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Define markers for the plot.</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="s1">&#39;&gt;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="o">%</span><span class="k">2</span>+0.001)
+
+<span class="c1"># Define the lower bound for the y-axis.</span>
+<span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Define the upper bound for the y-axis.</span>
+<span class="c1"># considering NaN values (not a number) and adds a small buffer (0.5) for padding.</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span>
+
+<span class="c1"># Define the y-axis limits (minimum and maximum values).</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">]</span>
+
+<span class="c1"># Define the size of the plot (width, height) in inches.</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Define colors as red and blue</span>
+<span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="c1"># This function generates and possibly saves a plot.</span>
+<span class="n">one_y_axis</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span>
+           <span class="n">save_config</span><span class="o">=</span><span class="n">save_config</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/94ce4f7cd0ac0ff90b14db31f05a1ec44cf31703f4a807c30859fd8809786c5c.png" src="_images/94ce4f7cd0ac0ff90b14db31f05a1ec44cf31703f4a807c30859fd8809786c5c.png" />
+</div>
+</div>
+</section>
+<section id="chapter-exercise">
+<h2><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span><a class="headerlink" href="#chapter-exercise" title="Link to this heading">#</a></h2>
+<p><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 0; margin-bottom: 0.5em; font-style: italic;"><big>Calculating and Plotting Spot and Forward Rates</big></span></p>
+<p><span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px">
+<big>Using the data from September 12, 2024:</big><br></span>
+<span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 2;">
+<br><big>          1. Calculate spot and forward rates.<br><br>          2. Plot the spot and forward rates.</big><br></span>
+<span style="display:block;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    line-height: 1.5;
+    padding: 15px">
+<br><big>For hints, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Hints.html#chapter-one-exercise">Chapter One Hints</a>. For expected results, see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_One_Results.html#chapter-one-exercise">Chapter One Expected Results</a>.</big></p>
+</span></section>
+<section id="take-a-deeper-dive-with-gemini">
+<h2><font color='green'>Take a deeper dive with Gemini</font><a class="headerlink" href="#take-a-deeper-dive-with-gemini" title="Link to this heading">#</a></h2>
+<section id="some-suggestions-to-get-you-started">
+<h3>Some suggestions to get you started.<a class="headerlink" href="#some-suggestions-to-get-you-started" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Why calculate forward rates?</strong></p></li>
+<li><p><strong>How important are Treasury bills in calculating the term structure of interest rates?</strong></p></li>
+<li><p><strong>Do higher future spot rates follow from increasing forward rates?</strong></p></li>
+<li><p><strong>What’s the likely shape of the term structure when the Federal Reserve is expected to cut rates?</strong></p></li>
+</ol>
+</section>
+<section id="here-is-the-link-where-you-can-copy-and-paste-the-questions">
+<h3><a class="reference external" href="https://gemini.google.com">Here is the link where you can copy and paste the questions</a><a class="headerlink" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "patrickjhess/Vol-3-Chap-1",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Numpy_And_Pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">NumPy and Pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter_Summary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python, Pandas, NumPy, and Financial Insights</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-notebook">Preparing the Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing libraries, modules, and functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-structure-putting-numpy-and-pandas-to-work">Term Structure: Putting NumPy and Pandas to Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-term-structure">Calculating term structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-rates-of-interest">Spot rates of interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-rates-of-interest">Forward rates of interest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-term-structure-of-interest-rates-with-treasury-bills">Calculating the Term Structure of Interest Rates with Treasury Bills</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-finance-in-action">Python and finance in action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-t-bill-data">Getting T-bill data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-from-an-excel-file">Creating a DataFrame from an Excel file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-rows-of-a-pandas-dataframe">Accessing rows of a Pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-term-structure-a-return">Calculating the Term Structure: A Return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-bond-prices-with-bank-discounts">Calculating bond prices with bank discounts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#going-from-bankers-discounts-to-zero-prices">Going from bankers’ discounts to zero prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-rates">Spot rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-rates">Forward rates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-results">Saving Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-the-spot-and-forward-rates-for-september-15-2022">Graphing the spot and forward rates for September 15, 2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-t-bill-data-directly-from-the-treasury">Accessing T-Bill Data Directly from the Treasury</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-link-to-the-daily-treasury-bill-rates-on-the-treasury-site">The link to the Daily Treasury Bill Rates on the Treasury Site</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-url-and-using-the-pandas-method-read-csv">Changing the URL and using the Pandas method <font color="green">read_csv</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-downloading-treasury-data"><font color="green">Application: Downloading Treasury Data</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-csv-file-to-calculate-term-structure">Using the CSV file to calculate term structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Going from bankers’ discounts to zero prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Spot rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Forward rates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-the-term-structure-again">Graphing the Term Structure (Again)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-the-spot-and-forward-rates-for-september-30-2025">Graphing the spot and forward rates for September 30, 2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 by the University of Virginia Darden School Foundation, Charlottesville, VA..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
