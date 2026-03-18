@@ -1,0 +1,44 @@
+
+# _toc.yml
+format: jb-book
+root: intro
+parts:
+  - caption: Getting Started
+    chapters:
+    - file: Interacting With Jupyter Books
+
+  - caption: "Basic Concepts of Fixed Income: Chapter Two"
+    chapters:
+    - file: Chapter_Two_Highlights
+      sections:
+      - file: Machanics_Of_Bond_Pricces
+      - file: Dealing_With_Dates
+      - file: Chapter_Two_Accrued_Interest
+      - file: Chapter_Two_Summary
+      - file: imported_functions_Two
+
+  - caption: "Basic Concepts of Fixed Income: Chapter Three"
+    chapters:
+    - file: Chapter_Three_Highlights
+      sections: 
+      - file: Actual_Payment_Dates
+      - file: Non_Settlement_Days
+      - file: Bond_Pay_Dates
+      - file: Chapter_Three_Summary
+      - file: imported_functions_Three
+
+  - caption: Hub & Other Chapters Of Basic Concepts Of Fixed Income
+    chapters:
+    - url: https://patrickjhess.github.io/Volume-Three-Hub/
+      title: "Hub For Basic Concepts Of Fixed Income"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-1/
+      title: "Chapter One: Basic Bond Concepts and the Term Structure of Interest Rates"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-4/
+      title: "Chapters Four: Bootstrapping The Term Structure With Coupon Bonds" 
+    - url: https://patrickjhess.github.io/Vol-3-Chap-5/
+      title: "Chapter Five: Par Yields"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-6/
+      title: "Chapter Six: Yield To Maturity"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-7/
+      title: "Chapter Seven: Measuring Interest Rate Risk With Duration"
+
